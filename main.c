@@ -1,5 +1,9 @@
 #include<stdio.h>
 #include "stdlib.h"
+#include "book_manage.h"
+#include "reader_manage.h"
+#include "borrow_return.h"
+
 
 void  ShowMainMenu(){
     system("cls");
@@ -22,11 +26,23 @@ int main(int argc, char const *argv[])
 {   int Scan_number=0;
 
 
+    //打印窗口
     ShowMainMenu();
 
 
-
+    //收集用户的选择
     scanf("%d",&Scan_number);
+
+    switch (Scan_number) {
+
+        case 1:Main_book_mana();
+            break;
+        case 2:Main_reader_mana();
+            break;
+        case 3:Main_br_mana();
+            break;
+
+    }
 
     return 0;
 }
