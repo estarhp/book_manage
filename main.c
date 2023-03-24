@@ -13,7 +13,7 @@ int main(int argc, char const *argv[])
 {
     //打印窗口
     ShowMainMenu();
-
+   //收集输入的数字
     Collect_operation();
 
 
