@@ -5,30 +5,40 @@
 #include "borrow_return.h"
 
 
+void  ShowMainMenu();
+
+void Collect_operation();
+
+int main(int argc, char const *argv[])
+{
+    //打印窗口
+    ShowMainMenu();
+
+    Collect_operation();
+
+
+
+
+    return 0;
+}
+
+
 void  ShowMainMenu(){
     system("cls");
 
     printf("\n\t##########################欢迎进入##########################\t\n"
-                  "\n\t                        1->图书管理                         \t\n"
-                  "\n\t                        2->读者管理                         \t\n"
-                  "\n\t                        3->借还书登记                       \t\n"
-                  "\n\t#######################请数字选择进入########################\t\n"
-                  );
+           "\n\t                        1->图书管理                         \t\n"
+           "\n\t                        2->读者管理                         \t\n"
+           "\n\t                        3->借还书登记                       \t\n"
+           "\n\t#######################请数字选择进入########################\t\n"
+    );
 
 
 
 
 }
-
-
-
-int main(int argc, char const *argv[])
-{   int Scan_number=0;
-
-
-    //打印窗口
-    ShowMainMenu();
-
+void Collect_operation(){
+    int Scan_number=0;
 
     //收集用户的选择
     scanf("%d",&Scan_number);
@@ -43,6 +53,4 @@ int main(int argc, char const *argv[])
             break;
 
     }
-
-    return 0;
 }
