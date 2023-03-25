@@ -1,5 +1,5 @@
 #include "stdio.h"
-//åˆ›å»ºå›¾ä¹¦å®¹å™¨
+//´´½¨Í¼ÊéÈİÆ÷
 typedef struct book {
     int id;
     char name[50];
@@ -10,23 +10,23 @@ void add_book();
 
 FILE * file_open();
 
-void init_book(int number,FILE *fp,Book books[]);//åˆå§‹åŒ–å›¾ä¹¦
+void init_book(int number,FILE *fp,Book books[]);//³õÊ¼»¯Í¼Êé
 
-int Books_number(FILE *fp);//è®¡ç®—æ–‡ä»¶ä¸­å›¾ä¹¦çš„æ•°ç›®
+int Books_number(FILE *fp);//¼ÆËãÎÄ¼şÖĞÍ¼ÊéµÄÊıÄ¿
 
 void Main_book_mana(){
 
     FILE *fp=file_open();
 
-    int books_number=Books_number(fp);//è®¡ç®—å›¾ä¹¦æ•°é‡
+    int books_number=Books_number(fp);//¼ÆËãÍ¼ÊéÊıÁ¿
 
-    Book books[books_number];//åˆ›å»ºå›¾ä¹¦å®¹å™¨
+    Book books[books_number];//´´½¨Í¼ÊéÈİÆ÷
 
-    init_book(books_number,fp,books);//åˆå§‹åŒ–ï¼Œå°†ä¹¦æœ¬æ”¾å…¥å®¹å™¨
+    init_book(books_number,fp,books);//³õÊ¼»¯£¬½«Êé±¾·ÅÈëÈİÆ÷
 
-//    for (int i = 0; i < books_number; ++i) {
-//        printf("%d %s %s\n",books[i].id,books[i].name,books[i].writer);
-//    }
+    for (int i = 0; i < books_number; ++i) {
+        printf("%d %s %s\n",books[i].id,books[i].name,books[i].writer);
+    }
 
 
 
@@ -44,7 +44,7 @@ int Books_number(FILE *fp) {
         if (flag == '\n')
             count++;
     }
-    file_row = count; //åŠ ä¸Šæœ€åä¸€è¡Œ
+    file_row = count; //¼ÓÉÏ×îºóÒ»ĞĞ
 
     rewind(fp);
     return file_row;
@@ -54,7 +54,7 @@ void init_book(int number,FILE *fp,Book books[]){
 
     for (int i = 0; i < number; ++i) {
         scanf("%d %s %s",&books[i].id,&books[i].name,&books[i].writer);
-    }//ä»æ–‡ä»¶è¯»å…¥ä¹¦æœ¬
+    }//´ÓÎÄ¼ş¶ÁÈëÊé±¾
 
     fclose(fp);
 
@@ -64,8 +64,10 @@ FILE * file_open(){
     FILE *fp;
 
     if ((fp = freopen("../books.txt", "r",stdin)) == NULL){
-        fp = freopen("books.txt", "r",stdin);
-    }else printf("æ–‡ä»¶è·¯å¾„Error!\n");
+        if ((fp = freopen("../books.txt", "r",stdin)) == NULL){
+            printf("ÎÄ¼şÂ·¾¶Error!\n");
+        }
+    }
 
     return fp;
 }
