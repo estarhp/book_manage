@@ -42,7 +42,7 @@ void Collect_operation(){
 
     //收集用户的选择
     scanf("%d",&Scan_number);
-
+   //跳入不同模块
     switch (Scan_number) {
 
         case 1:Main_book_mana();
