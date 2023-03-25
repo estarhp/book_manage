@@ -52,6 +52,7 @@ int Books_number(FILE *fp) {
 
 void init_book(int number,FILE *fp,Book books[]){
 
+
     for (int i = 0; i < number; ++i) {
         scanf("%d %s %s",&books[i].id,&books[i].name,&books[i].writer);
     }//从文件读入书本
