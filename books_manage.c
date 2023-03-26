@@ -10,9 +10,21 @@ void add_book();
 
 FILE * file_open();
 
-void init_book(int number,FILE *fp,Book books[]);//初始化图书
+void put_book(int number,FILE *fp,Book books[]);//初始化图书
 
 int Books_number(FILE *fp);//计算文件中图书的数目
+
+void Menu_book();
+
+void Collect_operation();
+
+void delete_book();
+
+void modify_book();
+
+void query_book();
+
+void show_book();
 
 void Main_book_mana(){
 
@@ -22,17 +34,75 @@ void Main_book_mana(){
 
     Book books[books_number];//创建图书容器
 
-    init_book(books_number,fp,books);//初始化，将书本放入容器
+    put_book(books_number,fp,books);//将书本放入容器
 
-    for (int i = 0; i < books_number; ++i) {
-        printf("%d %s %s\n",books[i].id,books[i].name,books[i].writer);
-    }
+    Menu_book();
+
+    Collect_operation();
+
+
 
 
 
 }
 
+void show_book(){
+    printf("开发中");
+
+}
+
+void query_book(){
+    printf("开发中");
+
+}
+
+void modify_book(){
+    printf("开发中");
+
+}
+
+
+void delete_book(){
+    printf("开发中");
+}
+
 void add_book(){
+    printf("开发中");
+
+}
+
+void Collect_operation(){
+    int Scan_number=0;
+
+    //收集用户的选择
+    scanf("%d",&Scan_number);
+    //跳入不同模块
+    switch (Scan_number) {
+
+        case 1:add_book();
+            break;
+        case 2:delete_book();
+            break;
+        case 3:modify_book();
+            break;
+        case 4:query_book();
+            break;
+        case 5:show_book();
+            break;
+
+    }
+}
+
+void Menu_book(){
+
+    printf("\n\t##########################欢迎进入图书管理系统##########################\t\n"
+           "\n\t                        1->新增图书                        \t\n"
+           "\n\t                        2->删除图书                        \t\n"
+           "\n\t                        3->修改图书                        \t\n"
+           "\n\t                        4->查询图书                        \t\n"
+           "\n\t                        5->显示图书                        \t\n"
+           "\n\t#######################请数字选择进入########################\t\n"
+    );
 
 }
 
@@ -50,7 +120,7 @@ int Books_number(FILE *fp) {
     return file_row;
 }
 
-void init_book(int number,FILE *fp,Book books[]){
+void put_book(int number,FILE *fp,Book books[]){
 
 
     for (int i = 0; i < number; ++i) {
