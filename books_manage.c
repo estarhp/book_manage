@@ -16,7 +16,7 @@ int Books_number(FILE *fp);//计算文件中图书的数目
 
 void Menu_book();
 
-void Collect_operation();
+void Collect(int books_number,Book *books);
 
 void delete_book();
 
@@ -24,7 +24,7 @@ void modify_book();
 
 void query_book();
 
-void show_book();
+void show_book(int books_number,Book *books);
 
 void Main_book_mana(){
 
@@ -36,9 +36,11 @@ void Main_book_mana(){
 
     put_book(books_number,fp,books);//将书本放入容器
 
+
+
     Menu_book();
 
-    Collect_operation();
+    Collect(books_number,books);
 
 
 
@@ -46,8 +48,10 @@ void Main_book_mana(){
 
 }
 
-void show_book(){
-    printf("开发中");
+void show_book(int books_number,Book *books){
+    for (int i = 0; i < books_number; ++i) {
+        printf("%d %s %s\n",books[i].id,books[i].writer,books[i].name);
+    }
 
 }
 
@@ -71,13 +75,12 @@ void add_book(){
 
 }
 
-void Collect_operation(){
-    int Scan_number=0;
-
+void Collect(int books_number,Book *books){
+    int Scanf;
     //收集用户的选择
-    scanf("%d",&Scan_number);
+    scanf("%d",&Scanf);
     //跳入不同模块
-    switch (Scan_number) {
+    switch (Scanf) {
 
         case 1:add_book();
             break;
@@ -87,7 +90,7 @@ void Collect_operation(){
             break;
         case 4:query_book();
             break;
-        case 5:show_book();
+        case 5:show_book(books_number,books);
             break;
 
     }
@@ -124,7 +127,7 @@ void put_book(int number,FILE *fp,Book books[]){
 
 
     for (int i = 0; i < number; ++i) {
-        scanf("%d %s %s",&books[i].id,&books[i].writer,&books[i].name);
+        fscanf(fp,"%d %s %s",&books[i].id,&books[i].writer,&books[i].name);
     }//从文件读入书本
 
     fclose(fp);
@@ -134,8 +137,8 @@ void put_book(int number,FILE *fp,Book books[]){
 FILE * file_open(){
     FILE *fp;
 
-    if ((fp = freopen("../books.txt", "r",stdin)) == NULL){
-        if ((fp = freopen("../books.txt", "r",stdin)) == NULL){
+    if ((fp = fopen("../books.txt", "r")) == NULL){
+        if ((fp = fopen("../books.txt", "r")) == NULL){
             printf("文件路径Error!\n");
         }
     }
