@@ -1,11 +1,69 @@
-//è¯»è€…ç®¡ç†æ¨¡å—
-//æ–°å¢è¯»è€…
-//åˆ é™¤
-//ä¿®æ”¹
-//æŸ¥è¯¢
-//æ˜¾ç¤º
-//åˆ›å»ºè¯»è€…ä¿¡æ¯
+//¶ÁÕß¹ÜÀíÄ£¿é
+//ĞÂÔö¶ÁÕß
+//É¾³ı
+//ĞŞ¸Ä
+//²éÑ¯
+//ÏÔÊ¾
+//´´½¨¶ÁÕßĞÅÏ¢
+#include "stdio.h"
+#include "stdlib.h"
+typedef struct reader {
+    char id[15];
+    char name[12];
+    char sex[3];
+} Reader;
+
+int Readers_number(FILE *fp);
+void put_reader(int number,FILE *fp,Reader readers[]);
+FILE * name_open();
+int Readers_number(FILE *fp);
+
 void Main_reader_mana(){
+    FILE *fp=name_open();
+
+    int readers_number= Readers_number(fp);//¼ÆËã¶ÁÕßÊıÁ¿
+
+    Reader readers[readers_number];//´´½¨¶ÁÕßÈİÆ÷
+
+    put_reader(readers_number,fp,readers);//½«¶ÁÕß·ÅÈëÈİÆ÷
+
+    for (int i = 0; i < readers_number; ++i) {
+        printf("%s %s %s\n",readers[i].id,readers[i].name,readers[i].sex);
+    }
+}
+
+int Readers_number(FILE *fp) {
+
+    int flag = 0, file_row = 0, count = 0;
+    while (!feof(fp)) {
+        flag = fgetc(fp);
+        if (flag == '\n')
+            count++;
+    }
+    file_row = count; //¼ÓÉÏ×îºóÒ»ĞĞ
+
+    rewind(fp);
+    return file_row;
+}
+
+FILE * name_open(){
+    FILE *fp;
+
+    if ((fp = fopen("../name.txt", "r")) == NULL){
+        if ((fp = fopen("name.txt", "r")) == NULL){
+            printf("ÎÄ¼şÂ·¾¶Error!\n");
+        }
+    }
+
+    return fp;
+}
+
+void put_reader(int number,FILE *fp,Reader readers[]) {
+    for (int i = 0; i < number; ++i) {
+        fscanf(fp,"%s %s %s",&readers[i].id,&readers[i].name,&readers[i].sex);
+    }//´ÓÎÄ¼ş¶ÁÈëÊé±¾
+
+    fclose(fp);
 
 }
 
