@@ -1,37 +1,88 @@
-//è¯»è€…ç®¡ç†æ¨¡å—
-//æ–°å¢è¯»è€…
-//åˆ é™¤
-//ä¿®æ”¹
-//æŸ¥è¯¢
-//æ˜¾ç¤º
-//åˆ›å»ºè¯»è€…ä¿¡æ¯
-# include "stdio.h"
-# define MAX-LEN 50
-void Main_reader_mana();
+//¶ÁÕß¹ÜÀíÄ£¿é
+//ĞÂÔö¶ÁÕß
+//É¾³ı
+//ĞŞ¸Ä
+//²éÑ¯
+//ÏÔÊ¾
+//´´½¨¶ÁÕßĞÅÏ¢
+#include "stdio.h"
+#include "stdlib.h"
+typedef struct reader {
+    char id[15];
+    char name[12];
+    char sex[3];
+} Reader;
+
+int Readers_number(FILE *fp);
+void put_reader(int number,FILE *fp,Reader readers[]);
+FILE * name_open();
+int Readers_number(FILE *fp);
+
+
+# define MAX_LEN 50
 void  SearchbyName(long num[], char name[][MAX_LEN],char sex[][5],char book_name[100][30],char writer_name[100][10],int n,int m);
 
-int main()
-{
-    //void  SearchbyName(long num[], char name[][MAX_LEN],char sex[][5],char book_name[100][30],char writer_name[100][10],int n,int m);
-
-    return 0;
-}
 void Main_reader_mana(){
+    FILE *fp=name_open();
+
+    int readers_number= Readers_number(fp);//¼ÆËã¶ÁÕßÊıÁ¿
+
+    Reader readers[readers_number];//´´½¨¶ÁÕßÈİÆ÷
+
+    put_reader(readers_number,fp,readers);//½«¶ÁÕß·ÅÈëÈİÆ÷
+    //´òÓ¡¶ÁÕß
+    for (int i = 0; i < readers_number; ++i) {
+        printf("%s %s %s\n",readers[i].id,readers[i].name,readers[i].sex);
+    }
+}
+
+int Readers_number(FILE *fp) {
+
+    int flag = 0, file_row = 0, count = 0;
+    while (!feof(fp)) {
+        flag = fgetc(fp);
+        if (flag == '\n')
+            count++;
+    }
+    file_row = count; //¼ÓÉÏ×îºóÒ»ĞĞ
+
+    rewind(fp);
+    return file_row;
+}
+
+FILE * name_open(){
+    FILE *fp;
+
+    if ((fp = fopen("../name.txt", "r")) == NULL){
+        if ((fp = fopen("name.txt", "r")) == NULL){
+            printf("ÎÄ¼şÂ·¾¶Error!\n");
+        }
+    }
+
+    return fp;
+}
+
+void put_reader(int number,FILE *fp,Reader readers[]) {
+    for (int i = 0; i < number; ++i) {
+        fscanf(fp,"%s %s %s",&readers[i].id,&readers[i].name,&readers[i].sex);
+    }//´ÓÎÄ¼ş¶ÁÈëÊé±¾
+
+    fclose(fp);
 
 }
-//æŸ¥è¯¢è¯»è€…ä¿¡æ¯
+//²éÑ¯¶ÁÕßĞÅÏ¢
 //void  SearchbyName(long num[], char name[][MAX_LEN],char sex[][5],char book_name[100][30],char writer_name[100][10],int n,int m)
 //{
-//    int i,j,t=0;//æ”¾ä¸ªæ ‡è®°
+//    int i,j,t=0;//·Å¸ö±ê¼Ç
 //    char se[MAX_LEN];
 //    scanf("%s",&se);
 //
 //    for(i=0;i<n;i++)
 //    {
-//        if(strcmp(se,name[i])==0) //å¦‚æœå­˜åœ¨åˆ™è¾“å‡ºå§“åï¼Œå­¦å·ï¼Œæ€§åˆ«
+//        if(strcmp(se,name[i])==0) //Èç¹û´æÔÚÔòÊä³öĞÕÃû£¬Ñ§ºÅ£¬ĞÔ±ğ
 //        {
 //            printf("%ld\t%s\t",num[i],name[i],sex[i]);
-//            //è¾“å‡ºå€Ÿé˜…ä¿¡æ¯,ä¹¦ååŠä½œè€…å
+//            //Êä³ö½èÔÄĞÅÏ¢,ÊéÃû¼°×÷ÕßÃû
 //            for(j=0;j<m;j++)
 //            {
 //                printf("%s%s\t", book_name[i][j], writer_name[i][j]);
@@ -40,9 +91,9 @@ void Main_reader_mana(){
 //            t=1;
 //        }
 //    }
-//    //ä¸å­˜åœ¨ï¼Œåˆ™ä¸èƒ½å€Ÿé˜…
+//    //²»´æÔÚ£¬Ôò²»ÄÜ½èÔÄ
 //    if(t==0)
 //    {
-//        printf("ä¸èƒ½å€Ÿé˜…!\n");
+//        printf("²»ÄÜ½èÔÄ!\n");
 //    }
 //}
