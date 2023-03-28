@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include "stdlib.h"
-#include "book_manage.h"
-#include "reader_manage.h"
-#include "borrow_return.h"
+#include "book_manage/book_manage.h"
+#include "reader_manage/reader_manage.h"
+#include "borrow_return/borrow_return.h"
 
 
 void  ShowMainMenu();

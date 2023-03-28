@@ -53,8 +53,8 @@ int Readers_number(FILE *fp) {
 FILE * name_open(){
     FILE *fp;
 
-    if ((fp = fopen("../name.txt", "r")) == NULL){
-        if ((fp = fopen("name.txt", "r")) == NULL){
+    if ((fp = fopen("../reader_manage/name.txt", "r")) == NULL){
+        if ((fp = fopen("reader/name.txt", "r")) == NULL){
             printf("ÎÄ¼þÂ·¾¶Error!\n");
         }
     }

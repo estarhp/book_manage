@@ -137,8 +137,8 @@ void put_book(int number,FILE *fp,Book books[]){
 FILE * file_open(){
     FILE *fp;
 
-    if ((fp = fopen("../books.txt", "r")) == NULL){
-        if ((fp = fopen("books.txt", "r")) == NULL){
+    if ((fp = fopen("../book_manage/books.txt", "r")) == NULL){
+        if ((fp = fopen("book_manage/books.txt", "r")) == NULL){
             printf("ÎÄ¼þÂ·¾¶Error!\n");
         }
     }
