@@ -1,4 +1,5 @@
 #include "stdio.h"
+#include "stdlib.h"
 //创建图书容器
 typedef struct book {
     int id;
@@ -6,7 +7,7 @@ typedef struct book {
     char writer[20];
 } Book;
 
-void add_book();
+void add_book(Book books[],int books_number,FILE *fp);
 
 FILE * file_open();
 
@@ -16,7 +17,7 @@ int Books_number(FILE *fp);//计算文件中图书的数目
 
 void Menu_book();
 
-void Collect(int books_number,Book *books);
+void Collect(int books_number,Book *books,FILE *fp);
 
 void delete_book();
 
@@ -40,7 +41,9 @@ void Main_book_mana(){
 
     Menu_book();
 
-    Collect(books_number,books);
+    Collect(books_number,books,fp);
+
+    fclose(fp);//关闭文件
 
 
 
@@ -70,19 +73,27 @@ void delete_book(){
     printf("开发中");
 }
 
-void add_book(){
-    printf("开发中");
+void add_book(Book books[],int books_number,FILE *fp){
+    Book addbook;
+    printf("请输入要添加的书名");
+    scanf("%s",&addbook.name);
+    printf("请输入要添加图书的作者");
+    scanf("%s",&addbook.writer);
+    addbook.id=books[books_number-1].id+1;
+    fprintf(fp, "%d %s %s\n", addbook.id, addbook.writer, addbook.name);
+
+
 
 }
 
-void Collect(int books_number,Book *books){
+void Collect(int books_number,Book *books,FILE *fp){
     int Scanf;
     //收集用户的选择
     scanf("%d",&Scanf);
     //跳入不同模块
     switch (Scanf) {
 
-        case 1:add_book();
+        case 1:add_book(books,books_number,fp);
             break;
         case 2:delete_book();
             break;
@@ -126,19 +137,18 @@ int Books_number(FILE *fp) {
 void put_book(int number,FILE *fp,Book books[]){
 
 
-    for (int i = 0; i < number; ++i) {
+    for (int i = 0; i<number ; i++) {
         fscanf(fp,"%d %s %s",&books[i].id,&books[i].writer,&books[i].name);
     }//从文件读入书本
 
-    fclose(fp);
+
 
 }
 
 FILE * file_open(){
     FILE *fp;
-
-    if ((fp = fopen("../book_manage/books.txt", "r")) == NULL){
-        if ((fp = fopen("book_manage/books.txt", "r")) == NULL){
+    if ((fp = fopen("../book_manage/books.txt", "a+")) == NULL){
+        if ((fp = fopen("book_manage/books.txt", "a+")) == NULL){
             printf("文件路径Error!\n");
         }
     }
