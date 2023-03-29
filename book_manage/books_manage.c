@@ -17,7 +17,7 @@ int Books_number(FILE *fp);//计算文件中图书的数目
 
 void Menu_book();
 
-void Collect(int books_number,Book *books,FILE *fp);
+void Collect(int books_number,Book books[],FILE *fp);
 
 void delete_book();
 
@@ -74,6 +74,7 @@ void delete_book(){
 }
 
 void add_book(Book books[],int books_number,FILE *fp){
+    rewind(fp);
     Book addbook;
     printf("请输入要添加的书名");
     scanf("%s",&addbook.name);
@@ -82,11 +83,9 @@ void add_book(Book books[],int books_number,FILE *fp){
     addbook.id=books[books_number-1].id+1;
     fprintf(fp, "%d %s %s\n", addbook.id, addbook.writer, addbook.name);
 
-
-
 }
 
-void Collect(int books_number,Book *books,FILE *fp){
+void Collect(int books_number,Book books[],FILE *fp){
     int Scanf;
     //收集用户的选择
     scanf("%d",&Scanf);
