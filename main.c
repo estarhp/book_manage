@@ -22,9 +22,11 @@ void  ShowMainMenu(){
     system("cls");
 
     printf("\n\t##########################欢迎进入##########################\t\n"
-           "\n\t                        1->图书管理                         \t\n"
-           "\n\t                        2->读者管理                         \t\n"
-           "\n\t                        3->借还书登记                       \t\n"
+           "\n\t                            0->谢谢使用                         \t\n"
+           "\n\t                            1->图书管理                         \t\n"
+           "\n\t                            2->读者管理                         \t\n"
+           "\n\t                            3->借还书登记                     \t\n"
+           "\n\t                            其他->请重输                               \t\n"
            "\n\t#######################请数字选择进入########################\t\n"
     );
 
@@ -39,12 +41,17 @@ void Collect_operation(){
     scanf("%d",&Scan_number);
    //跳入不同模块
     switch (Scan_number) {
-
+        case 0:
+            printf("谢谢使用！");
+            break;
         case 1:Main_book_mana();
             break;
         case 2:Main_reader_mana();
             break;
         case 3:Main_br_mana();
+            break;
+        default:
+            printf("输入错误，请重输");
             break;
 
     }
