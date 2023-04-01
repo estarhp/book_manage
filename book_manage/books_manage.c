@@ -91,7 +91,7 @@ void query_byid(int books_number,Book books[]){
 }
 
 void query_bywriter(int books_number,Book books[]){
-    int writer[50];
+    char writer[50];
     printf("请输入书本的作者");
     scanf("%s",&writer);
     printf("以下是匹配的查询结果：\n");
@@ -105,7 +105,7 @@ void query_bywriter(int books_number,Book books[]){
 }
 
 void query_bybookname(int books_number,Book books[]){
-    int bookname[20];
+    char bookname[20];
     printf("请输入书本的书名");
     scanf("%s",&bookname);
     printf("以下是匹配的查询结果：\n");
