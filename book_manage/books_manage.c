@@ -1,5 +1,6 @@
 #include "stdio.h"
 #include "stdlib.h"
+#include "string.h"
 //创建图书容器
 typedef struct book {
     int id;
@@ -23,9 +24,18 @@ void delete_book();
 
 void modify_book();
 
-void query_book();
+void query_book(int books_number,Book books[]);
 
 void show_book(int books_number,Book *books);
+
+void query_byid(int books_number,Book books[]);
+
+void query_bywriter(int books_number,Book books[]);
+
+void query_bybookname(int books_number,Book books[]);
+
+
+
 
 void Main_book_mana(){
 
@@ -65,8 +75,63 @@ void show_book(int books_number,Book *books){
 
 }
 
-void query_book(){
-    printf("开发中");
+void query_book(int books_number,Book books[]){
+    int select_mode=0;
+    printf("\n\t                        1->通过id                        \t\n"
+           "\n\t                        2->通过作者                        \t\n"
+           "\n\t                        3->通过书名                        \t\n"
+    );
+    scanf("%d",&select_mode);
+    switch (select_mode) {
+        case 1:query_byid(books_number,books);
+            break;
+        case 2:query_bywriter(books_number,books);
+            break;
+        case 3:query_bybookname(books_number,books);
+
+    }
+
+}
+
+void query_byid(int books_number,Book books[]){
+    int id;
+    printf("请输入书本的id");
+    scanf("%d",&id);
+    printf("以下是匹配的查询结果：\n");
+    for (int i = 0; i < books_number; ++i) {
+        if(books[i].id==id){
+
+            printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
+        }
+    }
+}
+
+void query_bywriter(int books_number,Book books[]){
+    int writer[50];
+    printf("请输入书本的作者");
+    scanf("%s",&writer);
+    printf("以下是匹配的查询结果：\n");
+    for (int i = 0; i < books_number; ++i) {
+        if(strcmp(writer,books[i].writer)==0){
+
+            printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
+        }
+
+    }
+}
+
+void query_bybookname(int books_number,Book books[]){
+    int bookname[20];
+    printf("请输入书本的书名");
+    scanf("%s",&bookname);
+    printf("以下是匹配的查询结果：\n");
+
+    for (int i = 0; i < books_number; ++i) {
+        if(strcmp(bookname,books[i].name)==0){
+            printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
+        }
+
+    }
 
 }
 
@@ -105,7 +170,7 @@ void Collect(int books_number,Book books[],FILE *fp){
             break;
         case 3:modify_book();
             break;
-        case 4:query_book();
+        case 4:query_book(books_number,books);
             break;
         case 5:show_book(books_number,books);
             break;
