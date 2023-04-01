@@ -7,6 +7,7 @@
 //创建读者信息
 #include "stdio.h"
 #include "stdlib.h"
+# define MAX_LEN 50
 typedef struct reader {
     char id[15];
     char name[12];
@@ -17,9 +18,6 @@ int Readers_number(FILE *fp);
 void put_reader(int number,FILE *fp,Reader readers[]);
 FILE * name_open();
 int Readers_number(FILE *fp);
-
-
-# define MAX_LEN 50
 void  SearchbyName(long num[], char name[][MAX_LEN],char sex[][5],char book_name[100][30],char writer_name[100][10],int n,int m);
 
 void Main_reader_mana(){

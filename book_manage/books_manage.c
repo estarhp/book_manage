@@ -7,39 +7,27 @@ typedef struct book {
     char name[50];
     char writer[20];
 } Book;
-
 void add_book(Book books[],int books_number,FILE *fp);
-
 FILE * file_open();
-
 void put_book(int number,FILE *fp,Book books[]);//初始化图书
-
 int Books_number(FILE *fp);//计算文件中图书的数目
-
 void Menu_book();
-
-void Collect(int books_number,Book books[],FILE *fp);
-
+void Collect(int books_number,Book books[],FILE *fp);//收集用户的选择
 void delete_book();
-
 void modify_book();
-
-void query_book(int books_number,Book books[]);
-
-void show_book(int books_number,Book *books);
-
+void query_book(int books_number,Book books[]);//查询图书
+void show_book(int books_number,Book *books);//展示图书
 void query_byid(int books_number,Book books[]);
-
 void query_bywriter(int books_number,Book books[]);
-
 void query_bybookname(int books_number,Book books[]);
+
 
 
 
 
 void Main_book_mana(){
 
-    FILE *fp=file_open();
+    FILE *fp=file_open();//打开书本文件
 
     int books_number=Books_number(fp);//计算图书数量
 
@@ -47,15 +35,11 @@ void Main_book_mana(){
 
     put_book(books_number,fp,books);//将书本放入容器
 
-
-
     Menu_book();
 
     Collect(books_number,books,fp);
 
     fclose(fp);//关闭文件
-
-
 
 
 

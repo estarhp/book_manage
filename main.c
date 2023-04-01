@@ -3,10 +3,7 @@
 #include "book_manage/book_manage.h"
 #include "reader_manage/reader_manage.h"
 #include "borrow_return/borrow_return.h"
-
-
 void  ShowMainMenu();
-
 void Collect_operation();
 
 int main(int argc, char const *argv[])
@@ -21,8 +18,6 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
-
-
 void  ShowMainMenu(){
     system("cls");
 
