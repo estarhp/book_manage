@@ -7,7 +7,6 @@
 #include "reader_manage/reader_manage.h"
 #include "borrow_return/borrow_return.h"
 #define N 1024
-
 void Collect_operation();
 void printMenu();
 void Move(char dir);
