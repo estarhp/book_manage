@@ -1,6 +1,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
+#include "windows.h"
 //创建图书容器
 typedef struct book {
     int id;
@@ -20,9 +21,9 @@ void show_book(int books_number,Book *books);//展示图书
 void query_byid(int books_number,Book books[]);
 void query_bywriter(int books_number,Book books[]);
 void query_bybookname(int books_number,Book books[]);
-
-
-
+int wherex_book();
+int wherey_book();
+void gotoxy_book(int x, int y);
 
 
 void Main_book_mana(){
@@ -161,17 +162,109 @@ void Collect(int books_number,Book books[],FILE *fp){
 
     }
 }
+int wherex_book()
+
+{
+
+    CONSOLE_SCREEN_BUFFER_INFO pBuffer;
+
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &pBuffer);
+
+    return (pBuffer.dwCursorPosition.X + 1);
+
+}
+
+//获取光标的位置y
+
+int wherey_book()
+
+{
+
+    CONSOLE_SCREEN_BUFFER_INFO pBuffer;
+
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &pBuffer);
+
+    return (pBuffer.dwCursorPosition.Y + 1);
+
+}
+
+//设置光标的位置
+
+void gotoxy_book(int x, int y)
+
+{
+
+    COORD c;
+
+    c.X = x - 1;
+
+    c.Y = y - 1;
+
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
+
+}
+
 
 void Menu_book(){
 
-    printf("\n\t##########################欢迎进入图书管理系统##########################\t\n"
-           "\n\t                        1->新增图书                        \t\n"
-           "\n\t                        2->删除图书                        \t\n"
-           "\n\t                        3->修改图书                        \t\n"
-           "\n\t                        4->查询图书                        \t\n"
-           "\n\t                        5->显示图书                        \t\n"
-           "\n\t#######################请数字选择进入########################\t\n"
-    );
+
+
+    setbuf(stdout,0);//缓冲
+
+    int x, y;
+
+    //int select;
+
+    gotoxy_book(24, 5);
+
+    printf("********欢迎图书管理系统********");
+
+    gotoxy_book(15, 8);
+
+    printf("*********************主菜单*********************");
+
+    gotoxy_book(15, 9);
+
+    printf("*                  1->新增图书                 *");
+
+    gotoxy_book(15, 10);
+
+    printf("*                  2->删除图书                 *");
+
+    gotoxy_book(15, 11);
+
+    printf("*                  3->修改图书                 *");
+
+    gotoxy_book(15, 12);
+
+    printf("*                  4->查询图书                 *");
+
+    gotoxy_book(15, 13);
+
+    printf("*                  5->显示图书                 *");
+
+    gotoxy_book(15, 14);
+
+    printf("************************************************");
+
+    gotoxy_book(28, 16);
+
+    printf("请输入你的选择(数字):[ ]");
+
+    x = wherex_book();
+
+    y = wherey_book();
+
+    gotoxy_book(x - 2, y);
+
+    //scanf_s("%d", &select);
+    //Collect_operation();
+
+
+    void Collect(int books_number,Book books[],FILE *fp);
+    system("pause");
+
+    //return 0;*/
 
 }
 

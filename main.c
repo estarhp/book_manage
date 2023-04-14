@@ -106,6 +106,7 @@ int main()
 
     //scanf_s("%d", &select);
     Collect_operation();
+    system("pause");
     return 0;
 
 }
