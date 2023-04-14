@@ -93,7 +93,10 @@ int main()
 
     gotoxy(28, 16);
 
+
+
     printf("请输入你的选择(数字):[ ]");
+
 
     x = wherex();
 
