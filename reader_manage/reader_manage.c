@@ -1,10 +1,3 @@
-//??????????
-//????????
-//???
-//???
-//???
-//???
-//???????????
 #include "stdio.h"
 #include "stdlib.h"
 # define MAX_LEN 50
@@ -20,14 +13,16 @@ FILE * name_open();
 int Readers_number(FILE *fp);
 void  SearchbyName(long num[], char name[][MAX_LEN],char sex[][5],char book_name[100][30],char writer_name[100][10],int n,int m);
 
+
+//程序入口
 void Main_reader_mana(){
     FILE *fp=name_open();
 
-    int readers_number= Readers_number(fp);//???????????
+    int readers_number= Readers_number(fp);//获得读者数量
 
-    Reader readers[readers_number];//????????????
+    Reader readers[readers_number];//创建读者容器
 
-    put_reader(readers_number,fp,readers);//?????????????
+    put_reader(readers_number,fp,readers);//将读者信息放入容器
     //???????
     for (int i = 0; i < readers_number; ++i) {
         printf("%s %s %s\n",readers[i].id,readers[i].name,readers[i].sex);
@@ -42,7 +37,7 @@ int Readers_number(FILE *fp) {
         if (flag == '\n')
             count++;
     }
-    file_row = count; //??????????
+    file_row = count; //获得行数（人的数量）
 
     rewind(fp);
     return file_row;
@@ -63,7 +58,7 @@ FILE * name_open(){
 void put_reader(int number,FILE *fp,Reader readers[]) {
     for (int i = 0; i < number; ++i) {
         fscanf(fp,"%s %s %s",&readers[i].id,&readers[i].name,&readers[i].sex);
-    }//??????????鱾
+    }//从文件读入人名
 
     fclose(fp);
 
