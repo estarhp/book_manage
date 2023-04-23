@@ -3,4 +3,4 @@ project(Book_manage C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(untitled main.c book_manage/books_manage.c borrow_return/borrow_return.c reader_manage/reader_manage.c .idea/hhh.c)
+add_executable(untitled main.c book_manage/books_manage.c borrow_return/borrow_return.c reader_manage/reader_manage.c)

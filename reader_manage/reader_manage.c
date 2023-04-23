@@ -8,27 +8,99 @@ typedef struct reader {
 } Reader;
 
 int Readers_number(FILE *fp);
-void put_reader(int number,FILE *fp,Reader readers[]);//åˆå§‹åŒ–
+void put_reader(int number,FILE *fp,Reader readers[]);//³õÊ¼»¯
 FILE * name_open();
+void Menu_reader();
+void Collect_reader(int readers_number,Reader readers[],FILE *fp);//ÊÕ¼¯ÓÃ»§µÄÑ¡Ôñ
 int Readers_number(FILE *fp);
-void  SearchbyName(long num[], char name[][MAX_LEN],char sex[][5],char book_name[100][30],char writer_name[100][10],int n,int m);
-
-
-//ç¨‹åºå…¥å£
+void query_reader(int readers_number,Reader readers[]);//²éÑ¯¶ÁÕß
+void show_reader(int readers_number,Reader *readers);//Õ¹Ê¾¶ÁÕßĞÅÏ¢
+void Search_by_id(int readers_number,Reader readers[]);//Í¨¹ıid
+void Search_by_name(int readers_number,Reader readers[]);//Í¨¹ı¶ÁÕßÃû×Ö
+void delete_reader();//É¾³ı
+void modify_reader();//ĞŞ¸Ä
+void add_reader(Reader readers[],int readers_number,FILE *fp);//ĞÂÔö
+//³ÌĞòÈë¿Ú
 void Main_reader_mana(){
     FILE *fp=name_open();
 
-    int readers_number= Readers_number(fp);//è·å¾—è¯»è€…æ•°é‡
+    int readers_number= Readers_number(fp);//»ñµÃ¶ÁÕßÊıÁ¿
 
-    Reader readers[readers_number];//åˆ›å»ºè¯»è€…å®¹å™¨
+    Reader readers[readers_number];//´´½¨¶ÁÕßÈİÆ÷
 
-    put_reader(readers_number,fp,readers);//å°†è¯»è€…ä¿¡æ¯æ”¾å…¥å®¹å™¨
+    put_reader(readers_number,fp,readers);//½«¶ÁÕßĞÅÏ¢·ÅÈëÈİÆ÷
     //???????
-    for (int i = 0; i < readers_number; ++i) {
-        printf("%s %s %s\n",readers[i].id,readers[i].name,readers[i].sex);
+//    for (int i = 0; i < readers_number; ++i) {
+//        printf("%s %s %s\n",readers[i].id,readers[i].name,readers[i].sex);
+//    }2
+    Menu_reader();
+
+    Collect_reader(readers_number,readers,fp);
+
+    fclose(fp);//¹Ø±ÕÎÄ¼ş
+
+}
+void show_reader(int readers_number,Reader readers[])
+{
+    int start=0,end=0;
+    printf("ÇëÊäÈëÒª²éÑ¯µÄ¶ÁÕßµÄĞòÊı·¶Î§£º\n´ÓĞòÊı__¿ªÊ¼£º");
+    scanf("%d",&start);
+    printf("´ÓĞòÊı__½áÊø£º");
+    scanf("%d",&end);
+    printf("ÒÔÏÂÎª¶ÁÕßĞòÊıÔÚ%d~%d·¶Î§Ö®ÄÚµÄ¶ÁÕß£º\n",start,end);
+
+    for (int i = start; i <= end; ++i) {
+        printf("%d %s %s\n",readers[i].id,readers[i].name,readers[i].sex);
     }
 }
+void query_reader(int readers_number,Reader readers[])
+{
 
+    int select_mode=0;
+    printf("\n\t                        1->Í¨¹ıid                         \t\n");
+    printf("\n\t                        2->Í¨¹ı×÷Õß                        \t\n");
+    printf("\n\t                        3->Í¨¹ıÊéÃû                        \t\n");
+    printf("\n\t                      ÇëÊäÈëÄãµÄÑ¡Ôñ£¨Êı×Ö£©£º                \n\t");
+
+    scanf("%d",&select_mode);
+    switch (select_mode) {
+        case 1:
+            Search_by_id(readers_number,readers);
+            break;
+        case 2:Search_by_name(readers_number,readers);
+
+
+    }
+
+}
+void Search_by_id(int readers_number,Reader readers[])
+{
+    int id;
+    printf("ÇëÊäÈë¶ÁÕßµÄid");
+    scanf("%d",&id);
+    printf("ÒÔÏÂÊÇÆ¥ÅäµÄ²éÑ¯½á¹û£º\n");
+    for (int i = 0; i < readers_number; ++i) {
+        if(readers[i].id==id){
+
+            printf("%d %s %s ",readers[i].id,readers[i].name,readers[i].sex);
+        }
+    }
+
+}
+void Search_by_name(int readers_number,Reader readers[])
+{
+    char name[50];
+    printf("ÇëÊäÈëÊé±¾µÄ×÷Õß");
+    scanf("%s",&writer);
+    printf("ÒÔÏÂÊÇÆ¥ÅäµÄ²éÑ¯½á¹û£º\n");
+    for (int i = 0; i < books_number; ++i) {
+        if(strcmp(writer,books[i].writer)==0){
+
+            printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
+        }
+
+    }
+}
 int Readers_number(FILE *fp) {
 
     int flag = 0, file_row = 0, count = 0;
@@ -37,7 +109,7 @@ int Readers_number(FILE *fp) {
         if (flag == '\n')
             count++;
     }
-    file_row = count; //è·å¾—è¡Œæ•°ï¼ˆäººçš„æ•°é‡ï¼‰
+    file_row = count; //»ñµÃĞĞÊı£¨ÈËµÄÊıÁ¿£©
 
     rewind(fp);
     return file_row;
@@ -48,7 +120,7 @@ FILE * name_open(){
 
     if ((fp = fopen("../reader_manage/name.txt", "r")) == NULL){
         if ((fp = fopen("reader/name.txt", "r")) == NULL){
-            printf("???Â·??Error!\n");
+            printf("???¡¤??Error!\n");
         }
     }
 
@@ -58,21 +130,57 @@ FILE * name_open(){
 void put_reader(int number,FILE *fp,Reader readers[]) {
     for (int i = 0; i < number; ++i) {
         fscanf(fp,"%s %s %s",&readers[i].id,&readers[i].name,&readers[i].sex);
-    }//ä»æ–‡ä»¶è¯»å…¥äººå
+    }//´ÓÎÄ¼ş¶ÁÈëÈËÃû
 
     fclose(fp);
 
 }
-int Readers_number(FILE *fp) {
+void Collect_reader(int readers_number,Reader readers[],FILE *fp){
+    int Scanf;
+    //ÊÕ¼¯ÓÃ»§µÄÑ¡Ôñ
+    scanf("%d",&Scanf);
+    //ÌøÈë²»Í¬Ä£¿é
+    switch (Scanf) {
 
-    int flag = 0, file_row = 0, count = 0;
-    while (!feof(fp)) {
-        flag = fgetc(fp);
-        if (flag == '\n')
-            count++;
+        case 1:add_reader(readers,readers_number,fp);
+            break;
+        case 2:delete_reader();
+            break;
+        case 3:modify_reader();
+            break;
+        case 4:query_reader(readers_number,readers);
+            break;
+        case 5:show_reader(readers_number,readers);
+            break;
+
     }
-    file_row = count; //åŠ ä¸Šæœ€åä¸€è¡Œ
+}
+void Menu_reader(){
 
-    rewind(fp);
-    return file_row;
+
+    //system("cls");
+
+    //int select;
+    //printf("hhhhhhh");
+    printf("\n*******************¶ÁÕß¹ÜÀíÏµÍ³******************\t\n");
+    printf("\n*********************Ö÷²Ëµ¥*********************\t\n");
+    printf("\n*                  1->ĞÂÔö¶ÁÕß                 *\t\n");
+    printf("\n*                  2->É¾³ı¶ÁÕß                 *\t\n");
+    printf("\n*                  3->ĞŞ¸Ä¶ÁÕß                 *\t\n");
+    printf("\n*                  4->²éÑ¯¶ÁÕß                 *\t\n");
+    printf("\n*                  5->ÏÔÊ¾¶ÁÕß                 *\t\n");
+    printf("\n***********************************************\t\n");
+    printf("\nÇëÊäÈëÄãµÄÑ¡Ôñ(Êı×Ö):\t\n");
+
+
+
+    //scanf_s("%d", &select);
+    //Collect_operation();
+
+
+    void Collect_reader(int readers_number,Reader readers[],FILE *fp);
+    system("pause");
+
+    //return 0;*/
+
 }
