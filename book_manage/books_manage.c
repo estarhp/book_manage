@@ -61,11 +61,23 @@ void show_book(int books_number,Book *books){
 }
 
 void query_book(int books_number,Book books[]){
+    setbuf(stdout,0);//缓冲
     int select_mode=0;
-    printf("\n\t                        1->通过id                        \t\n"
-           "\n\t                        2->通过作者                        \t\n"
-           "\n\t                        3->通过书名                        \t\n"
-    );
+    int x,y;
+    gotoxy_book(2000, 5);
+    printf("\n\t                        1->通过id                         \t\n");
+    gotoxy_book(2001, 6);
+    printf("\n\t                        2->通过作者                        \t\n");
+    gotoxy_book(2002, 7);
+    printf("\n\t                        3->通过书名                        \t\n");
+    gotoxy_book(2003, 8);
+    printf("\n\t                      请输入你的选择（数字）：                \n\t");
+    x = wherex_book();
+
+    y = wherey_book();
+
+    gotoxy_book(x - 2, y);
+    //system("pause");
     scanf("%d",&select_mode);
     switch (select_mode) {
         case 1:query_byid(books_number,books);

@@ -1,10 +1,10 @@
-//¶ÁÕß¹ÜÀíÄ£¿é
-//ĞÂÔö¶ÁÕß
-//É¾³ı
-//ĞŞ¸Ä
-//²éÑ¯
-//ÏÔÊ¾
-//´´½¨¶ÁÕßĞÅÏ¢
+//??????????
+//????????
+//???
+//???
+//???
+//???
+//???????????
 #include "stdio.h"
 #include "stdlib.h"
 # define MAX_LEN 50
@@ -23,12 +23,12 @@ void  SearchbyName(long num[], char name[][MAX_LEN],char sex[][5],char book_name
 void Main_reader_mana(){
     FILE *fp=name_open();
 
-    int readers_number= Readers_number(fp);//¼ÆËã¶ÁÕßÊıÁ¿
+    int readers_number= Readers_number(fp);//???????????
 
-    Reader readers[readers_number];//´´½¨¶ÁÕßÈİÆ÷
+    Reader readers[readers_number];//????????????
 
-    put_reader(readers_number,fp,readers);//½«¶ÁÕß·ÅÈëÈİÆ÷
-    //´òÓ¡¶ÁÕß
+    put_reader(readers_number,fp,readers);//?????????????
+    //???????
     for (int i = 0; i < readers_number; ++i) {
         printf("%s %s %s\n",readers[i].id,readers[i].name,readers[i].sex);
     }
@@ -42,7 +42,7 @@ int Readers_number(FILE *fp) {
         if (flag == '\n')
             count++;
     }
-    file_row = count; //¼ÓÉÏ×îºóÒ»ĞĞ
+    file_row = count; //??????????
 
     rewind(fp);
     return file_row;
@@ -53,7 +53,7 @@ FILE * name_open(){
 
     if ((fp = fopen("../reader_manage/name.txt", "r")) == NULL){
         if ((fp = fopen("reader/name.txt", "r")) == NULL){
-            printf("ÎÄ¼şÂ·¾¶Error!\n");
+            printf("???Â·??Error!\n");
         }
     }
 
@@ -63,24 +63,24 @@ FILE * name_open(){
 void put_reader(int number,FILE *fp,Reader readers[]) {
     for (int i = 0; i < number; ++i) {
         fscanf(fp,"%s %s %s",&readers[i].id,&readers[i].name,&readers[i].sex);
-    }//´ÓÎÄ¼ş¶ÁÈëÊé±¾
+    }//??????????é±¾
 
     fclose(fp);
 
 }
-//²éÑ¯¶ÁÕßĞÅÏ¢
+//??????????
 //void  SearchbyName(long num[], char name[][MAX_LEN],char sex[][5],char book_name[100][30],char writer_name[100][10],int n,int m)
 //{
-//    int i,j,t=0;//·Å¸ö±ê¼Ç
+//    int i,j,t=0;//??????
 //    char se[MAX_LEN];
 //    scanf("%s",&se);
 //
 //    for(i=0;i<n;i++)
 //    {
-//        if(strcmp(se,name[i])==0) //Èç¹û´æÔÚÔòÊä³öĞÕÃû£¬Ñ§ºÅ£¬ĞÔ±ğ
+//        if(strcmp(se,name[i])==0) //?????????????????????????
 //        {
 //            printf("%ld\t%s\t",num[i],name[i],sex[i]);
-//            //Êä³ö½èÔÄĞÅÏ¢,ÊéÃû¼°×÷ÕßÃû
+//            //??????????,????????????
 //            for(j=0;j<m;j++)
 //            {
 //                printf("%s%s\t", book_name[i][j], writer_name[i][j]);
@@ -89,9 +89,9 @@ void put_reader(int number,FILE *fp,Reader readers[]) {
 //            t=1;
 //        }
 //    }
-//    //²»´æÔÚ£¬Ôò²»ÄÜ½èÔÄ
+//    //??????????????
 //    if(t==0)
 //    {
-//        printf("²»ÄÜ½èÔÄ!\n");
+//        printf("???????!\n");
 //    }
 //}
