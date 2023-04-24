@@ -1,5 +1,6 @@
 #include "stdio.h"
 #include "stdlib.h"
+#include "string.h"
 # define MAX_LEN 50
 typedef struct reader {
     char id[15];
@@ -75,12 +76,12 @@ void query_reader(int readers_number,Reader readers[])
 }
 void Search_by_id(int readers_number,Reader readers[])
 {
-    int id;
+    char id[40];
     printf("请输入读者的id");
     scanf("%d",&id);
     printf("以下是匹配的查询结果：\n");
     for (int i = 0; i < readers_number; ++i) {
-        if(readers[i].id==id){
+        if(readers[i].id == id){
 
             printf("%d %s %s ",readers[i].id,readers[i].name,readers[i].sex);
         }
@@ -90,13 +91,13 @@ void Search_by_id(int readers_number,Reader readers[])
 void Search_by_name(int readers_number,Reader readers[])
 {
     char name[50];
-    printf("请输入书本的作者");
-    scanf("%s",&writer);
+    printf("请输入读者的姓名");
+    scanf("%s",&name);
     printf("以下是匹配的查询结果：\n");
-    for (int i = 0; i < books_number; ++i) {
-        if(strcmp(writer,books[i].writer)==0){
+    for (int i = 0; i < readers_number; ++i) {
+        if(strcmp(name,readers[i].name)==0){
 
-            printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
+            printf("%d %s %s ",readers[i].id,readers[i].sex,readers[i].name);
         }
 
     }

@@ -26,6 +26,11 @@ int wherey_book();
 void gotoxy_book(int x, int y);
 
 
+void delete_book_by_id();
+void delete_book_by_writer();
+void delete_book_by_name();
+
+
 void Main_book_mana(){
 
     FILE *fp=file_open();//打开书本文件
@@ -125,7 +130,7 @@ void query_bybookname(int books_number,Book books[]){
 
     for (int i = 0; i < books_number; ++i) {
         if(strcmp(bookname,books[i].name)==0){
-            printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
+
         }
 
     }
@@ -139,7 +144,22 @@ void modify_book(){
 
 
 void delete_book(){
-    printf("开发中");
+    int delete_input;
+    printf("1 -> 通过id删除"
+                  "2 -> 通过书名删除"
+                  "3 -> 通过作者删除");
+
+    switch (delete_input) {
+        case 1:
+            delete_book_by_id();
+            break;
+        case 2:
+            delete_book_by_name();
+        case 3:
+            delete_book_by_writer();
+        default:
+            break;
+    }
 }
 
 void add_book(Book books[],int books_number,FILE *fp){
@@ -215,7 +235,6 @@ void gotoxy_book(int x, int y)
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
 
 }
-
 
 void Menu_book(){
 
@@ -314,6 +333,63 @@ FILE * file_open(){
     }
 
     return fp;
+}
+
+void open_delete_book(int i,int books_number,Book books[]){
+    FILE *fp;
+    if ((fp = fopen("../book_manage/books.txt", "w+")) == NULL){
+        if ((fp = fopen("book_manage/books.txt", "w+")) == NULL){
+            printf("文件路径Error!\n");
+        }
+    }
+
+    rewind(fp);
+    for (int j = 0; j < books_number; ++j) {
+        if(j != i){
+            fprintf(fp,"%d %s %s",&books[i].id,&books[i].writer,&books[i].name);
+        }
+    }
+    fclose(fp);
+
+}
+
+void delete_book_by_id(int books_number,Book books[]){
+    int id;
+    printf("请输入书本的id");
+    scanf("%d",&id);
+
+    for (int i = 0; i < books_number; ++i) {
+        if(books[i].id==id){
+            open_delete_book(i,books_number,books);
+        }
+    }
+}
+void delete_book_by_writer(int books_number,Book books[]){
+    char writer[50];
+    printf("请输入书本的作者");
+    scanf("%s",&writer);
+    printf("以下是匹配的查询结果：\n");
+    for (int i = 0; i < books_number; ++i) {
+        if(strcmp(writer,books[i].writer)==0){
+            open_delete_book(i,books_number,books);
+        }
+
+}
+}
+
+void delete_book_by_name(int books_number,Book books[]){
+    char bookname[20];
+    printf("请输入书本的书名");
+    scanf("%s",&bookname);
+    printf("以下是匹配的查询结果：\n");
+
+    for (int i = 0; i < books_number; ++i) {
+        if(strcmp(bookname,books[i].name)==0){
+            open_delete_book(i,books_number,books);
+        }
+
+    }
+
 }
 
 
