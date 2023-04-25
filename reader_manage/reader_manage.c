@@ -30,10 +30,7 @@ void Main_reader_mana(){
     Reader readers[readers_number];//创建读者容器
 
     put_reader(readers_number,fp,readers);//将读者信息放入容器
-    //???????
-//    for (int i = 0; i < readers_number; ++i) {
-//        printf("%s %s %s\n",readers[i].id,readers[i].name,readers[i].sex);
-//    }2
+
     Menu_reader();
 
     Collect_reader(readers_number,readers,fp);
@@ -183,5 +180,18 @@ void Menu_reader(){
     system("pause");
 
     //return 0;*/
+
+}
+
+void add_reader(Reader readers[],int readers_number,FILE *fp){
+
+}
+
+void delete_reader(){
+
+}
+
+
+void modify_reader(){
 
 }

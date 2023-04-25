@@ -14,7 +14,7 @@ void put_book(int number,FILE *fp,Book books[]);//初始化图书
 int Books_number(FILE *fp);//计算文件中图书的数目
 void Menu_book();
 void Collect(int books_number,Book books[],FILE *fp);//收集用户的选择
-void delete_book();//删除
+void delete_book(int books_number,Book books[]);//删除
 void modify_book();
 void query_book(int books_number,Book books[]);//查询图书
 void show_book(int books_number,Book *books);//展示图书
@@ -24,11 +24,9 @@ void query_bybookname(int books_number,Book books[]);//通过书名
 int wherex_book();
 int wherey_book();
 void gotoxy_book(int x, int y);
-
-
-void delete_book_by_id();
-void delete_book_by_writer();
-void delete_book_by_name();
+void delete_book_by_id(int books_number,Book books[]);
+void delete_book_by_writer(int books_number,Book books[]);
+void delete_book_by_name(int books_number,Book books[]);
 
 
 void Main_book_mana(){
@@ -111,7 +109,7 @@ void query_byid(int books_number,Book books[]){
 void query_bywriter(int books_number,Book books[]){
     char writer[50];
     printf("请输入书本的作者");
-    scanf("%s",&writer);
+    scanf("%s",writer);
     printf("以下是匹配的查询结果：\n");
     for (int i = 0; i < books_number; ++i) {
         if(strcmp(writer,books[i].writer)==0){
@@ -125,7 +123,7 @@ void query_bywriter(int books_number,Book books[]){
 void query_bybookname(int books_number,Book books[]){
     char bookname[20];
     printf("请输入书本的书名");
-    scanf("%s",&bookname);
+    scanf("%s",bookname);
     printf("以下是匹配的查询结果：\n");
 
     for (int i = 0; i < books_number; ++i) {
@@ -143,21 +141,21 @@ void modify_book(){
 }
 
 
-void delete_book(){
+void delete_book(int books_number,Book books[]){
     int delete_input;
-    printf("1 -> 通过id删除"
-                  "2 -> 通过书名删除"
-                  "3 -> 通过作者删除");
-
+    printf("1 -> 通过id删除\n"
+                  "2 -> 通过书名删除\n"
+                  "3 -> 通过作者删除\n");
+    scanf("%d",&delete_input);
     switch (delete_input) {
         case 1:
-            delete_book_by_id();
+            delete_book_by_id(books_number,books);
             break;
         case 2:
-            delete_book_by_name();
+            delete_book_by_name(books_number,books);
+            break;
         case 3:
-            delete_book_by_writer();
-        default:
+            delete_book_by_writer(books_number,books);
             break;
     }
 }
@@ -183,7 +181,7 @@ void Collect(int books_number,Book books[],FILE *fp){
 
         case 1:add_book(books,books_number,fp);
             break;
-        case 2:delete_book();
+        case 2:delete_book(books_number,books);
             break;
         case 3:modify_book();
             break;
@@ -237,8 +235,6 @@ void gotoxy_book(int x, int y)
 }
 
 void Menu_book(){
-
-
 
     setbuf(stdout,0);//缓冲
 
@@ -320,8 +316,6 @@ void put_book(int number,FILE *fp,Book books[]){
         fscanf(fp,"%d %s %s",&books[i].id,&books[i].writer,&books[i].name);
     }//从文件读入书本
 
-
-
 }
 
 FILE * file_open(){
@@ -343,10 +337,12 @@ void open_delete_book(int i,int books_number,Book books[]){
         }
     }
 
+    printf("%p",fp);
+
     rewind(fp);
     for (int j = 0; j < books_number; ++j) {
         if(j != i){
-            fprintf(fp,"%d %s %s",&books[i].id,&books[i].writer,&books[i].name);
+            fprintf(fp,"%d %s %s\n",books[j].id,books[j].writer,books[j].name);
         }
     }
     fclose(fp);
@@ -367,8 +363,7 @@ void delete_book_by_id(int books_number,Book books[]){
 void delete_book_by_writer(int books_number,Book books[]){
     char writer[50];
     printf("请输入书本的作者");
-    scanf("%s",&writer);
-    printf("以下是匹配的查询结果：\n");
+    scanf("%s",writer);
     for (int i = 0; i < books_number; ++i) {
         if(strcmp(writer,books[i].writer)==0){
             open_delete_book(i,books_number,books);
@@ -376,12 +371,10 @@ void delete_book_by_writer(int books_number,Book books[]){
 
 }
 }
-
 void delete_book_by_name(int books_number,Book books[]){
     char bookname[20];
     printf("请输入书本的书名");
-    scanf("%s",&bookname);
-    printf("以下是匹配的查询结果：\n");
+    scanf("%s",bookname);
 
     for (int i = 0; i < books_number; ++i) {
         if(strcmp(bookname,books[i].name)==0){
