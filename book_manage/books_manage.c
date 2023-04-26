@@ -15,10 +15,10 @@ int Books_number(FILE *fp);//计算文件中图书的数目
 void Menu_book();
 void Collect(int books_number,Book books[],FILE *fp);//收集用户的选择
 void delete_book(int books_number,Book books[]);//删除
-void modify_book();
+void modify_book(int books_number,Book books[]);
 void query_book(int books_number,Book books[]);//查询图书
 void show_book(int books_number,Book *books);//展示图书
-void query_byid(int books_number,Book books[]);//通过id
+int query_byid(int books_number,Book books[]);//通过id
 void query_bywriter(int books_number,Book books[]);//通过作者
 void query_bybookname(int books_number,Book books[]);//通过书名
 int wherex_book();
@@ -27,6 +27,9 @@ void gotoxy_book(int x, int y);
 void delete_book_by_id(int books_number,Book books[]);
 void delete_book_by_writer(int books_number,Book books[]);
 void delete_book_by_name(int books_number,Book books[]);
+void modify_book_by_id(int books_number,Book books[]);
+void modify_book_by_name(int books_number,Book books[]);
+void modify_book_by_writer(int books_number,Book books[]);
 
 
 void Main_book_mana(){
@@ -93,7 +96,7 @@ void query_book(int books_number,Book books[]){
 
 }
 
-void query_byid(int books_number,Book books[]){
+int  query_byid(int books_number,Book books[]){
     int id;
     printf("请输入书本的id");
     scanf("%d",&id);
@@ -102,6 +105,7 @@ void query_byid(int books_number,Book books[]){
         if(books[i].id==id){
 
             printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
+            return i;
         }
     }
 }
@@ -113,7 +117,6 @@ void query_bywriter(int books_number,Book books[]){
     printf("以下是匹配的查询结果：\n");
     for (int i = 0; i < books_number; ++i) {
         if(strcmp(writer,books[i].writer)==0){
-
             printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
         }
 
@@ -128,15 +131,17 @@ void query_bybookname(int books_number,Book books[]){
 
     for (int i = 0; i < books_number; ++i) {
         if(strcmp(bookname,books[i].name)==0){
-
+            printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
         }
 
     }
 
 }
 
-void modify_book(){
-    printf("开发中");
+void modify_book(int books_number,Book books[]){
+
+    printf("");
+
 
 }
 
@@ -183,7 +188,7 @@ void Collect(int books_number,Book books[],FILE *fp){
             break;
         case 2:delete_book(books_number,books);
             break;
-        case 3:modify_book();
+        case 3:modify_book(books_number,books);
             break;
         case 4:query_book(books_number,books);
             break;
@@ -396,6 +401,16 @@ void delete_book_by_name(int books_number,Book books[]){
     }
     open_delete_book(will_delete,number,books_number,books);
 
+}
+
+void modify_book_by_id(int books_number,Book books[]){
+    query_byid(books_number,books);
+}
+void modify_book_by_name(int books_number,Book books[]){
+    query_bybookname(books_number,books);
+}
+void modify_book_by_writer(int books_number,Book books[]){
+    query_bywriter(books_number,books);
 }
 
 
