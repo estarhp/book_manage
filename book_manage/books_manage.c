@@ -103,7 +103,6 @@ int  query_byid(int books_number,Book books[]){
     printf("以下是匹配的查询结果：\n");
     for (int i = 0; i < books_number; ++i) {
         if(books[i].id==id){
-
             printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
             return i;
         }
@@ -140,7 +139,10 @@ void query_bybookname(int books_number,Book books[]){
 
 void modify_book(int books_number,Book books[]){
 
-    printf("");
+    printf("请输入修改书本的id");
+    int i=query_byid(books_number,books);
+
+
 
 
 }
@@ -406,12 +408,12 @@ void delete_book_by_name(int books_number,Book books[]){
 void modify_book_by_id(int books_number,Book books[]){
     query_byid(books_number,books);
 }
-void modify_book_by_name(int books_number,Book books[]){
-    query_bybookname(books_number,books);
-}
-void modify_book_by_writer(int books_number,Book books[]){
-    query_bywriter(books_number,books);
-}
+//void modify_book_by_name(int books_number,Book books[]){
+//    query_bybookname(books_number,books);
+//}
+//void modify_book_by_writer(int books_number,Book books[]){
+//    query_bywriter(books_number,books);
+//}
 
 
 
