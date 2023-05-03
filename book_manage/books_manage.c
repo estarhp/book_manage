@@ -2,34 +2,7 @@
 #include "stdlib.h"
 #include "string.h"
 #include "windows.h"
-//创建图书容器
-typedef struct book {
-    int id;
-    char name[50];
-    char writer[20];
-} Book;
-void add_book(Book books[],int books_number,FILE *fp);
-FILE * file_open();
-void put_book(int number,FILE *fp,Book books[]);//初始化图书
-int Books_number(FILE *fp);//计算文件中图书的数目
-void Menu_book();
-void Collect(int books_number,Book books[],FILE *fp);//收集用户的选择
-void delete_book(int books_number,Book books[]);//删除
-void modify_book(int books_number,Book books[]);
-void query_book(int books_number,Book books[]);//查询图书
-void show_book(int books_number,Book *books);//展示图书
-int query_byid(int books_number,Book books[]);//通过id
-void query_bywriter(int books_number,Book books[]);//通过作者
-void query_bybookname(int books_number,Book books[]);//通过书名
-int wherex_book();
-int wherey_book();
-void gotoxy_book(int x, int y);
-void delete_book_by_id(int books_number,Book books[]);
-void delete_book_by_writer(int books_number,Book books[]);
-void delete_book_by_name(int books_number,Book books[]);
-void modify_book_by_id(int books_number,Book books[]);
-void modify_book_by_name(int books_number,Book books[]);
-void modify_book_by_writer(int books_number,Book books[]);
+#include "book_manage.h"
 
 
 void Main_book_mana(){
@@ -48,135 +21,6 @@ void Main_book_mana(){
 
     fclose(fp);//关闭文件
 
-
-
-}
-
-void show_book(int books_number,Book *books){
-    int start=0,end=0;
-    printf("请输入要看的书本的序数范围：\n从序数__开始：");
-    scanf("%d",&start);
-    printf("从序数__结束：");
-    scanf("%d",&end);
-    printf("以下为书本序数在%d~%d范围之内的图书：\n",start,end);
-
-    for (int i = start; i <= end; ++i) {
-        printf("%d %s %s\n",books[i].id,books[i].writer,books[i].name);
-    }
-
-}
-
-void query_book(int books_number,Book books[]){
-    setbuf(stdout,0);//缓冲
-    int select_mode=0;
-    int x,y;
-    gotoxy_book(2000, 5);
-    printf("\n\t                        1->通过id                         \t\n");
-    gotoxy_book(2001, 6);
-    printf("\n\t                        2->通过作者                        \t\n");
-    gotoxy_book(2002, 7);
-    printf("\n\t                        3->通过书名                        \t\n");
-    gotoxy_book(2003, 8);
-    printf("\n\t                      请输入你的选择（数字）：                \n\t");
-    x = wherex_book();
-
-    y = wherey_book();
-
-    gotoxy_book(x - 2, y);
-    //system("pause");
-    scanf("%d",&select_mode);
-    switch (select_mode) {
-        case 1:query_byid(books_number,books);
-            break;
-        case 2:query_bywriter(books_number,books);
-            break;
-        case 3:query_bybookname(books_number,books);
-
-    }
-
-}
-
-int  query_byid(int books_number,Book books[]){
-    int id;
-    printf("请输入书本的id");
-    scanf("%d",&id);
-    printf("以下是匹配的查询结果：\n");
-    for (int i = 0; i < books_number; ++i) {
-        if(books[i].id==id){
-            printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
-            return i;
-        }
-    }
-}
-
-void query_bywriter(int books_number,Book books[]){
-    char writer[50];
-    printf("请输入书本的作者");
-    scanf("%s",writer);
-    printf("以下是匹配的查询结果：\n");
-    for (int i = 0; i < books_number; ++i) {
-        if(strcmp(writer,books[i].writer)==0){
-            printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
-        }
-
-    }
-}
-
-void query_bybookname(int books_number,Book books[]){
-    char bookname[20];
-    printf("请输入书本的书名");
-    scanf("%s",bookname);
-    printf("以下是匹配的查询结果：\n");
-
-    for (int i = 0; i < books_number; ++i) {
-        if(strcmp(bookname,books[i].name)==0){
-            printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
-        }
-
-    }
-
-}
-
-void modify_book(int books_number,Book books[]){
-
-    printf("请输入修改书本的id");
-    int i=query_byid(books_number,books);
-
-
-
-
-}
-
-
-void delete_book(int books_number,Book books[]){
-    int delete_input;
-    printf("1 -> 通过id删除\n"
-                  "2 -> 通过书名删除\n"
-                  "3 -> 通过作者删除\n");
-    scanf("%d",&delete_input);
-    switch (delete_input) {
-        case 1:
-            delete_book_by_id(books_number,books);
-            break;
-        case 2:
-            delete_book_by_name(books_number,books);
-            break;
-        case 3:
-            delete_book_by_writer(books_number,books);
-            break;
-    }
-}
-
-void add_book(Book books[],int books_number,FILE *fp){
-    rewind(fp);
-    Book addbook;
-    printf("请输入要添加的书名");
-    scanf("%s",&addbook.name);
-    printf("请输入要添加图书的作者");
-    scanf("%s",&addbook.writer);
-    addbook.id=books[books_number-1].id+1;
-    fprintf(fp, "%d %s %s\n", addbook.id, addbook.writer, addbook.name);
-
 }
 
 void Collect(int books_number,Book books[],FILE *fp){
@@ -190,7 +34,7 @@ void Collect(int books_number,Book books[],FILE *fp){
             break;
         case 2:delete_book(books_number,books);
             break;
-        case 3:modify_book(books_number,books);
+        case 3:modify_book_by_id(books_number,books);
             break;
         case 4:query_book(books_number,books);
             break;
@@ -199,6 +43,7 @@ void Collect(int books_number,Book books[],FILE *fp){
 
     }
 }
+
 int wherex_book()
 
 {
@@ -302,118 +147,10 @@ void Menu_book(){
 
 }
 
-int Books_number(FILE *fp) {
-
-    int flag = 0, file_row = 0, count = 0;
-    while (!feof(fp)) {
-        flag = fgetc(fp);
-        if (flag == '\n')
-            count++;
-    }
-    file_row = count; //加上最后一行
-
-    rewind(fp);
-    return file_row;
-}
-
-void put_book(int number,FILE *fp,Book books[]){
 
 
-    for (int i = 0; i<number ; i++) {
-        fscanf(fp,"%d %s %s",&books[i].id,&books[i].writer,&books[i].name);
-    }//从文件读入书本
 
-}
 
-FILE * file_open(){
-    FILE *fp;
-    if ((fp = fopen("../book_manage/books.txt", "a+")) == NULL){
-        if ((fp = fopen("book_manage/books.txt", "a+")) == NULL){
-            printf("文件路径Error!\n");
-        }
-    }
-
-    return fp;
-}
-
-void open_delete_book(int will_delete[],int number,int books_number,Book books[]){
-    FILE *fp;
-    if ((fp = fopen("../book_manage/books.txt", "w+")) == NULL){
-        if ((fp = fopen("book_manage/books.txt", "w+")) == NULL){
-            printf("文件路径Error!\n");
-        }
-    }
-
-    printf("%p",fp);
-
-    rewind(fp);
-    for (int j = 0; j < books_number; ++j) {
-        int flag=1;
-        for (int k = 0; k < number; ++k) {
-            if(will_delete[k]==j) flag=0;
-        }
-        if(flag)
-        fprintf(fp,"%d %s %s\n",books[j].id,books[j].writer,books[j].name);
-    }
-    fclose(fp);
-
-}
-
-void delete_book_by_id(int books_number,Book books[]){
-    int number=0;
-    int will_delete[10];
-    int id;
-    printf("请输入书本的id");
-    scanf("%d",&id);
-
-    for (int i = 0; i < books_number; ++i) {
-        if(books[i].id==id){
-            will_delete[number]=i;
-            number++;
-        }
-    }
-    open_delete_book(will_delete,number,books_number,books);
-}
-void delete_book_by_writer(int books_number,Book books[]){
-    int number=0;
-    int will_delete[10];
-    char writer[50];
-    printf("请输入书本的作者");
-    scanf("%s",writer);
-    for (int i = 0; i < books_number; ++i) {
-        if(strcmp(writer,books[i].writer)==0){
-            will_delete[number]=i;
-           number++;
-        }
-}
-    open_delete_book(will_delete,number,books_number,books);
-}
-void delete_book_by_name(int books_number,Book books[]){
-    int number=0;
-    int will_delete[10];
-    char bookname[20];
-    printf("请输入书本的书名");
-    scanf("%s",bookname);
-
-    for (int i = 0; i < books_number; ++i) {
-        if(strcmp(bookname,books[i].name)==0){
-            will_delete[number]=i;
-           number++;
-        }
-    }
-    open_delete_book(will_delete,number,books_number,books);
-
-}
-
-void modify_book_by_id(int books_number,Book books[]){
-    query_byid(books_number,books);
-}
-//void modify_book_by_name(int books_number,Book books[]){
-//    query_bybookname(books_number,books);
-//}
-//void modify_book_by_writer(int books_number,Book books[]){
-//    query_bywriter(books_number,books);
-//}
 
 
 
