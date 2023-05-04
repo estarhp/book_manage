@@ -4,5 +4,7 @@
 
 具体结构如下
 
-![-2c1330ba75081bf](D:\Desktop\book-manage\-2c1330ba75081bf.png)
+![-2c1330ba75081bf](./-2c1330ba75081bf.png)
+
+
 
