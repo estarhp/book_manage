@@ -1,9 +1,7 @@
 #include "stdio.h"
 #include "stdlib.h"
-#include "string.h"
 #include "windows.h"
 #include "book_manage.h"
-
 
 void Main_book_mana(){
 
@@ -146,13 +144,3 @@ void Menu_book(){
     //return 0;*/
 
 }
-
-
-
-
-
-
-
-
-
-
