@@ -12,4 +12,6 @@ add_executable(untitled main.c
         book_manage/details/delete_book.c
         book_manage/details/modify_book.c
         book_manage/details/qurry_book.c
-        book_manage/details/show_book.c)
+        book_manage/details/show_book.c
+        borrow_return/details/borrow.c
+        borrow_return/details/return.c borrow_return/init.c)
