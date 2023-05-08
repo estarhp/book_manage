@@ -14,4 +14,4 @@ add_executable(untitled main.c
         book_manage/details/qurry_book.c
         book_manage/details/show_book.c
         borrow_return/details/borrow.c
-        borrow_return/details/return.c borrow_return/init.c)
+        borrow_return/details/return.c borrow_return/init.c reader_manage/init.c "reader_manage/reader details/delete_reader.c" "reader_manage/reader details/add_reader.c" "reader_manage/reader details/show_reader.c" "reader_manage/reader details/search.c" "reader_manage/reader details/modify_reader.c")

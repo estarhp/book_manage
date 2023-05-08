@@ -1,28 +1,9 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
-# define MAX_LEN 50
-typedef struct reader {
-    char id[15];
-    char name[12];
-    char sex[3];
-} Reader;
+#include "windows.h"
+#include "reader_manage.h"
 
-int Readers_number(FILE *fp);
-void put_reader(int number,FILE *fp,Reader readers[]);//初始化
-FILE * name_open();
-void Menu_reader();
-void Collect_reader(int readers_number,Reader readers[],FILE *fp);//收集用户的选择
-int Readers_number(FILE *fp);
-void query_reader(int readers_number,Reader readers[]);//查询读者
-void show_reader(int readers_number,Reader *readers);//展示读者信息
-void Search_by_id(int readers_number,Reader readers[]);//通过id
-void Search_by_name(int readers_number,Reader readers[]);//通过读者名字
-void delete_reader();//删除
-void delete_reader_by_id(int readers_number,Reader readers[])
-void modify_reader();//修改
-void add_reader(Reader readers[],int readers_number,FILE *fp);//新增
-//程序入口
 void Main_reader_mana(){
     FILE *fp=name_open();
 
@@ -39,101 +20,6 @@ void Main_reader_mana(){
     fclose(fp);//关闭文件
 
 }
-void show_reader(int readers_number,Reader readers[])
-{
-    int start=0,end=0;
-    printf("请输入要查询的读者的序数范围：\n从序数__开始：");
-    scanf("%d",&start);
-    printf("从序数__结束：");
-    scanf("%d",&end);
-    printf("以下为读者序数在%d~%d范围之内的读者：\n",start,end);
-
-    for (int i = start; i <= end; ++i) {
-        printf("%d %s %s\n",readers[i].id,readers[i].name,readers[i].sex);
-    }
-}
-void query_reader(int readers_number,Reader readers[])
-{
-
-    int select_mode=0;
-    printf("\n\t                        1->通过id                         \t\n");
-    printf("\n\t                        2->通过作者                        \t\n");
-    printf("\n\t                        3->通过书名                        \t\n");
-    printf("\n\t                      请输入你的选择（数字）：                \n\t");
-
-    scanf("%d",&select_mode);
-    switch (select_mode) {
-        case 1:
-            Search_by_id(readers_number,readers);
-            break;
-        case 2:Search_by_name(readers_number,readers);
-
-
-    }
-
-}
-void Search_by_id(int readers_number,Reader readers[])
-{
-    char id[40];
-    printf("请输入读者的id");
-    scanf("%d",&id);
-    printf("以下是匹配的查询结果：\n");
-    for (int i = 0; i < readers_number; ++i) {
-        if(readers[i].id == id){
-
-            printf("%d %s %s ",readers[i].id,readers[i].name,readers[i].sex);
-        }
-    }
-
-}
-void Search_by_name(int readers_number,Reader readers[])
-{
-    char name[50];
-    printf("请输入读者的姓名");
-    scanf("%s",&name);
-    printf("以下是匹配的查询结果：\n");
-    for (int i = 0; i < readers_number; ++i) {
-        if(strcmp(name,readers[i].name)==0){
-
-            printf("%d %s %s ",readers[i].id,readers[i].sex,readers[i].name);
-        }
-
-    }
-}
-int Readers_number(FILE *fp) {
-
-    int flag = 0, file_row = 0, count = 0;
-    while (!feof(fp)) {
-        flag = fgetc(fp);
-        if (flag == '\n')
-            count++;
-    }
-    file_row = count; //获得行数（人的数量）
-
-    rewind(fp);
-    return file_row;
-}
-
-FILE * name_open(){
-    FILE *fp;
-
-    if ((fp = fopen("../reader_manage/name.txt", "r")) == NULL){
-        if ((fp = fopen("reader/name.txt", "r")) == NULL){
-            printf("???·??Error!\n");
-        }
-    }
-
-    return fp;
-}
-
-void put_reader(int number,FILE *fp,Reader readers[]) {
-    for (int i = 0; i < number; ++i) {
-        fscanf(fp,"%s %s %s",&readers[i].id,&readers[i].name,&readers[i].sex);
-    }//从文件读入人名
-
-    fclose(fp);
-
-}
 void Collect_reader(int readers_number,Reader readers[],FILE *fp){
     int Scanf;
     //收集用户的选择
@@ -143,75 +29,132 @@ void Collect_reader(int readers_number,Reader readers[],FILE *fp){
 
         case 1:add_reader(readers,readers_number,fp);
             break;
-        case 2:delete_reader();
+        case 2:delete_reader(readers_number,readers);
             break;
-        case 3:modify_reader();
+        case 3:modify_reader_by_id(readers_number,readers);
             break;
-        case 4:query_reader(readers_number,readers);
+        case 4:search_reader(readers_number,readers);
             break;
         case 5:show_reader(readers_number,readers);
             break;
 
     }
 }
+int wherex_reader()
+
+{
+
+    CONSOLE_SCREEN_BUFFER_INFO pBuffer;
+
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &pBuffer);
+
+    return (pBuffer.dwCursorPosition.X + 1);
+
+}
+
+//获取光标的位置y
+
+int wherey_reader()
+
+{
+
+    CONSOLE_SCREEN_BUFFER_INFO pBuffer;
+
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &pBuffer);
+
+    return (pBuffer.dwCursorPosition.Y + 1);
+
+}
+
+//设置光标的位置
+
+void gotoxy_reader(int x, int y)
+
+{
+
+    COORD c;
+
+    c.X = x - 1;
+
+    c.Y = y - 1;
+
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
+
+}
+
 void Menu_reader(){
 
+    setbuf(stdout,0);//缓冲
 
-    //system("cls");
+    int x, y;
 
     //int select;
-    //printf("hhhhhhh");
-    printf("\n*******************读者管理系统******************\t\n");
-    printf("\n*********************主菜单*********************\t\n");
-    printf("\n*                  1->新增读者                 *\t\n");
-    printf("\n*                  2->删除读者                 *\t\n");
-    printf("\n*                  3->修改读者                 *\t\n");
-    printf("\n*                  4->查询读者                 *\t\n");
-    printf("\n*                  5->显示读者                 *\t\n");
-    printf("\n***********************************************\t\n");
-    printf("\n请输入你的选择(数字):\t\n");
 
+    gotoxy_reader(24, 5);
 
+    printf("*******欢迎来到读者管理系统*******");
+
+    gotoxy_reader(15, 8);
+
+    printf("*********************主菜单*********************");
+
+    gotoxy_reader(15, 9);
+
+    printf("*                  1->新增读者                 *");
+
+    gotoxy_reader(15, 10);
+
+    printf("*                  2->删除读者                 *");
+
+    gotoxy_reader(15, 11);
+
+    printf("*                  3->修改读者                 *");
+
+    gotoxy_reader(15, 12);
+
+    printf("*                  4->查询读者                 *");
+
+    gotoxy_reader(15, 13);
+
+    printf("*                  5->显示读者                 *");
+
+    gotoxy_reader(15, 14);
+
+    printf("**********************************************");
+
+    gotoxy_reader(28, 16);
+
+    printf("请输入你的选择(数字):[ ]");
+
+    x = wherex_reader();
+
+    y = wherey_reader();
+
+    gotoxy_reader(x - 2, y);
 
     //scanf_s("%d", &select);
     //Collect_operation();
 
 
-    void Collect_reader(int readers_number,Reader readers[],FILE *fp);
+    void Collect(int readers_number,Reader readers[],FILE *fp);
     system("pause");
 
     //return 0;*/
 
 }
+void modify_reader_by_id(int readers_number,Reader readers[]){
+    int index = Search_byreaderid(readers_number,readers);
+    char newName[20];
+    printf("请输入新的读者");
+    scanf("%s",newName);
+    strcpy(readers[index].name,newName);
 
-void add_reader(Reader readers[],int readers_number,FILE *fp){
-    rewind(fp);
-    Reader addreader;
-    printf("请输入要添加的读者名");
-    scanf("%s",&addreader.name);
-    addreader.id=readers[readers_number-1].id+1;
-    fprintf(fp, "%d %s\n", addreader.id, addreader.name);
+    printf("%s",readers[index].name);
+    int will_delete[]={-1};
+    int number=0;
 
-}
-
-void delete_reader(){
-    int delete_input;
-    printf("1 -> 通过id删除\n"
-           "2 -> 通过名字删除\n"
-           );
-    scanf("%d",&delete_input);
-    switch (delete_input) {
-        case 1:
-            delete_reader_by_id(readers_number,readers);
-            break;
-        case 2:
-            delete_reader()_by_name(readers_number,readers);
-            break;
-
-    }
-}
+    open_delete_reader(will_delete,number,readers_number,readers);
 
 
-void modify_reader(){
 
 }
