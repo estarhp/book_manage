@@ -19,6 +19,7 @@ void show_reader(int readers_number,Reader *readers);//展示读者信息
 void Search_by_id(int readers_number,Reader readers[]);//通过id
 void Search_by_name(int readers_number,Reader readers[]);//通过读者名字
 void delete_reader();//删除
+void delete_reader_by_id(int readers_number,Reader readers[])
 void modify_reader();//修改
 void add_reader(Reader readers[],int readers_number,FILE *fp);//新增
 //程序入口
@@ -184,11 +185,30 @@ void Menu_reader(){
 }
 
 void add_reader(Reader readers[],int readers_number,FILE *fp){
+    rewind(fp);
+    Reader addreader;
+    printf("请输入要添加的读者名");
+    scanf("%s",&addreader.name);
+    addreader.id=readers[readers_number-1].id+1;
+    fprintf(fp, "%d %s\n", addreader.id, addreader.name);
 
 }
 
 void delete_reader(){
+    int delete_input;
+    printf("1 -> 通过id删除\n"
+           "2 -> 通过名字删除\n"
+           );
+    scanf("%d",&delete_input);
+    switch (delete_input) {
+        case 1:
+            delete_reader_by_id(readers_number,readers);
+            break;
+        case 2:
+            delete_reader()_by_name(readers_number,readers);
+            break;
 
+    }
 }
 
 
