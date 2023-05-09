@@ -7,9 +7,9 @@
 
 void delete_book(int books_number,Book books[]){
     int delete_input;
-    printf("1 -> é€šè¿‡idåˆ é™¤\n"
-           "2 -> é€šè¿‡ä¹¦ååˆ é™¤\n"
-           "3 -> é€šè¿‡ä½œè€…åˆ é™¤\n");
+    printf("1 -> Í¨¹ýidÉ¾³ý\n"
+           "2 -> Í¨¹ýÊéÃûÉ¾³ý\n"
+           "3 -> Í¨¹ý×÷ÕßÉ¾³ý\n");
     scanf("%d",&delete_input);
     switch (delete_input) {
         case 1:
@@ -28,7 +28,7 @@ void open_delete_book(int will_delete[],int number,int books_number,Book books[]
     FILE *fp;
     if ((fp = fopen("../book_manage/books.txt", "w+")) == NULL){
         if ((fp = fopen("book_manage/books.txt", "w+")) == NULL){
-            printf("æ–‡ä»¶è·¯å¾„Error!\n");
+            printf("ÎÄ¼þÂ·¾¶Error!\n");
         }
     }
 
@@ -51,7 +51,7 @@ void delete_book_by_id(int books_number,Book books[]){
     int number=0;
     int will_delete[10];
     int id;
-    printf("è¯·è¾“å…¥ä¹¦æœ¬çš„id");
+    printf("ÇëÊäÈëÊé±¾µÄid");
     scanf("%d",&id);
 
     for (int i = 0; i < books_number; ++i) {
@@ -66,7 +66,7 @@ void delete_book_by_writer(int books_number,Book books[]){
     int number=0;
     int will_delete[10];
     char writer[50];
-    printf("è¯·è¾“å…¥ä¹¦æœ¬çš„ä½œè€…");
+    printf("ÇëÊäÈëÊé±¾µÄ×÷Õß");
     scanf("%s",writer);
     for (int i = 0; i < books_number; ++i) {
         if(strcmp(writer,books[i].writer)==0){
@@ -80,7 +80,7 @@ void delete_book_by_name(int books_number,Book books[]){
     int number=0;
     int will_delete[10];
     char bookname[20];
-    printf("è¯·è¾“å…¥ä¹¦æœ¬çš„ä¹¦å");
+    printf("ÇëÊäÈëÊé±¾µÄÊéÃû");
     scanf("%s",bookname);
 
     for (int i = 0; i < books_number; ++i) {

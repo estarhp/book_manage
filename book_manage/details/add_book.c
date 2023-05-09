@@ -9,9 +9,9 @@
 void add_book(Book books[],int books_number,FILE *fp){
     rewind(fp);
     Book addbook;
-    printf("è¯·è¾“å…¥è¦æ·»åŠ çš„ä¹¦å");
+    printf("ÇëÊäÈëÒªÌí¼ÓµÄÊéÃû");
     scanf("%s",&addbook.name);
-    printf("è¯·è¾“å…¥è¦æ·»åŠ å›¾ä¹¦çš„ä½œè€…");
+    printf("ÇëÊäÈëÒªÌí¼ÓÍ¼ÊéµÄ×÷Õß");
     scanf("%s",&addbook.writer);
     addbook.id=books[books_number-1].id+1;
     fprintf(fp, "%d %s %s\n", addbook.id, addbook.writer, addbook.name);

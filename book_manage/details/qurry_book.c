@@ -6,17 +6,17 @@
 #include "string.h"
 
 void query_book(int books_number,Book books[]){
-    setbuf(stdout,0);//ç¼“å†²
+    setbuf(stdout,0);//»º³å
     int select_mode=0;
     int x,y;
     gotoxy_book(2000, 5);
-    printf("\n\t                        1->é€šè¿‡id                         \t\n");
+    printf("\n\t                        1->Í¨¹ıid                         \t\n");
     gotoxy_book(2001, 6);
-    printf("\n\t                        2->é€šè¿‡ä½œè€…                        \t\n");
+    printf("\n\t                        2->Í¨¹ı×÷Õß                        \t\n");
     gotoxy_book(2002, 7);
-    printf("\n\t                        3->é€šè¿‡ä¹¦å                        \t\n");
+    printf("\n\t                        3->Í¨¹ıÊéÃû                        \t\n");
     gotoxy_book(2003, 8);
-    printf("\n\t                      è¯·è¾“å…¥ä½ çš„é€‰æ‹©ï¼ˆæ•°å­—ï¼‰ï¼š                \n\t");
+    printf("\n\t                      ÇëÊäÈëÄãµÄÑ¡Ôñ£¨Êı×Ö£©£º                \n\t");
     x = wherex_book();
 
     y = wherey_book();
@@ -37,9 +37,9 @@ void query_book(int books_number,Book books[]){
 
 int  query_byid(int books_number,Book books[]){
     int id;
-    printf("è¯·è¾“å…¥ä¹¦æœ¬çš„id");
+    printf("ÇëÊäÈëÊé±¾µÄid:\n");
     scanf("%d",&id);
-    printf("ä»¥ä¸‹æ˜¯åŒ¹é…çš„æŸ¥è¯¢ç»“æœï¼š\n");
+    printf("ÒÔÏÂÊÇÆ¥ÅäµÄ²éÑ¯½á¹û£º\n");
     for (int i = 0; i < books_number; ++i) {
         if(books[i].id==id){
             printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
@@ -50,9 +50,9 @@ int  query_byid(int books_number,Book books[]){
 
 void query_bywriter(int books_number,Book books[]){
     char writer[50];
-    printf("è¯·è¾“å…¥ä¹¦æœ¬çš„ä½œè€…");
+    printf("ÇëÊäÈëÊé±¾µÄ×÷Õß:\n");
     scanf("%s",writer);
-    printf("ä»¥ä¸‹æ˜¯åŒ¹é…çš„æŸ¥è¯¢ç»“æœï¼š\n");
+    printf("ÒÔÏÂÊÇÆ¥ÅäµÄ²éÑ¯½á¹û£º\n");
     for (int i = 0; i < books_number; ++i) {
         if(strcmp(writer,books[i].writer)==0){
             printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
@@ -63,9 +63,9 @@ void query_bywriter(int books_number,Book books[]){
 
 void query_bybookname(int books_number,Book books[]){
     char bookname[20];
-    printf("è¯·è¾“å…¥ä¹¦æœ¬çš„ä¹¦å");
+    printf("ÇëÊäÈëÊé±¾µÄÊéÃû:\n");
     scanf("%s",bookname);
-    printf("ä»¥ä¸‹æ˜¯åŒ¹é…çš„æŸ¥è¯¢ç»“æœï¼š\n");
+    printf("ÒÔÏÂÊÇÆ¥ÅäµÄ²éÑ¯½á¹û£º\n");
 
     for (int i = 0; i < books_number; ++i) {
         if(strcmp(bookname,books[i].name)==0){

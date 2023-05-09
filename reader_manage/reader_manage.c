@@ -132,16 +132,11 @@ void Menu_reader(){
 
     gotoxy_reader(x - 2, y);
 
-    //scanf_s("%d", &select);
-    //Collect_operation();
 
 
-    void Collect(int readers_number,Reader readers[],FILE *fp);
-    system("pause");
-
-    //return 0;*/
 
 }
+
 void modify_reader_by_id(int readers_number,Reader readers[]){
     int index = Search_byreaderid(readers_number,readers);
     char newName[20];

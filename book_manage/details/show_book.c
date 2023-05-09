@@ -6,11 +6,11 @@
 
 void show_book(int books_number,Book *books){
     int start=0,end=0;
-    printf("è¯·è¾“å…¥è¦çœ‹çš„ä¹¦æœ¬çš„åºæ•°èŒƒå›´ï¼š\nä»åºæ•°__å¼€å§‹ï¼š");
+    printf("ÇëÊäÈëÒª¿´µÄÊé±¾µÄĞòÊı·¶Î§£º\n´ÓĞòÊı__¿ªÊ¼£º");
     scanf("%d",&start);
-    printf("ä»åºæ•°__ç»“æŸï¼š");
+    printf("´ÓĞòÊı__½áÊø£º");
     scanf("%d",&end);
-    printf("ä»¥ä¸‹ä¸ºä¹¦æœ¬åºæ•°åœ¨%d~%dèŒƒå›´ä¹‹å†…çš„å›¾ä¹¦ï¼š\n",start,end);
+    printf("ÒÔÏÂÎªÊé±¾ĞòÊıÔÚ%d~%d·¶Î§Ö®ÄÚµÄÍ¼Êé£º\n",start,end);
 
     for (int i = start; i <= end; ++i) {
         printf("%d %s %s\n",books[i].id,books[i].writer,books[i].name);

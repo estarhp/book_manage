@@ -134,13 +134,6 @@ void Menu_book(){
 
     gotoxy_book(x - 2, y);
 
-    //scanf_s("%d", &select);
-    //Collect_operation();
 
-
-    void Collect(int books_number,Book books[],FILE *fp);
-    system("pause");
-
-    //return 0;*/
 
 }

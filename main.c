@@ -52,7 +52,6 @@ void gotoxy(int x, int y)
 int main()
 
 {
-    //static char buf[BUFSIZ];
     setbuf(stdout,0);
 
     int x, y;

@@ -18,11 +18,11 @@ void modify_book_by_id(int books_number,Book books[]){
     int index = query_byid(books_number,books);
     char newName[40];
     char newWriter[20];
-    printf("è¯·è¾“å…¥æ–°çš„ä¹¦å");
+    printf("ÇëÊäÈëĞÂµÄÊéÃû");
 
     scanf("%s",newName);
 
-    printf("è¯·è¾“å…¥æ–°çš„ä½œè€…å");
+    printf("ÇëÊäÈëĞÂµÄ×÷ÕßÃû");
 
     scanf("%s",newWriter);
     strcpy(books[index].name,newName);
