@@ -4,6 +4,7 @@
 
 #include "stdio.h"
 #include "borrow_return.h"
+#include "malloc.h"
 
 
 FILE * r_file_open(){
@@ -28,11 +29,40 @@ FILE * b_file_open(){
     return fp;
 }
 
-void put_return(){
+void put_return(FILE *fp,Borrow *p){
+    for (int i = 0; fp==EOF; ++i) {
+        Borrow *q=(Borrow *)malloc(sizeof(Borrow));
+        fscanf(fp,"%d %s %s %d %s %s",
+               &q->reader.id,
+               &q->reader.name,
+               &q->reader.sex,
+               &q->book.id,
+               &q->book.writer,
+               &q->book.name);
 
+        q->next=NULL;
+
+        p->next=q;
+        p=q;
+
+    }
 }
 
-void put_borrow(){
+void put_borrow(FILE *fp,Borrow *p){
+    Borrow *q=(Borrow *)malloc(sizeof(Borrow));
+    fscanf(fp,"%d %s %s %d %s %s",
+           &q->reader.id,
+           &q->reader.name,
+           &q->reader.sex,
+           &q->book.id,
+           &q->book.writer,
+           &q->book.name);
+
+    q->next=NULL;
+
+    p->next=q;
+    p=q;
+
 
 }
 

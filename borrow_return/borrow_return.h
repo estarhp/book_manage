@@ -15,5 +15,9 @@ typedef struct re {
 } Return;
 void Main_br_mana();
 void br_Menu();
+FILE * r_file_open();
+FILE * b_file_open();
+void put_return(FILE *fp,Borrow *p);
+void put_borrow(FILE *fp,Borrow *p);
 
 #endif //UNTITLED_BORROW_RETURN_H
