@@ -29,9 +29,9 @@ FILE * b_file_open(){
     return fp;
 }
 
-void put_return(FILE *fp,Borrow *p){
+void put_return(FILE *fp,Return *p){
     for (int i = 0; !feof(fp); ++i) {
-        Borrow *q=(Borrow *)malloc(sizeof(Borrow));
+        Return *q=(Return *)malloc(sizeof(Return));
         fscanf(fp,"%d %s %s %d %s %s",
                &q->reader.id,
                &q->reader.name,

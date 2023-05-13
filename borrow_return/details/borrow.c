@@ -3,7 +3,7 @@
 //
 #include "../borrow_return.h"
 void showBorrow(Borrow *head){
-    for (Borrow *p= head; p ->next !=NULL; p= p->next) {
+    for (Borrow *p= head->next; p ->next !=NULL; p= p->next) {
         printf("%d %s %s %d %s %s\n",
                p->reader.id,
                p->reader.name,

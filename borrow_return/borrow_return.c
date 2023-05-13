@@ -6,7 +6,7 @@ void Main_br_mana(){
     Borrow *bhead=NULL;
     Return *rhead=NULL;
     bhead=(Borrow *)malloc(sizeof(Borrow));
-    rhead= (Borrow *)malloc(sizeof (Return));
+    rhead= (Return *)malloc(sizeof (Return));
 
     Borrow *bp= NULL;
     Return *rp= NULL;
@@ -22,6 +22,10 @@ void Main_br_mana(){
 
     showBorrow(bhead);
     showReturn(rhead);
+
+
+    fclose(bfp);
+    fclose(rfp);
 
 }
 

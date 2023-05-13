@@ -4,7 +4,7 @@
 
 #include "../borrow_return.h"
 void showReturn(Return *head){
-    for (Return *p= head; p ->next !=NULL; p= p->next) {
+    for (Return *p= head->next; p ->next !=NULL; p= p->next) {
         printf("%d %s %s %d %s %s\n",
                p->reader.id,
                p->reader.name,

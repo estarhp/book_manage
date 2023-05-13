@@ -17,7 +17,7 @@ void Main_br_mana();
 void br_Menu();
 FILE * r_file_open();
 FILE * b_file_open();
-void put_return(FILE *fp,Borrow *p);
+void put_return(FILE *fp,Return *p);
 void put_borrow(FILE *fp,Borrow *p);
 void showBorrow(Borrow *head);
 void showReturn(Return *head);
