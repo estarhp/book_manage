@@ -19,5 +19,8 @@ FILE * r_file_open();
 FILE * b_file_open();
 void put_return(FILE *fp,Borrow *p);
 void put_borrow(FILE *fp,Borrow *p);
+void showBorrow(Borrow *head);
+void showReurn(Return *head);
+
 
 #endif //UNTITLED_BORROW_RETURN_H
