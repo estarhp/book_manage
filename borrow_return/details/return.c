@@ -5,7 +5,8 @@
 #include "../borrow_return.h"
 void showReturn(Return *head){
     for (Return *p= head->next; p ->next !=NULL; p= p->next) {
-        printf("%d %s %s %d %s %s\n",
+        printf("%s %d %s %s %d %s %s\n",
+               p->time,
                p->reader.id,
                p->reader.name,
                p->reader.sex,
@@ -13,4 +14,8 @@ void showReturn(Return *head){
                p->book.writer,
                p->book.name);
     }
+}
+
+void register_return(Return *head,Book books[],int books_number,Reader readers[],int readers_number){
+
 }

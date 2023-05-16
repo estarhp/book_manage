@@ -32,7 +32,8 @@ FILE * b_file_open(){
 void put_return(FILE *fp,Return *p){
     for (int i = 0; !feof(fp); ++i) {
         Return *q=(Return *)malloc(sizeof(Return));
-        fscanf(fp,"%d %s %s %d %s %s",
+        fscanf(fp,"%s %d %s %s %d %s %s",
+               &q->time,
                &q->reader.id,
                &q->reader.name,
                &q->reader.sex,
@@ -50,7 +51,8 @@ void put_return(FILE *fp,Return *p){
 
 void put_borrow(FILE *fp,Borrow *p){
     Borrow *q=(Borrow *)malloc(sizeof(Borrow));
-    fscanf(fp,"%d %s %s %d %s %s",
+    fscanf(fp,"%s %d %s %s %d %s %s",
+           &q->time,
            &q->reader.id,
            &q->reader.name,
            &q->reader.sex,
