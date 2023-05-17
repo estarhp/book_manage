@@ -29,16 +29,19 @@ FILE * b_file_open(){
     return fp;
 }
 
-void put_return(FILE *fp,Return *p){
-    for (int i = 0; !feof(fp); ++i) {
+void put_return(FILE *fp,Return *head){
+    Borrow *p= head;
+    for (;  ; ) {
         Return *q=(Return *)malloc(sizeof(Return));
-        fscanf(fp,"%d %s %s %d %s %s",
-               &q->reader.id,
-               &q->reader.name,
-               &q->reader.sex,
-               &q->book.id,
-               &q->book.writer,
-               &q->book.name);
+        if ( fscanf(fp,"%s %d %s %s %d %s %s",
+                    &q->time,
+                    &q->reader.id,
+                    &q->reader.name,
+                    &q->reader.sex,
+                    &q->book.id,
+                    &q->book.writer,
+                    &q->book.name) ==EOF)
+            break;
 
         q->next=NULL;
 
@@ -48,20 +51,28 @@ void put_return(FILE *fp,Return *p){
     }
 }
 
-void put_borrow(FILE *fp,Borrow *p){
+void put_borrow(FILE *fp,Borrow *head){
+    Borrow *p= head;
+
+    for (;  ; ) {
+
+
     Borrow *q=(Borrow *)malloc(sizeof(Borrow));
-    fscanf(fp,"%d %s %s %d %s %s",
-           &q->reader.id,
-           &q->reader.name,
-           &q->reader.sex,
-           &q->book.id,
-           &q->book.writer,
-           &q->book.name);
+   if( fscanf(fp,"%s %d %s %s %d %s %s",
+              &q->time,
+              &q->reader.id,
+              &q->reader.name,
+              &q->reader.sex,
+              &q->book.id,
+              &q->book.writer,
+              &q->book.name) == EOF)
+       break;
 
     q->next=NULL;
 
     p->next=q;
     p=q;
+    }
 
 
 }
