@@ -9,18 +9,18 @@ void Main_br_mana(){
     Return *rhead=NULL;
     bhead=(Borrow *)malloc(sizeof(Borrow));
     rhead= (Return *)malloc(sizeof (Return));
+    bhead -> next =NULL;
+    rhead -> next =NULL;
 
-    Borrow *bp= NULL;
-    Return *rp= NULL;
 
     FILE *bfp= b_file_open();
     FILE *rfp= r_file_open();
 
 
-    bp=bhead;
-    rp=rhead;
-    put_borrow(bfp,bp);
-    put_return(rfp,rp);
+    bhead;
+    rhead;
+    put_borrow(bfp,bhead);
+    put_return(rfp,rhead);
 
 
     fclose(bfp);
@@ -60,13 +60,14 @@ void Main_br_mana(){
 
 //2.借书登记，还书登记
 
-register_borrow(bhead,books,books_number,readers,readers_number);
+//register_borrow(bhead,books,books_number,readers,readers_number);
 register_return(rhead,books,books_number,readers,readers_number);
 
 
-//    char* time = createTime();
-//    printf("%s\n", time);
-//    free(time);  // 释放动态内存
+//showBorrow(bhead);
+showReturn(rhead);
+
+
 
 
 

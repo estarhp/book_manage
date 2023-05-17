@@ -19,11 +19,11 @@ void Main_br_mana();
 void br_Menu();
 FILE * r_file_open();
 FILE * b_file_open();
-void put_return(FILE *fp,Return *p);
-void put_borrow(FILE *fp,Borrow *p);
+void put_return(FILE *fp,Return *head);
+void put_borrow(FILE *fp,Borrow *head);
 void showBorrow(Borrow *head);
 void showReturn(Return *head);
-char* createTime();
+void createTime();
 void register_borrow(Borrow *head,Book books[],int books_number,Reader readers[],int readers_number);
 void register_return(Return *head,Book books[],int books_number,Reader readers[],int readers_number);
 
