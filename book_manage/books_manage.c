@@ -22,10 +22,14 @@ void Main_book_mana(){
 }
 
 void Collect(int books_number,Book books[],FILE *fp){
+
     int Scanf;
     //收集用户的选择
+
     scanf("%d",&Scanf);
     //跳入不同模块
+    while(Scanf)
+    {
     switch (Scanf) {
 
         case 1:add_book(books,books_number,fp);
@@ -38,8 +42,18 @@ void Collect(int books_number,Book books[],FILE *fp){
             break;
         case 5:show_book(books_number,books);
             break;
+        default:
+            printf("请输入正确的数字");
+            break;
 
     }
+//        printf("按任意键返回子菜单");
+//        getchar();   /*接收用户输入任意字符*/
+//        Menu_book();
+//        scanf("%d", &Scanf);
+//        getchar();
+    }
+
 }
 
 int wherex_book()
@@ -98,7 +112,7 @@ void Menu_book(){
 
     gotoxy_book(15, 8);
 
-    printf("*********************主菜单*********************");
+    printf("*********************子菜单*********************");
 
     gotoxy_book(15, 9);
 
@@ -119,10 +133,12 @@ void Menu_book(){
     gotoxy_book(15, 13);
 
     printf("*                  5->显示图书                 *");
+    gotoxy_book(15,14);
+    printf("*                按任意键返回主菜单             *");
 
-    gotoxy_book(15, 14);
+    gotoxy_book(15, 15);
 
-    printf("************************************************");
+    printf("***********************************************");
 
     gotoxy_book(28, 16);
 

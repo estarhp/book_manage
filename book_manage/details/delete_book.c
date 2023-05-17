@@ -69,7 +69,7 @@ void delete_book_by_writer(int books_number,Book books[]){
     int number=0;
     int will_delete[10];
     char writer[50];
-    printf("请输入书本的作者");
+    printf("请输入书本的作者:");
     scanf("%s",writer);
     for (int i = 0; i < books_number; ++i) {
         if(strcmp(writer,books[i].writer)==0){
@@ -85,7 +85,7 @@ void delete_book_by_name(int books_number,Book books[]){
     int number=0;
     int will_delete[10];
     char bookname[20];
-    printf("请输入书本的书名");
+    printf("请输入书本的书名:");
     scanf("%s",bookname);
 
     for (int i = 0; i < books_number; ++i) {

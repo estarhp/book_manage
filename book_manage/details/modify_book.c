@@ -22,11 +22,11 @@ void modify_book_by_id(int books_number,Book books[]){
     }
     char newName[40];
     char newWriter[20];
-    printf("请输入新的书名");
+    printf("请输入新的书名:");
 
     scanf("%s",newName);
 
-    printf("请输入新的作者名");
+    printf("请输入新的作者名:");
 
     scanf("%s",newWriter);
     strcpy(books[index].name,newName);
