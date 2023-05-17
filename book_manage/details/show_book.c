@@ -10,6 +10,11 @@ void show_book(int books_number,Book *books){
     scanf("%d",&start);
     printf("从序数__结束：");
     scanf("%d",&end);
+
+    if (start<end||end>=books_number||start<0){
+        printf("输入数据错误");
+        return;
+    }
     printf("以下为书本序数在%d~%d范围之内的图书：\n",start,end);
 
     for (int i = start; i <= end; ++i) {

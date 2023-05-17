@@ -137,19 +137,19 @@ void Menu_reader(){
 
 }
 
-void modify_reader_by_id(int readers_number,Reader readers[]){
-    int index = Search_byreaderid(readers_number,readers);
-    char newName[20];
-    printf("请输入新的读者");
-    scanf("%s",newName);
-    strcpy(readers[index].name,newName);
-
-    printf("%s",readers[index].name);
-    int will_delete[]={-1};
-    int number=0;
-
-    open_delete_reader(will_delete,number,readers_number,readers);
-
-
-
-}
+//void modify_reader_by_id(int readers_number,Reader readers[]){
+//    int index = Search_byreaderid(readers_number,readers);
+//    char newName[20];
+//    printf("请输入新的读者");
+//    scanf("%s",newName);
+//    strcpy(readers[index].name,newName);
+//
+//    printf("%s",readers[index].name);
+//    int will_delete[]={-1};
+//    int number=0;
+//
+//    open_delete_reader(will_delete,number,readers_number,readers);
+//
+//
+//
+//}

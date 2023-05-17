@@ -55,6 +55,10 @@ void delete_reader_by_id(int readers_number,Reader readers[]){
             number++;
         }
     }
+    if(number == 0 ){
+        printf("没有找到满足要求的读者！");
+        return;
+    }
     open_delete_reader(will_delete,number,readers_number,readers);
 }
 void delete_reader_by_name(int readers_number,Reader readers[]){
@@ -69,6 +73,10 @@ void delete_reader_by_name(int readers_number,Reader readers[]){
             will_delete[number]=i;
             number++;
         }
+    }
+    if(number == 0 ){
+        printf("没有找到满足要求的读者！");
+        return;
     }
     open_delete_reader(will_delete,number,readers_number,readers);
 

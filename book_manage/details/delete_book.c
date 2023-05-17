@@ -60,7 +60,10 @@ void delete_book_by_id(int books_number,Book books[]){
             number++;
         }
     }
+    if(number == 0 ) {printf("没有符合要求的图书！！");
+        return;}
     open_delete_book(will_delete,number,books_number,books);
+    printf("删除书本成功！");
 }
 void delete_book_by_writer(int books_number,Book books[]){
     int number=0;
@@ -74,6 +77,8 @@ void delete_book_by_writer(int books_number,Book books[]){
             number++;
         }
     }
+    if(number == 0 ) {printf("没有符合要求的图书！！");
+        return;}
     open_delete_book(will_delete,number,books_number,books);
 }
 void delete_book_by_name(int books_number,Book books[]){
@@ -89,6 +94,8 @@ void delete_book_by_name(int books_number,Book books[]){
             number++;
         }
     }
+    if(number == 0 ) {printf("没有符合要求的图书！！");
+        return;}
     open_delete_book(will_delete,number,books_number,books);
 
 }
