@@ -9,7 +9,7 @@ void showReturn(Return *head){
     for (Return *p= head->next; p!=NULL; p= p->next) {
 
 
-        printf("%s %d %s %s %d %s %s\n",
+        printf("还书时间：%s 还书人：%d %s %s 所还书：%d %s %s\n",
                p->time,
                p->reader.id,
                p->reader.name,
@@ -21,7 +21,7 @@ void showReturn(Return *head){
 
 }
 
-void register_return(Return *head,Book books[],int books_number,Reader readers[],int readers_number){
+void register_return(Return *head,Book books[],int books_number,Reader readers[],int readers_number,FILE *fp){
 
     Return *p = head->next;
     while (p->next != NULL)p=p->next;
@@ -42,5 +42,15 @@ void register_return(Return *head,Book books[],int books_number,Reader readers[]
     q->next = NULL;
 
     p->next = q;
+
+
+
+    fprintf(fp,"%s %d %s %s %d %s %s\n",q->time,
+            q->reader.id,
+            q->reader.name,
+            q->reader.sex,
+            q->book.id,
+            q->book.writer,
+            q->book.name);
 
 }

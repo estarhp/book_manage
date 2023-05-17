@@ -17,14 +17,11 @@ void Main_br_mana(){
     FILE *rfp= r_file_open();
 
 
-    bhead;
-    rhead;
     put_borrow(bfp,bhead);
     put_return(rfp,rhead);
 
 
-    fclose(bfp);
-    fclose(rfp);
+
 
 
     //初始化reader模块
@@ -49,27 +46,27 @@ void Main_br_mana(){
     fclose(fp1);//关闭文件
     fclose(fp2);//关闭文件
 
-    // 1.展示借书记录，展示还书记录
+// 1.展示借书记录，展示还书记录
     //    showBorrow(bhead);
     //    showReturn(rhead);
 
 
 
-
-
-
 //2.借书登记，还书登记
 
-//register_borrow(bhead,books,books_number,readers,readers_number);
-register_return(rhead,books,books_number,readers,readers_number);
-
-
-//showBorrow(bhead);
-showReturn(rhead);
+//    register_borrow(bhead,books,books_number,readers,readers_number,bfp);
+//    register_return(rhead,books,books_number,readers,readers_number,rfp);
 
 
 
 
+
+
+    //释放链表内存，防止内存泄露
+    close(bhead,rhead);
+
+    fclose(bfp);
+    fclose(rfp);
 
 
 }

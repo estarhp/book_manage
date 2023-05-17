@@ -23,8 +23,9 @@ void put_return(FILE *fp,Return *head);
 void put_borrow(FILE *fp,Borrow *head);
 void showBorrow(Borrow *head);
 void showReturn(Return *head);
-void createTime();
-void register_borrow(Borrow *head,Book books[],int books_number,Reader readers[],int readers_number);
-void register_return(Return *head,Book books[],int books_number,Reader readers[],int readers_number);
+void createTime(char time_str[]);
+void register_borrow(Borrow *head,Book books[],int books_number,Reader readers[],int readers_number,FILE *fp);
+void register_return(Return *head,Book books[],int books_number,Reader readers[],int readers_number,FILE *fp);
+void close(Borrow *bhead,Return *rhead);
 
 #endif //UNTITLED_BORROW_RETURN_H

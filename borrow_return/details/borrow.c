@@ -6,7 +6,7 @@
 #include "string.h"
 void showBorrow(Borrow *head){
     for (Borrow *p= head->next; p !=NULL; p= p->next) {
-        printf("%s %d %s %s %d %s %s\n",
+        printf("借书时间：%s 借书人：%d %s %s 所借书：%d %s %s\n",
                p->time,
                p->reader.id,
                p->reader.name,
@@ -17,7 +17,7 @@ void showBorrow(Borrow *head){
     }
 }
 
-void register_borrow(Borrow *head,Book books[],int books_number,Reader readers[],int readers_number) {
+void register_borrow(Borrow *head,Book books[],int books_number,Reader readers[],int readers_number,FILE *fp) {
     Borrow *p = head->next;
     while (p->next != NULL)p=p->next;
     Borrow *q=(Borrow *)malloc(sizeof(Borrow));
