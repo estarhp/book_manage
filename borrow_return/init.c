@@ -30,7 +30,7 @@ FILE * b_file_open(){
 }
 
 void put_return(FILE *fp,Return *head){
-    Borrow *p= head;
+    Return *p= head;
     for (;  ; ) {
         Return *q=(Return *)malloc(sizeof(Return));
         if ( fscanf(fp,"%s %d %s %s %d %s %s",
