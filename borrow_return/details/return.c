@@ -5,7 +5,6 @@
 #include "../borrow_return.h"
 #include "malloc.h"
 #include "unistd.h"
-#include "string.h"
 void showReturn(Return *head){
     for (Return *p= head->next; p!=NULL; p= p->next) {
 

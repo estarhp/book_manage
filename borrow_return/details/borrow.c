@@ -3,7 +3,6 @@
 //
 #include "../borrow_return.h"
 #include "malloc.h"
-#include "string.h"
 #include "unistd.h"
 void showBorrow(Borrow *head){
     for (Borrow *p= head->next; p !=NULL; p= p->next) {

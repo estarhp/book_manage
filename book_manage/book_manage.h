@@ -16,7 +16,7 @@ FILE * file_open();
 void put_book(int number,FILE *fp,Book books[]);//初始化图书
 int Books_number(FILE *fp);//计算文件中图书的数目
 void Menu_book();
-void Collect(int books_number,Book books[],FILE *fp);//收集用户的选择
+int Collect(int books_number,Book books[],FILE *fp);//收集用户的选择
 void delete_book(int books_number,Book books[]);//删除
 void modify_book(int books_number,Book books[]);
 void query_book(int books_number,Book books[]);//查询图书

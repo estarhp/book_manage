@@ -47,15 +47,16 @@ int  query_byid(int books_number,Book books[]){
     printf("请输入书本的id:\n");
     scanf("%d",&id);
 
-    for (int i = 0; i < books_number; ++i) {
+    for (int i = 0; i < books_number; i++) {
         if(books[i].id==id){
             printf("以下是匹配的查询结果：\n");
-            printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
+            printf("%d %s %s \n",books[i].id,books[i].writer,books[i].name);
             return i;
         }
-        printf("没有符合要求的书！\n！");
-        return -1;
+
     }
+    printf("没有符合要求的书！\n！");
+    return -1;
 }
 
 void query_bywriter(int books_number,Book books[]){

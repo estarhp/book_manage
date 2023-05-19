@@ -15,13 +15,14 @@ void Main_book_mana(){
 
     Menu_book();
 
-    Collect(books_number,books,fp);
+   Collect(books_number,books,fp);
+
 
     fclose(fp);//关闭文件
 
 }
 
-void Collect(int books_number,Book books[],FILE *fp){
+int Collect(int books_number,Book books[],FILE *fp){
     Menu_book();//显示数据管理的子菜单
     int Scanf;
     scanf("%d",&Scanf );
@@ -35,11 +36,11 @@ void Collect(int books_number,Book books[],FILE *fp){
     while(Scanf)
     {
     switch (Scanf) {
-//        case 0:
-//            printf("谢谢使用！！！");
-//            break;
+        case 0:
+            printf("谢谢使用！！！");
+            return 0;
         case 1:add_book(books,books_number,fp);
-            break;
+            return 1;
         case 2:delete_book(books_number,books);
             break;
         case 3:modify_book_by_id(books_number,books);

@@ -37,7 +37,6 @@ void open_delete_reader(int will_delete[],int number,int readers_number,Reader r
             printf("ÎÄ¼şÂ·¾¶Error!\n");
         }
     }
-    printf("%p",fp);
 
     rewind(fp);
     for (int j = 0; j < readers_number; ++j) {

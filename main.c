@@ -103,11 +103,6 @@ void Main_Muen()
 
     gotoxy(x - 2, y);
 
-    //scanf_s("%d", &select);
-//    Collect_operation();
-//
-//    system("pause");
-//    Sleep(3);
 }
 int main()
 
@@ -130,7 +125,6 @@ void Collect_operation() {
         switch (Scan_number) {
             case 0:
                 printf("感谢使用该系统（自动关闭）！！！");
-
                 break;
             case 1:
                 Main_book_mana();

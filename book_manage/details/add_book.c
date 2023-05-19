@@ -15,6 +15,5 @@ void add_book(Book books[],int books_number,FILE *fp){
     scanf("%s",&addbook.writer);
     addbook.id=books[books_number-1].id+1;
     fprintf(fp, "%d %s %s\n", addbook.id, addbook.writer, addbook.name);
-    printf("您已添加成功新的书籍\n");
-
+    printf("您已添加成功新的书籍（重新进入系统时刷新数据）\n");
 }

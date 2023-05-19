@@ -2,9 +2,7 @@
 #include "windows.h"
 #include "borrow_return.h"
 #include "malloc.h"
-#include "unistd.h"
-#include "../reader_manage/reader_manage.h"
-#include "../book_manage/book_manage.h"
+
 
 void Collect_br(Borrow *bhead,Return *rhead,Book books[],int books_number,Reader readers[],int readers_number,FILE *bfp,FILE *rfp);
 int wherex_br();
