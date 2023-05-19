@@ -7,7 +7,7 @@
 void modify_reader_by_id(int readers_number, Reader  readers[]){
     int index = Search_byreaderid(readers_number,readers);
     if (index == -1){
-        printf("没有这本书哟！");
+        printf("没有这个读者哟");
         return;
     }
     char newName[12];

@@ -4,6 +4,7 @@
 
 #include "../borrow_return.h"
 #include "malloc.h"
+#include "unistd.h"
 #include "string.h"
 void showReturn(Return *head){
     for (Return *p= head->next; p!=NULL; p= p->next) {
@@ -18,7 +19,8 @@ void showReturn(Return *head){
                p->book.writer,
                p->book.name);
     }
-
+    sleep(2);
+    system("cls");
 }
 
 void register_return(Return *head,Book books[],int books_number,Reader readers[],int readers_number,FILE *fp){

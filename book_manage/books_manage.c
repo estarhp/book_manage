@@ -35,7 +35,9 @@ void Collect(int books_number,Book books[],FILE *fp){
     while(Scanf)
     {
     switch (Scanf) {
-
+//        case 0:
+//            printf("谢谢使用！！！");
+//            break;
         case 1:add_book(books,books_number,fp);
             break;
         case 2:delete_book(books_number,books);
@@ -138,8 +140,9 @@ void Menu_book(){
     gotoxy_book(15, 13);
 
     printf("*                  5->显示图书                 *");
+//    gotoxy_book(15,14);
+//    printf("*                  0->退出系统                  *");
     gotoxy_book(15,14);
-
     printf("***********************************************");
 
     gotoxy_book(28, 16);

@@ -41,7 +41,7 @@ int Search_byreaderid(int readers_number,Reader readers[])
         }
 
     }
-    printf("无(没有找到满足条件的读者)");
+    printf("无(没有找到满足条件的读者)\n");
     return -1;
 
 
@@ -65,5 +65,5 @@ void Search_byreadername(int readers_number,Reader readers[])
 
     }
     if(flag)
-        printf("无(没有找到满足条件的读者)");
+        printf("无(没有找到满足条件的读者)\n");
 }

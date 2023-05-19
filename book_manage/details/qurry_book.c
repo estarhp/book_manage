@@ -53,7 +53,7 @@ int  query_byid(int books_number,Book books[]){
             printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
             return i;
         }
-        printf("查无此人！");
+        printf("没有符合要求的书！\n！");
         return -1;
     }
 }

@@ -1,9 +1,15 @@
 #include "stdio.h"
+#include "windows.h"
 #include "borrow_return.h"
 #include "malloc.h"
+#include "unistd.h"
 #include "../reader_manage/reader_manage.h"
 #include "../book_manage/book_manage.h"
 
+void Collect_br(Borrow *bhead,Return *rhead,Book books[],int books_number,Reader readers[],int readers_number,FILE *bfp,FILE *rfp);
+int wherex_br();
+int wherey_br();
+void gotoxy_br(int x, int y);
 void Main_br_mana(){
     Borrow *bhead=NULL;
     Return *rhead=NULL;
@@ -46,22 +52,17 @@ void Main_br_mana(){
     fclose(fp1);//关闭文件
     fclose(fp2);//关闭文件
 
+
+    //br_Menu();
+    Collect_br(bhead,rhead,books,books_number,readers,readers_number,bfp,rfp);
+        //br_Menu();
 // 1.展示借书记录，展示还书记录
-    //    showBorrow(bhead);
-    //    showReturn(rhead);
-
-
-
+        showBorrow(bhead);
+        showReturn(rhead);
 //2.借书登记，还书登记
 
-//    register_borrow(bhead,books,books_number,readers,readers_number,bfp);
-//    register_return(rhead,books,books_number,readers,readers_number,rfp);
-
-
-
-
-
-
+    register_borrow(bhead,books,books_number,readers,readers_number,bfp);
+    register_return(rhead,books,books_number,readers,readers_number,rfp);
     //释放链表内存，防止内存泄露
     rbclose(bhead,rhead);
 
@@ -70,9 +71,50 @@ void Main_br_mana(){
 
 
 }
+void Collect_br(Borrow *bhead,Return *rhead,Book books[],int books_number,Reader readers[],int readers_number,FILE *bfp,FILE *rfp){
+    br_Menu();//显示数据管理的子菜单
+    int Scanf;
+    scanf("%d",&Scanf );
+    getchar();
 
-void br_Menu(){
-    int wherex_br()
+
+    //收集用户的选择
+
+
+    //跳入不同模块
+    while(Scanf)
+    {
+        switch (Scanf) {
+
+            case 1:
+                showBorrow(bhead);
+                break;
+            case 2:
+                showReturn(rhead);
+                break;
+            case 3:
+                register_borrow(bhead,books,books_number,readers,readers_number,bfp);
+                break;
+            case 4:
+                register_return(rhead,books,books_number,readers,readers_number,rfp);
+                break;
+            default:
+                printf("请输入正确的数字\n");
+                break;
+
+        }
+        //printf("|请按任意键返回子菜单|\n");
+        getchar();//从控件获取字符而无需回显;
+        br_Menu();
+        scanf("%d", &Scanf);
+        //getchar();
+
+    }
+
+}
+
+
+int wherex_br()
 
     {
 
@@ -86,7 +128,7 @@ void br_Menu(){
 
 //获取光标的位置y
 
-    int wherey_br()
+int wherey_br()
 
     {
 
@@ -100,7 +142,7 @@ void br_Menu(){
 
 //设置光标的位置
 
-    void gotoxy_br(int x, int y)
+void gotoxy_br(int x, int y)
 
     {
 
@@ -114,60 +156,52 @@ void br_Menu(){
 
     }
 
-    void Menu_br(){
+ void br_Menu(){
 
         setbuf(stdout,0);//缓冲
 
         int x, y;
 
         //int select;
+        system("cls");
 
-        gotoxy_reade(24, 5);
+        gotoxy_br(24, 5);
 
-        printf("*******欢迎来到读者管理系统*******");
+        printf("*******欢迎来到借还管理系统*******");
 
-        gotoxy_reader(15, 8);
+        gotoxy_br(15, 8);
 
         printf("*********************主菜单*********************");
 
-        gotoxy_reader(15, 9);
+        gotoxy_br(15, 9);
 
-        printf("*                  1->新增读者                 *");
+        printf("*                  1->展示借书记录             *");
 
-        gotoxy_reader(15, 10);
+        gotoxy_br(15, 10);
 
-        printf("*                  2->删除读者                 *");
+        printf("*                  2->展示还书记录             *");
 
-        gotoxy_reader(15, 11);
+        gotoxy_br(15, 11);
+        printf("*                  3->借书登记                 *");
+        gotoxy_br(15,12);
 
-        printf("*                  3->修改读者                 *");
+        printf("*                  4->还书登记                 *");
 
-        gotoxy_reader(15, 12);
+//        gotoxy_br(15,13);
+//        printf("*                  0->退出系统                  *");
+        gotoxy_br(15,13);
+        printf("************************************************");
 
-        printf("*                  4->查询读者                 *");
-
-        gotoxy_reader(15, 13);
-
-        printf("*                  5->显示读者                 *");
-
-        gotoxy_reader(15, 14);
-
-        printf("**********************************************");
-
-        gotoxy_reader(28, 16);
+        gotoxy_br(28, 16);
 
         printf("请输入你的选择(数字):[ ]");
 
-        x = wherex_reader();
+        x = wherex_br();
 
-        y = wherey_reader();
+        y = wherey_br();
 
-        gotoxy_reader(x - 2, y);
-
-
+        gotoxy_br(x - 2, y);
 
 
-    }
-
-};
+}
 

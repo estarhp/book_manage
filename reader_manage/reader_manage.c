@@ -133,8 +133,9 @@ void Menu_reader(){
 
     printf("*                  5->显示读者                 *");
 
+//    gotoxy_reader(15, 14);
+//    printf("*                  0->退出系统                  *");
     gotoxy_reader(15, 14);
-
     printf("**********************************************");
 
     gotoxy_reader(28, 16);

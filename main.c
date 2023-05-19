@@ -69,7 +69,7 @@ void Main_Muen()
 
     gotoxy(15, 9);
 
-    printf("*                  0->谢谢使用                 *");
+    printf("*                  0->感谢使用系统（自动关闭）*");
 
     gotoxy(15, 10);
 
@@ -125,12 +125,12 @@ void Collect_operation() {
     //收集用户的选择
     scanf("%d", &Scan_number);
     //跳入不同模块
-    getchar();
-    while (Scan_number) {
+    //getchar();
+    while(Scan_number) {
         switch (Scan_number) {
             case 0:
-                printf("谢谢使用！");
-                sleep(2);
+                printf("感谢使用该系统（自动关闭）！！！");
+
                 break;
             case 1:
                 Main_book_mana();
@@ -145,18 +145,17 @@ void Collect_operation() {
                 printf("输入错误，请重输");
                 break;
 
-        }
+                }
 
-            sleep(1);
+
             system("cls");
             Main_Muen();
             getchar();//从控件获取字符而无需回显;
-
             scanf("%d", &Scan_number);
-//        sleep(2);
+            sleep(2);
 
 
 
 
+        }
     }
-}
