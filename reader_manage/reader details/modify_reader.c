@@ -7,22 +7,22 @@
 void modify_reader_by_id(int readers_number, Reader  readers[]){
     int index = Search_byreaderid(readers_number,readers);
     if (index == -1){
-        printf("æ²¡æœ‰è¿™æœ¬ä¹¦å“Ÿï¼");
+        printf("Ã»ÓĞÕâ±¾ÊéÓ´£¡");
         return;
     }
     char newName[12];
     char newSex[3];
-    printf("è¯·è¾“å…¥æ–°çš„ä¹¦å");
+    printf("ÇëÊäÈëĞÂµÄÊéÃû£º\n");
 
     scanf("%s",newName);
 
-    printf("è¯·è¾“å…¥æ–°çš„æ€§åˆ«(é€‰å¡«ç”·å¥³)");
+    printf("ÇëÊäÈëĞÂµÄĞÔ±ğ(Ñ¡ÌîÄĞÅ®)£º\n");
 
     scanf("%s",newSex);
 
-    if(strcmp(newSex,"ç”·") != 0 && strcmp(newSex,"ç”·") != 0 )
+    if(strcmp(newSex,"ÄĞ") != 0 && strcmp(newSex,"ÄĞ") != 0 )
     {
-        printf("è¯·è¾“å…¥æ­£ç¡®çš„æ€§åˆ«ï¼ï¼ï¼ï¼");
+        printf("ÇëÊäÈëÕıÈ·µÄĞÔ±ğ£¡£¡£¡£¡");
         return;
     }
     strcpy(readers[index].name,newName);

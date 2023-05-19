@@ -4,8 +4,10 @@
 #include "book_manage/book_manage.h"
 #include "reader_manage/reader_manage.h"
 #include "borrow_return/borrow_return.h"
-
+#include "unistd.h"
+void Main_Muen();
 void Collect_operation();
+
 //定位箭头
 int wherex()
 
@@ -48,10 +50,9 @@ void gotoxy(int x, int y)
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
 
 }
-
-int main()
-
+void Main_Muen()
 {
+
     setbuf(stdout,0);
 
     int x, y;
@@ -103,32 +104,59 @@ int main()
     gotoxy(x - 2, y);
 
     //scanf_s("%d", &select);
-    Collect_operation();
+//    Collect_operation();
+//
+//    system("pause");
+//    Sleep(3);
+}
+int main()
 
-    system("pause");
-    Sleep(3);
+{
+    Main_Muen();
+    Collect_operation();
     return 0;
 
 }
-void Collect_operation(){
-    int Scan_number=0;
+void Collect_operation() {
+    system("cls");
+    Main_Muen();
+    int Scan_number = 0;
 
     //收集用户的选择
-    scanf("%d",&Scan_number);
-   //跳入不同模块
-    switch (Scan_number) {
-        case 0:
-            printf("谢谢使用！");
-            break;
-        case 1:Main_book_mana();
-            break;
-        case 2:Main_reader_mana();
-            break;
-        case 3:Main_br_mana();
-            break;
-        default:
-            printf("输入错误，请重输");
-            break;
+    scanf("%d", &Scan_number);
+    //跳入不同模块
+    getchar();
+    while (Scan_number) {
+        switch (Scan_number) {
+            case 0:
+                printf("谢谢使用！");
+                sleep(2);
+                break;
+            case 1:
+                Main_book_mana();
+                break;
+            case 2:
+                Main_reader_mana();
+                break;
+            case 3:
+                Main_br_mana();
+                break;
+            default:
+                printf("输入错误，请重输");
+                break;
+
+        }
+
+            sleep(1);
+            system("cls");
+            Main_Muen();
+            getchar();//从控件获取字符而无需回显;
+
+            scanf("%d", &Scan_number);
+//        sleep(2);
+
+
+
 
     }
 }

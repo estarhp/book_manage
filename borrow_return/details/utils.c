@@ -12,17 +12,17 @@ void createTime(char time_str[]) {
     time_t raw_time;
     struct tm* time_info;
 
-    // èŽ·å–å½“å‰æ—¶é—´æˆ³
+    // »ñÈ¡µ±Ç°Ê±¼ä´Á
     time(&raw_time);
 
-    // å°†æ—¶é—´æˆ³è½¬æ¢ä¸ºæœ¬åœ°æ—¶é—´
+    // ½«Ê±¼ä´Á×ª»»Îª±¾µØÊ±¼ä
     time_info = localtime(&raw_time);
 
-    strftime(time_str, 20, "%Y-%m-%d-%H:%M:%S", time_info);  // ä½¿ç”¨å›ºå®šå¤§å°çš„ç¼“å†²åŒº
+    strftime(time_str, 20, "%Y-%m-%d-%H:%M:%S", time_info);  // Ê¹ÓÃ¹Ì¶¨´óÐ¡µÄ»º³åÇø
 
 }
 
-void close(Borrow *bhead,Return *rhead){
+void rbclose(Borrow *bhead,Return *rhead){
     for (Borrow *p = bhead,*q = NULL; p!=NULL; q=p,p=p->next) {
         free(q);
     }

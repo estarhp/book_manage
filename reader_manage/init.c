@@ -12,7 +12,7 @@ int Readers_number(FILE *fp) {
         if (flag == '\n')
             count++;
     }
-    file_row = count; //è·å¾—è¡Œæ•°ï¼ˆäººçš„æ•°é‡ï¼‰
+    file_row = count; //»ñµÃĞĞÊı£¨ÈËµÄÊıÁ¿£©
 
     rewind(fp);
     return file_row;
@@ -23,7 +23,7 @@ FILE * name_open(){
 
     if ((fp = fopen("../reader_manage/name.txt", "r")) == NULL){
         if ((fp = fopen("reader/name.txt", "r")) == NULL){
-            printf("æ–‡ä»¶è·¯å¾„Error!\n");
+            printf("ÎÄ¼şÂ·¾¶Error!\n");
         }
     }
 
@@ -33,7 +33,7 @@ FILE * name_open(){
 void put_reader(int number,FILE *fp,Reader readers[]) {
     for (int i = 0; i < number; ++i) {
         fscanf(fp,"%s %s %s",&readers[i].id,&readers[i].name,&readers[i].sex);
-    }//ä»æ–‡ä»¶è¯»å…¥äººå
+    }//´ÓÎÄ¼ş¶ÁÈëÈËÃû
 
     fclose(fp);
 

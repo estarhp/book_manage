@@ -4,9 +4,11 @@
 #include "stdio.h"
 #include "string.h"
 #include "../reader_manage.h"
+#include "windows.h"
+#include "unistd.h"
 void search_reader(int readers_number,Reader readers[])
 {
-
+    system("cls");
     int select_mode=0;
     printf("\n\t                        1->通过id                         \t\n");
     printf("\n\t                        2->通过读者                        \t\n");
@@ -21,6 +23,9 @@ void search_reader(int readers_number,Reader readers[])
 
 
     }
+    sleep(2);
+    system("cls");
+
 
 }
 int Search_byreaderid(int readers_number,Reader readers[])

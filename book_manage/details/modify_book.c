@@ -5,6 +5,7 @@
 #include "stdio.h"
 #include "string.h"
 #include "../book_manage.h"
+#include "windows.h"
 void modify_book(int books_number,Book books[]){
 
 
@@ -18,15 +19,17 @@ void modify_book_by_id(int books_number,Book books[]){
     int index = query_byid(books_number,books);
     if (index == -1){
         printf("没有这本书哟！");
+
         return;
+
     }
     char newName[40];
     char newWriter[20];
-    printf("请输入新的书名:");
+    printf("请输入新的书名:\n");
 
     scanf("%s",newName);
 
-    printf("请输入新的作者名:");
+    printf("请输入新的作者名:\n");
 
     scanf("%s",newWriter);
     strcpy(books[index].name,newName);

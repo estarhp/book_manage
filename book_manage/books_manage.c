@@ -22,11 +22,15 @@ void Main_book_mana(){
 }
 
 void Collect(int books_number,Book books[],FILE *fp){
-
+    Menu_book();//显示数据管理的子菜单
     int Scanf;
+    scanf("%d",&Scanf );
+    getchar();
+
+
     //收集用户的选择
 
-    scanf("%d",&Scanf);
+
     //跳入不同模块
     while(Scanf)
     {
@@ -43,15 +47,16 @@ void Collect(int books_number,Book books[],FILE *fp){
         case 5:show_book(books_number,books);
             break;
         default:
-            printf("请输入正确的数字");
+            printf("请输入正确的数字\n");
             break;
 
     }
-//        printf("按任意键返回子菜单");
-//        getchar();   /*接收用户输入任意字符*/
-//        Menu_book();
-//        scanf("%d", &Scanf);
-//        getchar();
+        //printf("|请按任意键返回子菜单|\n");
+        getchar();//从控件获取字符而无需回显;
+        Menu_book();
+        scanf("%d", &Scanf);
+        //getchar();
+
     }
 
 }
@@ -134,9 +139,6 @@ void Menu_book(){
 
     printf("*                  5->显示图书                 *");
     gotoxy_book(15,14);
-    printf("*                按任意键返回主菜单             *");
-
-    gotoxy_book(15, 15);
 
     printf("***********************************************");
 

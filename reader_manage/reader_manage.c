@@ -21,23 +21,38 @@ void Main_reader_mana(){
 
 }
 void Collect_reader(int readers_number,Reader readers[],FILE *fp){
+    Menu_reader();
     int Scanf;
     //收集用户的选择
-    scanf("%d",&Scanf);
-    //跳入不同模块
-    switch (Scanf) {
+    scanf("%d",&Scanf );
+    getchar();
+    while (Scanf) {
+        //跳入不同模块
+        switch (Scanf) {
 
-        case 1:add_reader(readers,readers_number,fp);
-            break;
-        case 2:delete_reader(readers_number,readers);
-            break;
-        case 3:modify_reader_by_id(readers_number,readers);
-            break;
-        case 4:search_reader(readers_number,readers);
-            break;
-        case 5:show_reader(readers_number,readers);
-            break;
+            case 1:
+                add_reader(readers, readers_number, fp);
+                break;
+            case 2:
+                delete_reader(readers_number, readers);
+                break;
+            case 3:
+                modify_reader_by_id(readers_number, readers);
+                break;
+            case 4:
+                search_reader(readers_number, readers);
+                break;
+            case 5:
+                show_reader(readers_number, readers);
+                break;
+                default:
+                printf("请输入正确的数字\n");
+                break;
 
+        }
+        getchar();//从控件获取字符而无需回显;
+        Menu_reader();
+        scanf("%d", &Scanf);
     }
 }
 int wherex_reader()

@@ -26,6 +26,6 @@ void showReturn(Return *head);
 void createTime(char time_str[]);
 void register_borrow(Borrow *head,Book books[],int books_number,Reader readers[],int readers_number,FILE *fp);
 void register_return(Return *head,Book books[],int books_number,Reader readers[],int readers_number,FILE *fp);
-void close(Borrow *bhead,Return *rhead);
+void rbclose(Borrow *bhead,Return *rhead);
 
 #endif //UNTITLED_BORROW_RETURN_H

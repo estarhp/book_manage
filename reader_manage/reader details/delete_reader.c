@@ -4,12 +4,19 @@
 #include "string.h"
 #include "stdio.h"
 #include "../reader_manage.h"
-
+#include "windows.h"
+#include "unistd.h"
 void delete_reader(int readers_number,Reader readers[]){
+    system("cls");
     int delete_input;
-    printf("1 -> 閫氳繃id鍒犻櫎\n"
-           "2 -> 閫氳繃鍚嶅瓧鍒犻櫎\n"
-    );
+    int x,y;
+
+    gotoxy_reader(2000, 5);
+    printf("1 -> 通过id删除\n");
+    gotoxy_reader(2000, 6);
+    printf("2 -> 通过名字删除\n");
+    gotoxy_reader(2000, 7);
+    printf("请输入你的选择：（数字）");
     scanf("%d",&delete_input);
     switch (delete_input) {
         case 1:
@@ -20,12 +27,14 @@ void delete_reader(int readers_number,Reader readers[]){
             break;
 
     }
+    sleep(2);
+    system("cls");
 }
 void open_delete_reader(int will_delete[],int number,int readers_number,Reader readers[]){
     FILE *fp;
     if ((fp = fopen("../reader_manage/name.txt", "w+")) == NULL){
         if ((fp = fopen("reader_manage/name.txt", "w+")) == NULL){
-            printf("鏂囦欢璺緞Error!\n");
+            printf("文件路径Error!\n");
         }
     }
     printf("%p",fp);
@@ -46,7 +55,7 @@ void delete_reader_by_id(int readers_number,Reader readers[]){
     int number=0;
     int will_delete[10];
     int id;
-    printf("璇疯緭鍏ヨ鑰呯殑id");
+    printf("请输入读者的id：\n");
     scanf("%d",&id);
 
     for (int i = 0; i < readers_number; ++i) {
@@ -56,7 +65,7 @@ void delete_reader_by_id(int readers_number,Reader readers[]){
         }
     }
     if(number == 0 ){
-        printf("娌℃湁鎵惧埌婊¤冻瑕佹眰鐨勮鑰咃紒");
+        printf("没有找到满足要求的读者！\n");
         return;
     }
     open_delete_reader(will_delete,number,readers_number,readers);
@@ -65,7 +74,7 @@ void delete_reader_by_name(int readers_number,Reader readers[]){
     int number=0;
     int will_delete[10];
     char readername[20];
-    printf("璇疯緭鍏ヨ鑰呯殑鍚嶅瓧");
+    printf("请输入读者的名字：\n");
     scanf("%s",readername);
 
     for (int i = 0; i < readers_number; ++i) {
@@ -75,7 +84,7 @@ void delete_reader_by_name(int readers_number,Reader readers[]){
         }
     }
     if(number == 0 ){
-        printf("娌℃湁鎵惧埌婊¤冻瑕佹眰鐨勮鑰咃紒");
+        printf("没有找到满足要求的读者！");
         return;
     }
     open_delete_reader(will_delete,number,readers_number,readers);

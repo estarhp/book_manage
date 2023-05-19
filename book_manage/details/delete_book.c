@@ -4,12 +4,20 @@
 #include "../book_manage.h"
 #include "stdio.h"
 #include "string.h"
-
+#include "windows.h"
+#include "unistd.h"
 void delete_book(int books_number,Book books[]){
+    system("cls");
     int delete_input;
-    printf("1 -> 通过id删除\n"
-           "2 -> 通过书名删除\n"
-           "3 -> 通过作者删除\n");
+    int x,y;
+    gotoxy_book(2000, 5);
+    printf("\n\t                        1 -> 通过id删除                        \t\n");
+    gotoxy_book(2001, 6);
+    printf("\n\t                        2 -> 通过书名删除                        \t\n");
+    gotoxy_book(2002, 7);
+    printf("\n\t                        3 -> 通过作者删除                        \t\n");
+    gotoxy_book(2003, 8);
+    printf("\n\t                        请输入你的选择（数字）:                    \t\n");
     scanf("%d",&delete_input);
     switch (delete_input) {
         case 1:
@@ -22,6 +30,8 @@ void delete_book(int books_number,Book books[]){
             delete_book_by_writer(books_number,books);
             break;
     }
+    sleep(2);
+    system("cls");
 }
 
 void open_delete_book(int will_delete[],int number,int books_number,Book books[]){
@@ -51,7 +61,7 @@ void delete_book_by_id(int books_number,Book books[]){
     int number=0;
     int will_delete[10];
     int id;
-    printf("请输入书本的id");
+    printf("请输入书本的id:\n");
     scanf("%d",&id);
 
     for (int i = 0; i < books_number; ++i) {
@@ -69,7 +79,7 @@ void delete_book_by_writer(int books_number,Book books[]){
     int number=0;
     int will_delete[10];
     char writer[50];
-    printf("请输入书本的作者:");
+    printf("请输入书本的作者:\n");
     scanf("%s",writer);
     for (int i = 0; i < books_number; ++i) {
         if(strcmp(writer,books[i].writer)==0){
@@ -85,7 +95,7 @@ void delete_book_by_name(int books_number,Book books[]){
     int number=0;
     int will_delete[10];
     char bookname[20];
-    printf("请输入书本的书名:");
+    printf("请输入书本的书名:\n");
     scanf("%s",bookname);
 
     for (int i = 0; i < books_number; ++i) {
@@ -94,7 +104,8 @@ void delete_book_by_name(int books_number,Book books[]){
             number++;
         }
     }
-    if(number == 0 ) {printf("没有符合要求的图书！！");
+    if(number == 0 ) {
+        printf("没有符合要求的图书！！");
         return;}
     open_delete_book(will_delete,number,books_number,books);
 

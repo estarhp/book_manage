@@ -8,9 +8,10 @@
 void add_reader(Reader readers[],int readers_number,FILE *fp){
     rewind(fp);
     Reader addreader;
-    printf("璇疯緭鍏ヨ娣诲姞鐨勮鑰呭悕");
+    printf("请输入要添加的读者名：\n");
     scanf("%s",&addreader.name);
     addreader.id=readers[readers_number-1].id+1;
     fprintf(fp, "%d %s\n", addreader.id, addreader.name);
+    printf("您已成功添加新的读者!");
 
 }

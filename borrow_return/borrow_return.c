@@ -24,35 +24,35 @@ void Main_br_mana(){
 
 
 
-    //åˆå§‹åŒ–readeræ¨¡å—
+    //³õÊ¼»¯readerÄ£¿é
     FILE *fp1=name_open();
 
-    int readers_number= Readers_number(fp1);//è·å¾—è¯»è€…æ•°é‡
+    int readers_number= Readers_number(fp1);//»ñµÃ¶ÁÕßÊıÁ¿
 
-    Reader readers[readers_number];//åˆ›å»ºè¯»è€…å®¹å™¨
+    Reader readers[readers_number];//´´½¨¶ÁÕßÈİÆ÷
 
-    put_reader(readers_number,fp1,readers);//å°†è¯»è€…ä¿¡æ¯æ”¾å…¥å®¹å™¨
+    put_reader(readers_number,fp1,readers);//½«¶ÁÕßĞÅÏ¢·ÅÈëÈİÆ÷
 
-    //åˆå§‹åŒ–bookæ¨¡å—
+    //³õÊ¼»¯bookÄ£¿é
 
-    FILE *fp2=file_open();//æ‰“å¼€ä¹¦æœ¬æ–‡ä»¶
+    FILE *fp2=file_open();//´ò¿ªÊé±¾ÎÄ¼ş
 
-    int books_number=Books_number(fp2);//è®¡ç®—å›¾ä¹¦æ•°é‡
+    int books_number=Books_number(fp2);//¼ÆËãÍ¼ÊéÊıÁ¿
 
-    Book books[books_number];//åˆ›å»ºå›¾ä¹¦å®¹å™¨
+    Book books[books_number];//´´½¨Í¼ÊéÈİÆ÷
 
-    put_book(books_number,fp2,books);//å°†ä¹¦æœ¬æ”¾å…¥å®¹å™¨
+    put_book(books_number,fp2,books);//½«Êé±¾·ÅÈëÈİÆ÷
 
-    fclose(fp1);//å…³é—­æ–‡ä»¶
-    fclose(fp2);//å…³é—­æ–‡ä»¶
+    fclose(fp1);//¹Ø±ÕÎÄ¼ş
+    fclose(fp2);//¹Ø±ÕÎÄ¼ş
 
-// 1.å±•ç¤ºå€Ÿä¹¦è®°å½•ï¼Œå±•ç¤ºè¿˜ä¹¦è®°å½•
+// 1.Õ¹Ê¾½èÊé¼ÇÂ¼£¬Õ¹Ê¾»¹Êé¼ÇÂ¼
     //    showBorrow(bhead);
     //    showReturn(rhead);
 
 
 
-//2.å€Ÿä¹¦ç™»è®°ï¼Œè¿˜ä¹¦ç™»è®°
+//2.½èÊéµÇ¼Ç£¬»¹ÊéµÇ¼Ç
 
 //    register_borrow(bhead,books,books_number,readers,readers_number,bfp);
 //    register_return(rhead,books,books_number,readers,readers_number,rfp);
@@ -62,8 +62,8 @@ void Main_br_mana(){
 
 
 
-    //é‡Šæ”¾é“¾è¡¨å†…å­˜ï¼Œé˜²æ­¢å†…å­˜æ³„éœ²
-    close(bhead,rhead);
+    //ÊÍ·ÅÁ´±íÄÚ´æ£¬·ÀÖ¹ÄÚ´æĞ¹Â¶
+    rbclose(bhead,rhead);
 
     fclose(bfp);
     fclose(rfp);
@@ -71,5 +71,103 @@ void Main_br_mana(){
 
 }
 
-void br_Menu(){};
+void br_Menu(){
+    int wherex_br()
+
+    {
+
+        CONSOLE_SCREEN_BUFFER_INFO pBuffer;
+
+        GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &pBuffer);
+
+        return (pBuffer.dwCursorPosition.X + 1);
+
+    }
+
+//»ñÈ¡¹â±êµÄÎ»ÖÃy
+
+    int wherey_br()
+
+    {
+
+        CONSOLE_SCREEN_BUFFER_INFO pBuffer;
+
+        GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &pBuffer);
+
+        return (pBuffer.dwCursorPosition.Y + 1);
+
+    }
+
+//ÉèÖÃ¹â±êµÄÎ»ÖÃ
+
+    void gotoxy_br(int x, int y)
+
+    {
+
+        COORD c;
+
+        c.X = x - 1;
+
+        c.Y = y - 1;
+
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
+
+    }
+
+    void Menu_br(){
+
+        setbuf(stdout,0);//»º³å
+
+        int x, y;
+
+        //int select;
+
+        gotoxy_reade(24, 5);
+
+        printf("*******»¶Ó­À´µ½¶ÁÕß¹ÜÀíÏµÍ³*******");
+
+        gotoxy_reader(15, 8);
+
+        printf("*********************Ö÷²Ëµ¥*********************");
+
+        gotoxy_reader(15, 9);
+
+        printf("*                  1->ĞÂÔö¶ÁÕß                 *");
+
+        gotoxy_reader(15, 10);
+
+        printf("*                  2->É¾³ı¶ÁÕß                 *");
+
+        gotoxy_reader(15, 11);
+
+        printf("*                  3->ĞŞ¸Ä¶ÁÕß                 *");
+
+        gotoxy_reader(15, 12);
+
+        printf("*                  4->²éÑ¯¶ÁÕß                 *");
+
+        gotoxy_reader(15, 13);
+
+        printf("*                  5->ÏÔÊ¾¶ÁÕß                 *");
+
+        gotoxy_reader(15, 14);
+
+        printf("**********************************************");
+
+        gotoxy_reader(28, 16);
+
+        printf("ÇëÊäÈëÄãµÄÑ¡Ôñ(Êı×Ö):[ ]");
+
+        x = wherex_reader();
+
+        y = wherey_reader();
+
+        gotoxy_reader(x - 2, y);
+
+
+
+
+    }
+
+};
 

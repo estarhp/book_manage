@@ -11,7 +11,7 @@ FILE * r_file_open(){
     FILE *fp;
     if ((fp = fopen("../borrow_return/return.txt", "a+")) == NULL){
         if ((fp = fopen("borrow_return/return.txt", "a+")) == NULL){
-            printf("鏂囦欢璺緞Error!\n");
+            printf("文件路径Error!\n");
         }
     }
 
@@ -22,7 +22,7 @@ FILE * b_file_open(){
     FILE *fp;
     if ((fp = fopen("../borrow_return/borrow.txt", "a+")) == NULL){
         if ((fp = fopen("borrow_return/borrow.txt", "a+")) == NULL){
-            printf("鏂囦欢璺緞Error!\n");
+            printf("文件路径Error!\n");
         }
     }
 

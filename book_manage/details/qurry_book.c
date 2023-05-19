@@ -4,9 +4,12 @@
 #include "../book_manage.h"
 #include "stdio.h"
 #include "string.h"
-
+#include "windows.h"
+#include "unistd.h"
 void query_book(int books_number,Book books[]){
     setbuf(stdout,0);//»º³å
+
+    system("cls");
     int select_mode=0;
     int x,y;
     gotoxy_book(2000, 5);
@@ -34,6 +37,8 @@ void query_book(int books_number,Book books[]){
         case 3:query_bybookname(books_number,books);
 
     }
+    sleep(2);
+    system("cls");
 
 }
 

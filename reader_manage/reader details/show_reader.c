@@ -4,19 +4,24 @@
 #include "stdio.h"
 #include "string.h"
 #include "../reader_manage.h"
+#include "windows.h"
+#include "unistd.h"
 void show_reader(int readers_number,Reader *readers){
+    system("cls");
     int start=0,end=0;
-    printf("è¯·è¾“å…¥è¦çœ‹çš„è¯»è€…çš„åºæ•°èŒƒå›´ï¼š\nä»åºæ•°__å¼€å§‹ï¼š");
+    printf("ÇëÊäÈëÒª¿´µÄ¶ÁÕßµÄĞòÊı·¶Î§£º\n´ÓĞòÊı__¿ªÊ¼£º\n");
     scanf("%d",&start);
-    printf("ä»åºæ•°__ç»“æŸï¼š");
+    printf("´ÓĞòÊı__½áÊø£º\n");
     scanf("%d",&end);
 
 
     if (start<end||end>=readers_number||start<0){
-        printf("è¾“å…¥æ•°æ®é”™è¯¯");
+        printf("ÊäÈëÊı¾İ´íÎó!!!");
+        sleep(2);
+        system("cls");
         return;
     }
-    printf("ä»¥ä¸‹ä¸ºè¯»è€…åºæ•°åœ¨%d~%dèŒƒå›´ä¹‹å†…çš„è¯»è€…ï¼š\n",start,end);
+    printf("ÒÔÏÂÎª¶ÁÕßĞòÊıÔÚ%d~%d·¶Î§Ö®ÄÚµÄ¶ÁÕß£º\n",start,end);
 
 
     for (int i = start; i <= end; ++i) {
