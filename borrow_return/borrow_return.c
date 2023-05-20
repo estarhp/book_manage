@@ -55,12 +55,12 @@ void Main_br_mana(){
     Collect_br(bhead,rhead,books,books_number,readers,readers_number,bfp,rfp);
         //br_Menu();
 // 1.展示借书记录，展示还书记录
-        showBorrow(bhead);
-        showReturn(rhead);
-//2.借书登记，还书登记
-
-    register_borrow(bhead,books,books_number,readers,readers_number,bfp);
-    register_return(rhead,books,books_number,readers,readers_number,rfp);
+//        showBorrow(bhead);
+//        showReturn(rhead);
+////2.借书登记，还书登记
+//
+//    register_borrow(bhead,books,books_number,readers,readers_number,bfp);
+//    register_return(rhead,books,books_number,readers,readers_number,rfp);
     //释放链表内存，防止内存泄露
     rbclose(bhead,rhead);
 
