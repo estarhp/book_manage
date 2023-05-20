@@ -18,8 +18,9 @@ void showReturn(Return *head){
                p->book.writer,
                p->book.name);
     }
-    sleep(2);
-    system("cls");
+
+    printf("按回车键继续！");
+
 }
 
 void register_return(Return *head,Book books[],int books_number,Reader readers[],int readers_number,FILE *fp){
