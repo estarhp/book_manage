@@ -22,7 +22,7 @@ void open_delete_reader(int will_delete[],int number,int readers_number,Reader b
 void delete_reader_by_id(int readers_number,Reader readers[]);
 void delete_reader_by_name(int readers_number,Reader readers[]);
 void modify_reader_by_id(int readers_number,Reader readers[]);
-int add_reader(Reader readers[],int readers_number,FILE *fp);//新增
+void add_reader(Reader readers[],int readers_number,FILE *fp);//新增
 int wherex_reader();
 int wherey_reader();
 void gotoxy_reader(int x, int y);
