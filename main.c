@@ -69,7 +69,7 @@ void Main_Muen()
 
     gotoxy(15, 9);
 
-    printf("*                  0->感谢使用系统（自动关闭）*");
+    printf("*                  0->感谢使用系统（自动关闭） *");
 
     gotoxy(15, 10);
 
