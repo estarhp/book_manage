@@ -46,7 +46,7 @@ void register_return(Return *head,Book books[],int books_number,Reader readers[]
     p->next = q;
 
 
-
+    rewind(fp);
     fprintf(fp,"%s %d %s %s %d %s %s\n",q->time,
             q->reader.id,
             q->reader.name,
@@ -55,5 +55,6 @@ void register_return(Return *head,Book books[],int books_number,Reader readers[]
             q->book.writer,
             q->book.name);
     sleep(2);
+    printf("»Ø³µÍË³ö¡­¡­");
 
 }

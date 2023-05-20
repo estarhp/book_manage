@@ -22,3 +22,8 @@
 909	1152	7062599586862452	untitled.exe	f8df862b0b0175e6
 4	141	7062600610369824	CMakeFiles/untitled.dir/borrow_return/details/borrow.c.obj	37cd83d03216919
 5	249	7062600673990252	untitled.exe	f8df862b0b0175e6
+4	117	7062602671035444	CMakeFiles/untitled.dir/reader_manage/reader_details/add_reader.c.obj	aaf6963930599a2b
+117	304	7062602672830292	untitled.exe	f8df862b0b0175e6
+4	154	7062607778006190	CMakeFiles/untitled.dir/borrow_return/details/borrow.c.obj	37cd83d03216919
+14	155	7062607778006190	CMakeFiles/untitled.dir/borrow_return/details/return.c.obj	7409457d778fa4f2
+155	359	7062607780013124	untitled.exe	f8df862b0b0175e6

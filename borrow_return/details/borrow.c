@@ -43,6 +43,15 @@ void register_borrow(Borrow *head,Book books[],int books_number,Reader readers[]
     q->next = NULL;
     p->next = q;
 
+    rewind(fp);
+    fprintf(fp,"%s %d %s %s %d %s %s\n",q->time,
+            q->reader.id,
+            q->reader.name,
+            q->reader.sex,
+            q->book.id,
+            q->book.writer,
+            q->book.name);
+
     sleep(2);
     printf("»Ø³µÍË³ö¡­¡­");
 
