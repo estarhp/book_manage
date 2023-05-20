@@ -5,7 +5,7 @@
 #include "../reader_manage.h"
 #include "string.h"
 
-void add_reader(Reader readers[],int readers_number,FILE *fp){
+int add_reader(Reader readers[],int readers_number,FILE *fp){
     rewind(fp);
     Reader addreader;
     printf("请输入要添加的读者名：\n");
@@ -14,7 +14,7 @@ void add_reader(Reader readers[],int readers_number,FILE *fp){
     scanf("%s",&addreader.sex);
     if(strcmp(addreader.sex,"男") !=0 && strcmp(addreader.sex , "女") !=0 ){
         printf("输入了错误的性别!!!!");
-        return;
+        return -1;
     }
     addreader.id=readers[readers_number-1].id+1;
     fprintf(fp, "%d %s %s\n", addreader.id, addreader.name,addreader.sex);
