@@ -16,8 +16,7 @@ void showBorrow(Borrow *head){
                p->book.name);
     }
     printf("按回车键继续！");
-    sleep(2);
-    system("cls");
+
 }
 
 void register_borrow(Borrow *head,Book books[],int books_number,Reader readers[],int readers_number,FILE *fp) {

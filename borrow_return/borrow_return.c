@@ -55,12 +55,12 @@ void Main_br_mana(){
     Collect_br(bhead,rhead,books,books_number,readers,readers_number,bfp,rfp);
         //br_Menu();
 // 1.展示借书记录，展示还书记录
-        showBorrow(bhead);
-        showReturn(rhead);
+//        showBorrow(bhead);
+//        showReturn(rhead);
 //2.借书登记，还书登记
 
-    register_borrow(bhead,books,books_number,readers,readers_number,bfp);
-    register_return(rhead,books,books_number,readers,readers_number,rfp);
+//    register_borrow(bhead,books,books_number,readers,readers_number,bfp);
+//    register_return(rhead,books,books_number,readers,readers_number,rfp);
     //释放链表内存，防止内存泄露
     rbclose(bhead,rhead);
 
@@ -103,7 +103,9 @@ void Collect_br(Borrow *bhead,Return *rhead,Book books[],int books_number,Reader
 
         }
         //printf("|请按任意键返回子菜单|\n");
-        getchar();//从控件获取字符而无需回显;
+        getchar();
+        system("cls");
+        //从控件获取字符而无需回显;
         br_Menu();
         scanf("%d", &Scanf);
         //getchar();
