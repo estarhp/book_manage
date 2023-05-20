@@ -23,11 +23,17 @@ void createTime(char time_str[]) {
 }
 
 void rbclose(Borrow *bhead,Return *rhead){
-    for (Borrow *p = bhead,*q = NULL; p!=NULL; q=p,p=p->next) {
+    Borrow *q = NULL;
+    for (Borrow *p = bhead; p!=NULL; q=p,p=p->next) {
         free(q);
     }
-    for (Return *p = rhead,*q = NULL; p!=NULL; q=p,p=p->next) {
+    free(q);
+
+    Borrow *t = NULL;
+    for (Return *p = rhead; p!=NULL; q=t,p=p->next) {
         free(q);
     }
+
+    free(t);
 }
 
