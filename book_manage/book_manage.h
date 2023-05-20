@@ -18,7 +18,6 @@ int Books_number(FILE *fp);//计算文件中图书的数目
 void Menu_book();
 int Collect(int books_number,Book books[],FILE *fp);//收集用户的选择
 void delete_book(int books_number,Book books[]);//删除
-void modify_book(int books_number,Book books[]);
 void query_book(int books_number,Book books[]);//查询图书
 void show_book(int books_number,Book *books);//展示图书
 int query_byid(int books_number,Book books[]);//通过id
@@ -31,8 +30,6 @@ void delete_book_by_id(int books_number,Book books[]);
 void delete_book_by_writer(int books_number,Book books[]);
 void delete_book_by_name(int books_number,Book books[]);
 void modify_book_by_id(int books_number,Book books[]);
-void modify_book_by_name(int books_number,Book books[]);
-void modify_book_by_writer(int books_number,Book books[]);
 void open_delete_book(int will_delete[],int number, int books_number,Book books[]);
 
 #endif //UNTITLED_BOOK_MANAGE_H
