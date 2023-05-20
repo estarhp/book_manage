@@ -29,6 +29,7 @@ int Main_book_mana(){
 }
 
 int Collect(int books_number,Book books[],FILE *fp){
+
     Menu_book();//显示数据管理的子菜单
     int Scanf;
     scanf("%d",&Scanf );
@@ -62,8 +63,10 @@ int Collect(int books_number,Book books[],FILE *fp){
     }
         //printf("|请按任意键返回子菜单|\n");
         getchar();//从控件获取字符而无需回显;
+        system("cls");
         Menu_book();
-        scanf("%d", &Scanf);
+        fflush(stdin);
+        scanf(" %d", &Scanf);
         //getchar();
 
     }
