@@ -1,7 +1,7 @@
 #include "stdio.h"
 #include "windows.h"
 #include "reader_manage.h"
-
+//hhh
 int Main_reader_mana(){
     FILE *fp=name_open();
 
@@ -23,18 +23,25 @@ int Main_reader_mana(){
 
 }
 int Collect_reader(int readers_number,Reader readers[],FILE *fp){
+    system("cls");
     Menu_reader();
     int Scanf;
+
     //收集用户的选择
-    scanf("%d",&Scanf );
+    scanf(" %d",&Scanf );
     getchar();
+    int success;
     while (Scanf) {
         //跳入不同模块
         switch (Scanf) {
 
             case 1:
-                add_reader(readers, readers_number, fp);
-                return 1;
+                success = add_reader(readers, readers_number, fp);
+                if (success !=-1){
+                    return 1;
+                }
+                break;
+
             case 2:
                 delete_reader(readers_number, readers);
                 return 1;
