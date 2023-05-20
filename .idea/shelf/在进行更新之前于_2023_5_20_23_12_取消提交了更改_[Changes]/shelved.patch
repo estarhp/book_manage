@@ -1,0 +1,23 @@
+Index: cmake-build-debug/.ninja_log
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># ninja log v5\r\n52\t2819\t7062554045054317\tCMakeFiles/untitled.dir/book_manage/details/modify_book.c.obj\t867e50fd0b57a55a\r\n5\t909\t7062599584482231\tCMakeFiles/untitled.dir/borrow_return/borrow_return.c.obj\t6230fef8acecb61a\r\n30\t2315\t7062554039689939\tCMakeFiles/untitled.dir/book_manage/details/add_book.c.obj\tdb90188f16a19504\r\n67\t2744\t7062554044294365\tCMakeFiles/untitled.dir/book_manage/details/show_book.c.obj\ta90aaac4564a2ca\r\n38\t2300\t7062554039679912\tCMakeFiles/untitled.dir/book_manage/init_book.c.obj\td801bc8e8758739e\r\n144\t316\t7062563576236577\tCMakeFiles/untitled.dir/reader_manage/reader_details/modify_reader.c.obj\taeea631bcf4d73a0\r\n74\t2837\t7062554045234378\tCMakeFiles/untitled.dir/book_manage/details/qurry_book.c.obj\t6d41e52f49c0bb2\r\n44\t2874\t7062554045624326\tCMakeFiles/untitled.dir/book_manage/details/delete_book.c.obj\t3ab323db413dc561\r\n15\t154\t7062599576931546\tCMakeFiles/untitled.dir/borrow_return/details/borrow.c.obj\t37cd83d03216919\r\n56\t246\t7062563575487973\tCMakeFiles/untitled.dir/reader_manage/init.c.obj\t5e5f2471ce89e221\r\n104\t314\t7062563576226579\tCMakeFiles/untitled.dir/borrow_return/details/utils.c.obj\te646ab660aea5b46\r\n44\t243\t7062563575487973\tCMakeFiles/untitled.dir/reader_manage/reader_details/add_reader.c.obj\taaf6963930599a2b\r\n5\t149\t7062593652059698\tCMakeFiles/untitled.dir/borrow_return/details/return.c.obj\t7409457d778fa4f2\r\n90\t302\t7062563576096577\tCMakeFiles/untitled.dir/borrow_return/init.c.obj\t2795190f2649c58f\r\n79\t1272\t7062563585836914\tCMakeFiles/untitled.dir/reader_manage/reader_details/delete_reader.c.obj\tfaefef19e547e9c0\r\n117\t1244\t7062563585556649\tCMakeFiles/untitled.dir/reader_manage/reader_details/search.c.obj\t602eec751f7eb7a1\r\n130\t1270\t7062563585816639\tCMakeFiles/untitled.dir/reader_manage/reader_details/show_reader.c.obj\t75f31a78ad6c38a6\r\n19\t1232\t7062563585426641\tCMakeFiles/untitled.dir/book_manage/books_manage.c.obj\t242a5bb314232769\r\n5\t950\t7062595318281375\tCMakeFiles/untitled.dir/main.c.obj\td77296442492a0af\r\n4\t640\t7062570944821580\tCMakeFiles/untitled.dir/reader_manage/reader_manage.c.obj\t9c8445ff833fa539\r\n909\t1152\t7062599586862452\tuntitled.exe\tf8df862b0b0175e6\r\n4\t141\t7062600610369824\tCMakeFiles/untitled.dir/borrow_return/details/borrow.c.obj\t37cd83d03216919\r\n5\t249\t7062600673990252\tuntitled.exe\tf8df862b0b0175e6\r\n4\t117\t7062602671035444\tCMakeFiles/untitled.dir/reader_manage/reader_details/add_reader.c.obj\taaf6963930599a2b\r\n117\t304\t7062602672830292\tuntitled.exe\tf8df862b0b0175e6\r\n4\t154\t7062607778006190\tCMakeFiles/untitled.dir/borrow_return/details/borrow.c.obj\t37cd83d03216919\r\n14\t155\t7062607778006190\tCMakeFiles/untitled.dir/borrow_return/details/return.c.obj\t7409457d778fa4f2\r\n155\t359\t7062607780013124\tuntitled.exe\tf8df862b0b0175e6\r\n
+===================================================================
+diff --git a/cmake-build-debug/.ninja_log b/cmake-build-debug/.ninja_log
+--- a/cmake-build-debug/.ninja_log	
++++ b/cmake-build-debug/.ninja_log	
+@@ -27,3 +27,14 @@
+ 4	154	7062607778006190	CMakeFiles/untitled.dir/borrow_return/details/borrow.c.obj	37cd83d03216919
+ 14	155	7062607778006190	CMakeFiles/untitled.dir/borrow_return/details/return.c.obj	7409457d778fa4f2
+ 155	359	7062607780013124	untitled.exe	f8df862b0b0175e6
++4	2411	7062982855106452	CMakeFiles/untitled.dir/main.c.obj	d77296442492a0af
++2412	3714	7062982868096066	untitled.exe	f8df862b0b0175e6
++3	665	7062985180802129	CMakeFiles/untitled.dir/main.c.obj	d77296442492a0af
++665	817	7062985182292307	untitled.exe	f8df862b0b0175e6
++12	699	7062986491013596	CMakeFiles/untitled.dir/book_manage/books_manage.c.obj	242a5bb314232769
++4	709	7062986491113731	CMakeFiles/untitled.dir/main.c.obj	d77296442492a0af
++709	867	7062986492654109	untitled.exe	f8df862b0b0175e6
++3	693	7062986980693952	CMakeFiles/untitled.dir/main.c.obj	d77296442492a0af
++694	842	7062986982133955	untitled.exe	f8df862b0b0175e6
++4	667	7062987092341620	CMakeFiles/untitled.dir/main.c.obj	d77296442492a0af
++668	818	7062987093807617	untitled.exe	f8df862b0b0175e6
