@@ -2,6 +2,7 @@
 #include "windows.h"
 #include "reader_manage.h"
 //hhh
+//hhhh
 int Main_reader_mana(){
     FILE *fp=name_open();
 
