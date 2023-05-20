@@ -68,7 +68,7 @@ void query_bywriter(int books_number,Book books[]){
     for (int i = 0; i < books_number; ++i) {
         if(strcmp(writer,books[i].writer)==0){
 
-            printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
+            printf("%d %s %s\n",books[i].id,books[i].writer,books[i].name);
             flag=0;
         }
 
@@ -87,7 +87,7 @@ void query_bybookname(int books_number,Book books[]){
 
     for (int i = 0; i < books_number; ++i) {
         if(strcmp(bookname,books[i].name)==0){
-            printf("%d %s %s ",books[i].id,books[i].writer,books[i].name);
+            printf("%d %s %s\n",books[i].id,books[i].writer,books[i].name);
             flag = 0;
         }
 

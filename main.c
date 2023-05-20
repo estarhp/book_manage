@@ -116,6 +116,7 @@ void Collect_operation() {
     system("cls");
     Main_Muen();
     int Scan_number = 0;
+    int will_reload;
 
     //收集用户的选择
     scanf("%d", &Scan_number);
@@ -127,10 +128,18 @@ void Collect_operation() {
                 printf("感谢使用该系统（自动关闭）！！！");
                 break;
             case 1:
-                Main_book_mana();
+               will_reload = Main_book_mana();
+                if (will_reload == 1){
+                    system("cls");
+                    Main_book_mana();
+                }
                 break;
             case 2:
-                Main_reader_mana();
+                will_reload = Main_reader_mana();
+                if (will_reload == 1){
+                    system("cls");
+                    Main_reader_mana();
+                }
                 break;
             case 3:
                 Main_br_mana();

@@ -2,7 +2,7 @@
 #include "windows.h"
 #include "reader_manage.h"
 
-void Main_reader_mana(){
+int Main_reader_mana(){
     FILE *fp=name_open();
 
     int readers_number= Readers_number(fp);//获得读者数量
@@ -13,12 +13,16 @@ void Main_reader_mana(){
 
     Menu_reader();
 
-    Collect_reader(readers_number,readers,fp);
+    int will_reload = Collect_reader(readers_number,readers,fp);
+    if (will_reload == 1){
+        fclose(fp);//关闭文件
+        return 1;
+    }
 
     fclose(fp);//关闭文件
 
 }
-void Collect_reader(int readers_number,Reader readers[],FILE *fp){
+int Collect_reader(int readers_number,Reader readers[],FILE *fp){
     Menu_reader();
     int Scanf;
     //收集用户的选择
@@ -30,10 +34,10 @@ void Collect_reader(int readers_number,Reader readers[],FILE *fp){
 
             case 1:
                 add_reader(readers, readers_number, fp);
-                break;
+                return 1;
             case 2:
                 delete_reader(readers_number, readers);
-                break;
+                return 1;
             case 3:
                 modify_reader_by_id(readers_number, readers);
                 break;

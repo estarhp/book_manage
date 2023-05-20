@@ -9,7 +9,6 @@
 void delete_reader(int readers_number,Reader readers[]){
     system("cls");
     int delete_input;
-    int x,y;
 
     gotoxy_reader(2000, 5);
     printf("1 -> Í¨¹ıidÉ¾³ı\n");
@@ -45,7 +44,7 @@ void open_delete_reader(int will_delete[],int number,int readers_number,Reader r
             if(will_delete[k]==j) flag=0;
         }
         if(flag)
-            fprintf(fp,"%d %s %s\n",readers[j].id,readers[j].name);
+            fprintf(fp,"%d %s %s\n",readers[j].id,readers[j].name,readers[j].sex);
     }
     fclose(fp);
 

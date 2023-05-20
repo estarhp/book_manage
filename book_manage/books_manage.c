@@ -3,7 +3,7 @@
 #include "windows.h"
 #include "book_manage.h"
 
-void Main_book_mana(){
+int Main_book_mana(){
 
     FILE *fp=file_open();//打开书本文件
 
@@ -15,10 +15,16 @@ void Main_book_mana(){
 
     Menu_book();
 
-   Collect(books_number,books,fp);
+   int will_reload = Collect(books_number,books,fp);
+    if (will_reload == 1){
+        fclose(fp);//关闭文件
+        return 1;
+    }
 
 
     fclose(fp);//关闭文件
+
+
 
 }
 
@@ -42,7 +48,7 @@ int Collect(int books_number,Book books[],FILE *fp){
         case 1:add_book(books,books_number,fp);
             return 1;
         case 2:delete_book(books_number,books);
-            break;
+            return 1;
         case 3:modify_book_by_id(books_number,books);
             break;
         case 4:query_book(books_number,books);

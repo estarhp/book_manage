@@ -10,7 +10,7 @@ typedef struct book {
     char writer[20];
 } Book;
 
-void Main_book_mana();
+int Main_book_mana();
 void add_book(Book books[],int books_number,FILE *fp);
 FILE * file_open();
 void put_book(int number,FILE *fp,Book books[]);//初始化图书

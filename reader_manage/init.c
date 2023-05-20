@@ -21,8 +21,8 @@ int Readers_number(FILE *fp) {
 FILE * name_open(){
     FILE *fp;
 
-    if ((fp = fopen("../reader_manage/name.txt", "r")) == NULL){
-        if ((fp = fopen("reader/name.txt", "r")) == NULL){
+    if ((fp = fopen("../reader_manage/name.txt", "a+")) == NULL){
+        if ((fp = fopen("reader/name.txt", "a+")) == NULL){
             printf("文件路径Error!\n");
         }
     }
@@ -32,9 +32,8 @@ FILE * name_open(){
 
 void put_reader(int number,FILE *fp,Reader readers[]) {
     for (int i = 0; i < number; ++i) {
-        fscanf(fp,"%s %s %s",&readers[i].id,&readers[i].name,&readers[i].sex);
+        fscanf(fp,"%d %s %s",&readers[i].id,&readers[i].name,&readers[i].sex);
     }//从文件读入人名
-
-    fclose(fp);
+    
 
 }

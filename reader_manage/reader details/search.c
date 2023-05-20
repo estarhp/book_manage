@@ -36,7 +36,7 @@ int Search_byreaderid(int readers_number,Reader readers[])
     printf("以下是匹配的查询结果：\n");
     for (int i = 0; i < readers_number; ++i) {
         if(readers[i].id==id){
-            printf("%d %s %s ",readers[i].id,readers[i].sex,readers[i].name);
+            printf("%d %s %s\n",readers[i].id,readers[i].sex,readers[i].name);
             return i;
         }
 
@@ -57,7 +57,7 @@ void Search_byreadername(int readers_number,Reader readers[])
     for (int i = 0; i < readers_number; ++i) {
         if(strcmp(name,readers[i].name)==0){
 
-            printf("%d %s %s ",readers[i].id,readers[i].sex,readers[i].name);
+            printf("%d %s %s\n",readers[i].id,readers[i].sex,readers[i].name);
             flag = 0;
         }
 

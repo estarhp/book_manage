@@ -12,7 +12,7 @@ void modify_reader_by_id(int readers_number, Reader  readers[]){
     }
     char newName[12];
     char newSex[3];
-    printf("请输入新的书名：\n");
+    printf("请输入新的姓名：\n");
 
     scanf("%s",newName);
 

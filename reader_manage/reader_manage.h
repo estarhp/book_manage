@@ -6,12 +6,12 @@ typedef struct reader {
     char name[12];
     char sex[3];
 } Reader;
-void Main_reader_mana();
+int Main_reader_mana();
 int Readers_number(FILE *fp);
 void put_reader(int number,FILE *fp,Reader readers[]);//初始化
 FILE * name_open();
 void Menu_reader();
-void Collect_reader(int readers_number,Reader readers[],FILE *fp);//收集用户的选择
+int Collect_reader(int readers_number,Reader readers[],FILE *fp);//收集用户的选择
 int Readers_number(FILE *fp);
 void show_reader(int readers_number,Reader *readers);//展示读者信息
 void search_reader(int readers_number,Reader readers[]);//查询读者信息
