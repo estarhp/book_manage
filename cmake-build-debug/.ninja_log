@@ -85,3 +85,7 @@
 591	728	7062576218038640	untitled.exe	f8df862b0b0175e6
 3	598	7062578831186088	CMakeFiles/untitled.dir/main.c.obj	d77296442492a0af
 598	731	7062578832476060	untitled.exe	f8df862b0b0175e6
+22	166	7062583388779810	CMakeFiles/untitled.dir/borrow_return/details/return.c.obj	7409457d778fa4f2
+14	181	7062583388939970	CMakeFiles/untitled.dir/borrow_return/details/borrow.c.obj	37cd83d03216919
+4	829	7062583395419907	CMakeFiles/untitled.dir/borrow_return/borrow_return.c.obj	6230fef8acecb61a
+3	183	7062583463283988	untitled.exe	f8df862b0b0175e6
