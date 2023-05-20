@@ -83,7 +83,8 @@ void Collect_br(Borrow *bhead,Return *rhead,Book books[],int books_number,Reader
     while(Scanf)
     {
         switch (Scanf) {
-
+            case 0:
+                break;
             case 1:
                 showBorrow(bhead);
                 break;
