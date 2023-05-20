@@ -103,6 +103,7 @@ void Collect_br(Borrow *bhead,Return *rhead,Book books[],int books_number,Reader
 
         }
         //printf("|请按任意键返回子菜单|\n");
+        fflush(stdin);
         getchar();
         system("cls");
         //从控件获取字符而无需回显;

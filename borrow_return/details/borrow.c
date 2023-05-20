@@ -27,19 +27,24 @@ void register_borrow(Borrow *head,Book books[],int books_number,Reader readers[]
     if (index_reader==-1) {
         printf("数据库中没有这位读者的信息，请先添加该读者\n");
         sleep(2);
-        system("cls");
+//        system("cls");
         return;
     }
     q->reader = readers[index_reader];
     int index_book = query_byid(books_number,books);
     if (index_book==-1) {
         printf("数据库中没有这本图书的信息，请先添加该书本\n");
-        system("cls");
+        sleep(2);
+//        system("cls");
         return;
     }
     q->book = books[index_book];
     createTime(q->time);
     q->next = NULL;
     p->next = q;
+
+    sleep(2);
+    printf("回车退出……");
+
 
 }

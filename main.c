@@ -153,7 +153,7 @@ void Collect_operation() {
 
             system("cls");
             Main_Muen();
-            getchar();//从控件获取字符而无需回显;
+            //getchar();//从控件获取字符而无需回显;
             scanf("%d", &Scan_number);
             sleep(2);
 
