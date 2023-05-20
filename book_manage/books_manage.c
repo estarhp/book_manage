@@ -29,7 +29,7 @@ int Main_book_mana(){
 }
 
 int Collect(int books_number,Book books[],FILE *fp){
-
+    system("cls");
     Menu_book();//显示数据管理的子菜单
     int Scanf;
     scanf("%d",&Scanf );
