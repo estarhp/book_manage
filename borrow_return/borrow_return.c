@@ -189,9 +189,9 @@ void gotoxy_br(int x, int y)
 
         printf("*                  4->还书登记                 *");
 
-//        gotoxy_br(15,13);
-//        printf("*                  0->退出系统                  *");
         gotoxy_br(15,13);
+        printf("*                  0->返回主菜单               *");
+        gotoxy_br(15,14);
         printf("************************************************");
 
         gotoxy_br(28, 16);

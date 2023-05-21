@@ -29,7 +29,7 @@ int Main_book_mana(){
 }
 
 int Collect(int books_number,Book books[],FILE *fp){
-
+    system("cls");
     Menu_book();//显示数据管理的子菜单
     int Scanf;
     scanf("%d",&Scanf );
@@ -150,9 +150,9 @@ void Menu_book(){
     gotoxy_book(15, 13);
 
     printf("*                  5->显示图书                 *");
-//    gotoxy_book(15,14);
-//    printf("*                  0->退出系统                  *");
     gotoxy_book(15,14);
+    printf("*                  0->返回主菜单               *");
+    gotoxy_book(15,15);
     printf("***********************************************");
 
     gotoxy_book(28, 16);
