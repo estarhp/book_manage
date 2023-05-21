@@ -122,7 +122,14 @@ void Collect_operation() {
     int will_reload;
 
     //收集用户的选择
-    scanf("%d", &Scan_number);
+    int right = scanf("%d", &Scan_number);
+
+    if (right == 0){
+        Scan_number = -1;
+        fflush(stdin);
+        printf("输入错误，请重输");
+    }
+
     //跳入不同模块
     //getchar();
     while(Scan_number) {
@@ -157,8 +164,14 @@ void Collect_operation() {
             system("cls");
             Main_Muen();
             //getchar();//从控件获取字符而无需回显;
-            scanf("%d", &Scan_number);
-            sleep(2);
+            int right  = scanf("%d", &Scan_number);
+            if(right == 0){
+                Scan_number = -1;
+                fflush(stdin);
+                printf("输入错误，请重输");
+            }
+
+
 
 
 

@@ -32,6 +32,7 @@ void delete_book(int books_number,Book books[]){
     }
     sleep(2);
     system("cls");
+    fflush(stdin);
 }
 
 void open_delete_book(int will_delete[],int number,int books_number,Book books[]){

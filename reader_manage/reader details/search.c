@@ -8,13 +8,20 @@
 #include "unistd.h"
 void search_reader(int readers_number,Reader readers[])
 {
+    fflush(stdin);
     system("cls");
     int select_mode=0;
     printf("\n\t                        1->通过id                         \t\n");
     printf("\n\t                        2->通过读者                        \t\n");
     printf("\n\t                      请输入你的选择（数字）：                \n\t");
 
-    scanf("%d",&select_mode);
+    int right = scanf("%d",&select_mode);
+    if (right  == 0){
+        printf("输入错误！！");
+        sleep(2);
+        system("cls");
+        return;
+    }
     switch (select_mode) {
         case 1:
             Search_byreaderid(readers_number,readers);

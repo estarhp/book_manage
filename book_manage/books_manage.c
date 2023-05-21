@@ -34,6 +34,7 @@ int Collect(int books_number,Book books[],FILE *fp){
     int Scanf;
     scanf("%d",&Scanf );
     getchar();
+    int will_reload;
 
 
     //收集用户的选择
@@ -46,8 +47,15 @@ int Collect(int books_number,Book books[],FILE *fp){
         case 0:
             printf("谢谢使用！！！");
             return 0;
-        case 1:add_book(books,books_number,fp);
-            return 1;
+        case 1:
+            will_reload=add_book(books,books_number,fp);
+
+            if (will_reload == 1){
+                return 1;
+            }else {
+                break;
+            }
+
         case 2:delete_book(books_number,books);
             return 1;
         case 3:modify_book_by_id(books_number,books);

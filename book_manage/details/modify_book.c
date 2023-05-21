@@ -32,6 +32,8 @@ void modify_book_by_id(int books_number,Book books[]){
 
     open_delete_book(will_delete,number,books_number,books);
 
+    fflush(stdin);
+
 
 
 }

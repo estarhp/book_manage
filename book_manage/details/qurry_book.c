@@ -27,10 +27,10 @@ void query_book(int books_number,Book books[]){
     gotoxy_book(x - 2, y);
     //system("pause");
     scanf("%d",&select_mode);
+
     switch (select_mode) {
         case 1:
            query_byid(books_number,books);
-
             break;
         case 2:query_bywriter(books_number,books);
             break;
@@ -45,7 +45,12 @@ void query_book(int books_number,Book books[]){
 int  query_byid(int books_number,Book books[]){
     int id;
     printf("请输入书本的id:\n");
-    scanf("%d",&id);
+    int  right = scanf("%d",&id);
+    if (right == 0){
+        printf("输入错误！！！");
+        return -1;
+    }
+
 
     for (int i = 0; i < books_number; i++) {
         if(books[i].id==id){

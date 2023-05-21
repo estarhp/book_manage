@@ -29,7 +29,10 @@ int Collect_reader(int readers_number,Reader readers[],FILE *fp){
     int Scanf;
 
     //收集用户的选择
-    scanf(" %d",&Scanf );
+    int right  = scanf("%d", &Scanf);
+    if (right == 0){
+        Scanf = -1;
+    }
     getchar();
     int success;
     while (Scanf) {
@@ -62,7 +65,10 @@ int Collect_reader(int readers_number,Reader readers[],FILE *fp){
         }
         getchar();//从控件获取字符而无需回显;
         Menu_reader();
-        scanf("%d", &Scanf);
+        int right  = scanf("%d", &Scanf);
+        if (right == 0){
+            Scanf = -1;
+        }
     }
 }
 int wherex_reader()

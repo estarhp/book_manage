@@ -30,6 +30,7 @@ void show_book(int books_number,Book *books){
 
     sleep(5);
     system("cls");
+    fflush(stdin);
 
 
 

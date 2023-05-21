@@ -11,7 +11,7 @@ typedef struct book {
 } Book;
 
 int Main_book_mana();
-void add_book(Book books[],int books_number,FILE *fp);
+int add_book(Book books[],int books_number,FILE *fp);
 FILE * file_open();
 void put_book(int number,FILE *fp,Book books[]);//初始化图书
 int Books_number(FILE *fp);//计算文件中图书的数目

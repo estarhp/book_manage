@@ -4,7 +4,7 @@
 typedef struct reader {
     int id;
     char name[12];
-    char sex[3];
+    char sex[4];
 } Reader;
 int Main_reader_mana();
 int Readers_number(FILE *fp);
