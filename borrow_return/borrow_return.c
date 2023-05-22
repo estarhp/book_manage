@@ -47,8 +47,6 @@ void Main_br_mana(){
 
     put_book(books_number,fp2,books);//将书本放入容器
 
-    fclose(fp1);//关闭文件
-    fclose(fp2);//关闭文件
 
 
     //br_Menu();
@@ -63,6 +61,10 @@ void Main_br_mana(){
 //    register_return(rhead,books,books_number,readers,readers_number,rfp);
     //释放链表内存，防止内存泄露
     rbclose(bhead,rhead);
+
+
+    fclose(fp1);//关闭文件
+    fclose(fp2);//关闭文件
 
     fclose(bfp);
     fclose(rfp);
@@ -84,7 +86,7 @@ void Collect_br(Borrow *bhead,Return *rhead,Book books[],int books_number,Reader
     {
         switch (Scanf) {
             case 0:
-                break;
+                return;
             case 1:
                 showBorrow(bhead);
                 break;

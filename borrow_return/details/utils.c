@@ -29,9 +29,9 @@ void rbclose(Borrow *bhead,Return *rhead){
     }
     free(q);
 
-    Borrow *t = NULL;
-    for (Return *p = rhead; p!=NULL; q=t,p=p->next) {
-        free(q);
+    Return *t = NULL;
+    for (Return *p = rhead; p!=NULL; t = p ,p=p->next) {
+        free(t);
     }
 
     free(t);
