@@ -26,6 +26,7 @@ void register_borrow(Borrow *head,Book books[],int books_number,Reader readers[]
     int index_reader = Search_byreaderid(readers_number,readers);
     if (index_reader==-1) {
         printf("数据库中没有这位读者的信息，请先添加该读者\n");
+        printf("请按回车返回!!!\n");
         sleep(2);
 //        system("cls");
         return;
@@ -34,6 +35,7 @@ void register_borrow(Borrow *head,Book books[],int books_number,Reader readers[]
     int index_book = query_byid(books_number,books);
     if (index_book==-1) {
         printf("数据库中没有这本图书的信息，请先添加该书本\n");
+        printf("请按回车返回！！！\n");
         sleep(2);
 //        system("cls");
         return;
