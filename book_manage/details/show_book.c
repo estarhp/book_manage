@@ -25,11 +25,11 @@ void show_book(int books_number,Book *books){
     for (int i = start-1; i < end; ++i) {
         printf("%d %s %s\n",books[i].id,books[i].writer,books[i].name);
     }
-
-    printf("5s后自动退出");
+    printf("\n");
+    printf("按回车键继续");
 
     sleep(5);
-    system("cls");
+    //system("cls");
     fflush(stdin);
 
 
