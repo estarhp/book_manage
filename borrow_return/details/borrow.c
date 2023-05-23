@@ -15,7 +15,7 @@ void showBorrow(Borrow *head){
                p->book.writer,
                p->book.name);
     }
-    printf("按回车键继续！");
+    printf("按回车键继续！3");
 
 }
 
@@ -45,7 +45,7 @@ void register_borrow(Borrow *head,Book books[],int books_number,Reader readers[]
     q->next = NULL;
     p->next = q;
 
-    rewind(fp);
+    rewind(fp);//重新指向文件开头
     fprintf(fp,"%s %d %s %s %d %s %s\n",q->time,
             q->reader.id,
             q->reader.name,
@@ -53,9 +53,9 @@ void register_borrow(Borrow *head,Book books[],int books_number,Reader readers[]
             q->book.id,
             q->book.writer,
             q->book.name);
-
-    sleep(2);
     printf("回车退出……");
+    sleep(2);
+
 
 
 }

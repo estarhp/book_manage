@@ -8,9 +8,9 @@
 void show_reader(int readers_number,Reader *readers){
     system("cls");
     int start=0,end=0;
-    printf("请输入要看的读者的序数范围：\n从序数(大于等于1)__开始：\n");
+    printf("请输入要看的读者的序数范围：\n从序数(1~%d)__开始：\n",readers_number);
     scanf("%d",&start);
-    printf("从序数(小于等于%d)__结束：\n",readers_number);
+    printf("从序数(1~%d)__结束：\n",readers_number);
     scanf("%d",&end);
 
 
@@ -24,7 +24,7 @@ void show_reader(int readers_number,Reader *readers){
 
 
     for (int i = start-1; i < end; ++i) {
-        printf("%d %s\n",readers[i].id,readers[i].name);
+    printf("%d %s %s\n",readers[i].id,readers[i].name,readers[i].sex);
     }
 
     printf("5s后自动退出");

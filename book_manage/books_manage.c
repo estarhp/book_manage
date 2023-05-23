@@ -45,7 +45,6 @@ int Collect(int books_number,Book books[],FILE *fp){
     {
     switch (Scanf) {
         case 0:
-            printf("谢谢使用！！！");
             return 0;
         case 1:
             will_reload=add_book(books,books_number,fp);
@@ -65,7 +64,7 @@ int Collect(int books_number,Book books[],FILE *fp){
         case 5:show_book(books_number,books);
             break;
         default:
-            printf("请输入正确的数字\n");
+            printf("请输入正确的数字并按回车返回\n");
             break;
 
     }

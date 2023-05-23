@@ -5,11 +5,12 @@
 #include "stdio.h"
 #include "string.h"
 #include "../book_manage.h"
+#include "unistd.h"
 void modify_book_by_id(int books_number,Book books[]){
     int index = query_byid(books_number,books);
     if (index == -1){
         printf("没有这本书哟！");
-
+        sleep(2);
         return;
 
     }
@@ -25,12 +26,15 @@ void modify_book_by_id(int books_number,Book books[]){
     strcpy(books[index].name,newName);
     strcpy(books[index].writer ,newWriter);
 
-    printf("%s,%s",books[index].name,books[index].writer);
+    printf("%s,%s\n",books[index].name,books[index].writer);
 
     int will_delete[]={-1};
     int number=0;
 
     open_delete_book(will_delete,number,books_number,books);
+    printf("修改完毕");
+    sleep(2);
+
 
     fflush(stdin);
 

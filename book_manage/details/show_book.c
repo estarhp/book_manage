@@ -8,9 +8,9 @@
 void show_book(int books_number,Book *books){
     system("cls");
     int start=0,end=0;
-    printf("请输入要看的书本的序数范围：\n从序数(大于等于1)__开始：\n");
+    printf("请输入要看的书本的序数范围：\n从序数(1~%d)__开始：\n",books_number);
     scanf("%d",&start);
-    printf("从序数(小于等于%d)__结束：\n",books_number);
+    printf("从序数(1~%d)__结束：\n",books_number);
     scanf("%d",&end);
 
     if (start>end||end>books_number||start<=0){
@@ -26,7 +26,7 @@ void show_book(int books_number,Book *books){
         printf("%d %s %s\n",books[i].id,books[i].writer,books[i].name);
     }
     printf("\n");
-    printf("按回车键继续");
+    printf("5s后自动退出");
 
     sleep(5);
     //system("cls");

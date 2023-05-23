@@ -1,5 +1,6 @@
 #include "stdio.h"
 #include "windows.h"
+#include "unistd.h"
 #include "reader_manage.h"
 //hhh
 //hhhh
@@ -22,26 +23,34 @@ int Main_reader_mana(){
 
     fclose(fp);//关闭文件
 
+
 }
 int Collect_reader(int readers_number,Reader readers[],FILE *fp){
-    system("cls");
-    Menu_reader();
-    int Scanf;
-
-    //收集用户的选择
-    int right  = scanf("%d", &Scanf);
-    if (right == 0){
-        Scanf = -1;
-    }
-    getchar();
+//    system("cls");
+//    Menu_reader();
+//    int Scanf;
+//
+//    //收集用户的选择
+//    int right  = scanf("%d", &Scanf);
+//    if (right == 0){
+//        Scanf = -1;
+//    }
+//    getchar();
     int success;
+    system("cls");
+    Menu_reader();//显示数据管理的子菜单
+    int Scanf;
+    scanf("%d",&Scanf );
+    getchar();
+//    int will_reload;
+
     while (Scanf) {
         //跳入不同模块
         switch (Scanf) {
 
             case 1:
                 success = add_reader(readers, readers_number, fp);
-                if (success !=-1){
+                if (success != -1){
                     return 1;
                 }
                 break;
@@ -59,16 +68,22 @@ int Collect_reader(int readers_number,Reader readers[],FILE *fp){
                 show_reader(readers_number, readers);
                 break;
                 default:
-                printf("请输入正确的数字\n");
+                printf("请输入正确的数字并按回车返回\n");
                 break;
 
         }
         getchar();//从控件获取字符而无需回显;
+        system("cls");
         Menu_reader();
-        int right  = scanf("%d", &Scanf);
-        if (right == 0){
-            Scanf = -1;
-        }
+        fflush(stdin);
+        scanf(" %d", &Scanf);
+//        getchar();//从控件获取字符而无需回显;
+//        Menu_reader();
+//        int right  = scanf("%d", &Scanf);
+//        if (right == 0){
+//            Scanf = -1;
+//        }
+
     }
 }
 int wherex_reader()

@@ -17,6 +17,7 @@ void delete_reader(int readers_number,Reader readers[]){
     gotoxy_reader(2000, 7);
     printf("请输入你的选择：（数字）");
     scanf("%d",&delete_input);
+
     switch (delete_input) {
         case 1:
             delete_reader_by_id(readers_number,readers);
@@ -64,9 +65,12 @@ void delete_reader_by_id(int readers_number,Reader readers[]){
     }
     if(number == 0 ){
         printf("没有找到满足要求的读者！\n");
+        sleep(2);
         return;
     }
     open_delete_reader(will_delete,number,readers_number,readers);
+    printf("删除成功！");
+
 }
 void delete_reader_by_name(int readers_number,Reader readers[]){
     int number=0;
@@ -83,8 +87,11 @@ void delete_reader_by_name(int readers_number,Reader readers[]){
     }
     if(number == 0 ){
         printf("没有找到满足要求的读者！");
+        sleep(2);
         return;
     }
     open_delete_reader(will_delete,number,readers_number,readers);
+    printf("删除成功！");
+
 
 }

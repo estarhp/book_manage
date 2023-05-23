@@ -4,10 +4,12 @@
 #include "stdio.h"
 #include "../reader_manage.h"
 #include "string.h"
+#include "unistd.h"
 void modify_reader_by_id(int readers_number, Reader  readers[]){
     int index = Search_byreaderid(readers_number,readers);
     if (index == -1){
         printf("没有这个读者哟");
+        sleep(2);
         return;
     }
     char newName[12];
@@ -23,6 +25,7 @@ void modify_reader_by_id(int readers_number, Reader  readers[]){
     if(strcmp(newSex,"男") != 0 && strcmp(newSex,"男") != 0 )
     {
         printf("请输入正确的性别！！！！");
+        sleep(2);
         return;
     }
     strcpy(readers[index].name,newName);
@@ -34,6 +37,10 @@ void modify_reader_by_id(int readers_number, Reader  readers[]){
     int number=0;
 
     open_delete_reader(will_delete,number,readers_number,readers);
+
+    printf("修改完毕");
+    sleep(2);
+
 
 
 

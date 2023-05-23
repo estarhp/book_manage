@@ -100,7 +100,7 @@ void Collect_br(Borrow *bhead,Return *rhead,Book books[],int books_number,Reader
                 register_return(rhead,books,books_number,readers,readers_number,rfp);
                 break;
             default:
-                printf("请输入正确的数字\n");
+                printf("请输入正确的数字并按回车返回\n");
                 break;
 
         }

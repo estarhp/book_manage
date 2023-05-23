@@ -17,7 +17,7 @@ int add_reader(Reader readers[],int readers_number,FILE *fp){
 
         printf("你输的也太长了吧！！！！");
         sleep(2);
-        return 0;
+        return -1;
     }
 
     addreader.name[strcspn(addreader.name, "\n")] = '\0';
@@ -30,18 +30,20 @@ int add_reader(Reader readers[],int readers_number,FILE *fp){
 
         printf("你输的也太长了吧！！！！");
         sleep(2);
-        return 0;
+        return -1;
     }
 
     addreader.sex[strcspn(addreader.sex, "\n")] = '\0';
     if(strcmp(addreader.sex,"男") !=0 && strcmp(addreader.sex , "女") !=0 ){
         printf("输入了错误的性别!!!!");
-        return 0;
+        sleep(2);
+        return -1;
     }
     addreader.id=readers[readers_number-1].id+1;
     fprintf(fp, "%d %s %s\n", addreader.id, addreader.name,addreader.sex);
-    sleep(2);
+
     printf("您已成功添加新的读者!");
+    sleep(2);
 
     return 1;
 
