@@ -75,9 +75,20 @@ void delete_reader_by_id(int readers_number,Reader readers[]){
 void delete_reader_by_name(int readers_number,Reader readers[]){
     int number=0;
     int will_delete[10];
-    char readername[20];
+    char readername[14];
     printf("请输入读者的名字：\n");
-    scanf("%s",readername);
+    fflush(stdin);
+    fgets(readername, 14, stdin);
+
+    if (strlen(readername) == 13) {
+
+        printf("你输的也太长了吧！！！！");
+        sleep(2);
+        return;
+    }
+
+    readername[strcspn(readername, "\n")] = '\0';
+
 
     for (int i = 0; i < readers_number; ++i) {
         if(strcmp(readername,readers[i].name)==0){

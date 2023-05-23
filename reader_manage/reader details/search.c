@@ -56,13 +56,23 @@ int Search_byreaderid(int readers_number,Reader readers[])
 }
 void Search_byreadername(int readers_number,Reader readers[])
 {
-    char name[50];
+    char readername[14];
     int flag = 1;
     printf("请输入读者的姓名:\n");
-    scanf("%s",&name);
+    fflush(stdin);
+    fgets(readername, 14, stdin);
+
+    if (strlen(readername) == 13) {
+
+        printf("你输的也太长了吧！！！！");
+        sleep(2);
+        return;
+    }
+
+    readername[strcspn(readername, "\n")] = '\0';
     printf("以下是匹配的查询结果：\n");
     for (int i = 0; i < readers_number; ++i) {
-        if(strcmp(name,readers[i].name)==0){
+        if(strcmp(readername,readers[i].name)==0){
 
             printf("%d %s %s\n",readers[i].id,readers[i].sex,readers[i].name);
             flag = 0;

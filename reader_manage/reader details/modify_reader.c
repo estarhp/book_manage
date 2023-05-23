@@ -12,17 +12,38 @@ void modify_reader_by_id(int readers_number, Reader  readers[]){
         sleep(2);
         return;
     }
-    char newName[12];
-    char newSex[3];
+    char newName[14];
+    char newSex[5];
     printf("请输入新的姓名：\n");
 
-    scanf("%s",newName);
+    fflush(stdin);
+    fgets(newName, 14, stdin);
 
-    printf("请输入新的性别(选填男女)：\n");
+    if (strlen(newName) == 13) {
 
-    scanf("%s",newSex);
+        printf("你输的也太长了吧！！！！");
+        sleep(2);
+        return;
+    }
 
-    if(strcmp(newSex,"男") != 0 && strcmp(newSex,"男") != 0 )
+    newName[strcspn(newName, "\n")] = '\0';
+
+
+    printf("请输入读者的性别（男/女）");
+    fflush(stdin);
+
+    fgets(newSex, 5, stdin);
+
+    if (strlen(newSex) == 4) {
+
+        printf("你输的也太长了吧！！！！");
+        sleep(2);
+        return ;
+    }
+
+    newSex[strcspn(newSex, "\n")] = '\0';
+
+    if(strcmp(newSex,"男") != 0 && strcmp(newSex,"女") != 0 )
     {
         printf("请输入正确的性别！！！！");
         sleep(2);

@@ -98,7 +98,8 @@ void delete_book_by_writer(int books_number,Book books[]){
 void delete_book_by_name(int books_number,Book books[]){
     int number=0;
     int will_delete[10];
-    char bookname[20];
+    char bookname[50];
+
     printf("请输入书本的书名:\n");
     scanf("%s",bookname);
 
