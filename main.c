@@ -1,10 +1,11 @@
 
 #include <stdio.h>
 #include <windows.h>
+#include <stdbool.h>
 #include "book_manage/book_manage.h"
 #include "reader_manage/reader_manage.h"
 #include "borrow_return/borrow_return.h"
-#include "unistd.h"
+
 void Main_Muen();
 void Collect_operation();
 
@@ -107,9 +108,24 @@ void Main_Muen()
     gotoxy(x - 2, y);
 
 }
-int main()
 
+boolean password(){
+    int password;
+    printf("ÇëÊäÈëÏµÍ³ÃÜÂë£¡£¡£¡£º");
+    scanf("%d",&password);
+    if (password != 123456){
+        printf("ÃÜÂë´íÎó£¡£¡£¡");
+        return false;
+    }
+
+    return true;
+
+}
+int main()
 {
+
+    if (!password()) return -1;
+
     Main_Muen();
     Collect_operation();
     return 0;
