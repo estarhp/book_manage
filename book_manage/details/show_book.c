@@ -26,7 +26,7 @@ void show_book(int books_number,Book *books){
         printf("%d %s %s\n",books[i].id,books[i].writer,books[i].name);
     }
     printf("\n");
-    printf("按回车键继续！！！\n1");
+    printf("按回车键继续！！！\n");
 
     sleep(5);
     //system("cls");
