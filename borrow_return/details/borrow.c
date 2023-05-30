@@ -15,7 +15,7 @@ void showBorrow(Borrow *head){
                p->book.writer,
                p->book.name);
     }
-    printf("按回车键继续！3");
+    printf("按回车键继续！");
 
 }
 
